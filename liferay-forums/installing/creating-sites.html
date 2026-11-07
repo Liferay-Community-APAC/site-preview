@@ -137,13 +137,28 @@
 
 <ol>
   <li>
-    <p>Download <strong>Source code (zip)</strong> from the <a href="https://github.com/LGSAPAC/lfrgs-liferay-forums/releases/tag/v1.0.0">release</a>, and unzip it.</p>
+    <p>Download the forum’s source code, <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/download/v1.0.0/liferay-forums-1.0.0-source.zip">liferay-forums-1.0.0-source.zip</a>, from the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/tag/v1.0.0">release</a>, and unzip it. It unzips to a folder named <code>liferay-forums-1.0.0</code>; run the commands below from there.</p>
   </li>
   <li>
-    <p>Copy <code>client-extensions/liferay-forums-site-initializer</code> to a name of its own in the same folder, for example <code>client-extensions/liferay-forums-site-initializer-acme</code>. On Liferay PaaS, copy it into <code>liferay/client-extensions</code> in your PaaS project’s repository instead.</p>
+    <p>Copy the whole <code>client-extensions/liferay-forums-site-initializer</code> folder, with everything in it, to a new folder next to it, named for the site. For a site named <em>Acme</em>:</p>
+
+    <pre><code class="language-bash"> cp -r client-extensions/liferay-forums-site-initializer client-extensions/liferay-forums-site-initializer-acme
+</code></pre>
+
+    <p>On Liferay PaaS, copy it into <code>liferay/client-extensions</code> in your PaaS project’s repository instead, as <code>liferay/client-extensions/liferay-forums-site-initializer-acme</code>.</p>
+
+    <p>You then have two folders side by side. Leave the original as it is; only the copy changes:</p>
+
+    <pre><code> client-extensions/
+ ├── liferay-forums-site-initializer/
+ └── liferay-forums-site-initializer-acme/
+     ├── build.gradle
+     ├── client-extension.yaml    ← the only file you change
+     └── site-initializer/
+</code></pre>
   </li>
   <li>
-    <p>In the copy, replace <code>client-extension.yaml</code> with one that names the new site. Every name in it must be unique to the copy: the two keys, the OAuth application, and the site’s external reference code. For a site named <em>Acme</em>:</p>
+    <p>In the copy, open <code>client-extension.yaml</code>, and replace all of its contents with names for the new site. Every name in it must be unique to the copy: the two keys, the OAuth application, and the site’s external reference code. For a site named <em>Acme</em>:</p>
 
     <pre><code class="language-yaml"> liferay-forums-site-initializer-acme:
      name: Liferay Forums Site Initializer Acme
@@ -189,7 +204,7 @@
 
 <h3 id="a-shortcut-on-liferay-self-hosted">A Shortcut on Liferay Self-Hosted</h3>
 
-<p>On Liferay Self-Hosted (Tomcat or Docker), the <code>generate-site-initializer-zips.sh</code> script, in the release’s <strong>Source code</strong> download, makes the copies from <code>liferay-forums-site-initializer.zip</code> without building them. It runs on Linux, with Bash, <code>unzip</code>, and <code>zip</code>. Don’t use its zips on Liferay PaaS or SaaS: they all share one OAuth application, which works only when they’re deployed to Liferay itself.</p>
+<p>On Liferay Self-Hosted (Tomcat or Docker), the <code>generate-site-initializer-zips.sh</code> script, attached to the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/tag/v1.0.0">release</a>, makes the copies from <code>liferay-forums-site-initializer.zip</code> without building them. It runs on Linux, with Bash, <code>unzip</code>, and <code>zip</code>. Don’t use its zips on Liferay PaaS or SaaS: they all share one OAuth application, which works only when they’re deployed to Liferay itself.</p>
 
 <ol>
   <li>
@@ -205,7 +220,7 @@
 </code></pre>
   </li>
   <li>
-    <p>Run it. It writes one zip per site to the <code>out</code> folder:</p>
+    <p>Run it. It writes one zip per site to the <code>out</code> folder. For its options, run it with <code>--help</code>:</p>
 
     <pre><code class="language-bash"> bash generate-site-initializer-zips.sh
 </code></pre>
@@ -222,7 +237,6 @@
 <ul>
   <li><a href="checking.html">Checking the Installation</a></li>
   <li><a href="../administering/several-sites.html">Running Several Forum Sites</a></li>
-  <li><a href="https://github.com/LGSAPAC/lfrgs-liferay-forums#option-2-several-sites">Option 2: Several Sites</a> in the README, with all the script’s options</li>
 </ul>
 
     </article>

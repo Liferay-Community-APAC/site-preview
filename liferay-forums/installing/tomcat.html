@@ -114,13 +114,13 @@
 
 <h2 id="step-1-download-the-release">Step 1: Download the Release</h2>
 
-<p>From the <a href="https://github.com/LGSAPAC/lfrgs-liferay-forums/releases/tag/v1.0.0">release</a>, download:</p>
+<p>From the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/tag/v1.0.0">release</a>, download:</p>
 
 <ul>
   <li><code>liferay-forums-batch.zip</code></li>
   <li><code>liferay-forums-etc-spring-boot.zip</code></li>
   <li><code>liferay-forums-site-initializer.zip</code></li>
-  <li><strong>Source code (zip)</strong>, only to run several forum sites: it has the script in its <code>scripts</code> folder.</li>
+  <li><code>generate-site-initializer-zips.sh</code>, only to run several forum sites with the script; see <a href="creating-sites.html#a-shortcut-on-liferay-self-hosted">Creating Forum Sites</a>.</li>
 </ul>
 
 <h2 id="step-2-deploy-the-batch">Step 2: Deploy the Batch</h2>
@@ -197,7 +197,44 @@ WantedBy=multi-user.target
 
 <h3 id="on-another-machine">On Another Machine</h3>
 
-<p>Liferay always calls the microservice at <code>localhost:58081</code>. To run the microservice on another machine, fill in its <code>application.properties</code> with Liferay’s address and the microservice’s credentials, and forward port <code>58081</code> on the Liferay machine to it. The README describes both, step by step: <a href="https://github.com/LGSAPAC/lfrgs-liferay-forums#option-2-on-another-machine">Option 2: On Another Machine</a>.</p>
+<p>Liferay always calls the microservice at <code>localhost:58081</code>, so port <code>58081</code> on the Liferay machine must be forwarded to the microservice’s machine.</p>
+
+<ol>
+  <li>
+    <p>On the microservice’s machine, unzip <code>liferay-forums-etc-spring-boot.zip</code> into a folder of your choice.</p>
+  </li>
+  <li>
+    <p>In <code>application.properties</code>, next to the jar, uncomment and fill in these four settings:</p>
+
+    <pre><code class="language-properties"> com.liferay.lxc.dxp.mainDomain=liferay.example.com
+ com.liferay.lxc.dxp.server.protocol=https
+ liferay-forums-etc-spring-boot-oahs.oauth2.headless.server.client.id=&lt;client ID&gt;
+ liferay-forums-etc-spring-boot-oahs.oauth2.headless.server.client.secret=&lt;client secret&gt;
+</code></pre>
+
+    <p><code>mainDomain</code> and <code>server.protocol</code> are how the microservice reaches Liferay; include the port in <code>mainDomain</code> unless it’s 80 or 443. The client ID and secret are those of <strong>Liferay Forums Etc Spring Boot OAuth Application Headless Server</strong>, in <em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em>.</p>
+  </li>
+  <li>
+    <p>Start it without <code>LIFERAY_HOME</code>: <code>./start.sh</code> on Linux, or <code>start.bat</code> on Windows.</p>
+  </li>
+  <li>
+    <p>On the Liferay machine, forward port <code>58081</code> to the microservice’s machine, and keep the forward running as long as the microservice runs. Allow port <code>58081</code> through any firewall between the machines. Either run <code>socat</code> on the Liferay machine:</p>
+
+    <pre><code class="language-bash"> socat TCP-LISTEN:58081,bind=127.0.0.1,fork,reuseaddr TCP:&lt;microservice-host&gt;:58081
+</code></pre>
+
+    <p>Or open an SSH tunnel from the microservice’s machine:</p>
+
+    <pre><code class="language-bash"> ssh -N -R 58081:localhost:58081 &lt;user&gt;@&lt;liferay-host&gt;
+</code></pre>
+  </li>
+  <li>
+    <p>On the Liferay machine, check that the forward reaches the microservice. This prints <code>READY</code>:</p>
+
+    <pre><code class="language-bash"> curl http://localhost:58081/ready
+</code></pre>
+  </li>
+</ol>
 
 <h2 id="step-5-set-up-email-notifications">Step 5: Set Up Email Notifications</h2>
 

@@ -162,7 +162,7 @@
 
 <h2 id="what-youll-install">What You’ll Install</h2>
 
-<p>Each <a href="https://github.com/LGSAPAC/lfrgs-liferay-forums/releases">release</a> has three zips, and its <strong>Source code</strong> download has a script:</p>
+<p>Each <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases">release</a> has these files:</p>
 
 <table>
   <thead>
@@ -185,8 +185,16 @@
       <td>The forum site itself: its pages, roles, and permissions. Deploying it creates one forum site.</td>
     </tr>
     <tr>
-      <td><code>scripts/generate-site-initializer-zips.sh</code></td>
+      <td><code>generate-site-initializer-zips.sh</code></td>
       <td>On Liferay Self-Hosted, makes one copy of the site initializer zip per site, to run several forum sites.</td>
+    </tr>
+    <tr>
+      <td><code>liferay-forums-1.0.0-source.zip</code></td>
+      <td>The source of the three zips, as a Liferay Workspace. You need it on Liferay PaaS, to build a site initializer for each additional forum site, or to add the forum to your own Liferay Workspace.</td>
+    </tr>
+    <tr>
+      <td><code>SHA256SUMS</code></td>
+      <td>Checksums of the files above.</td>
     </tr>
   </tbody>
 </table>
@@ -218,7 +226,6 @@
 <ul>
   <li><a href="../getting-started.html">Getting Started</a></li>
   <li><a href="deleting.html">Deleting a Forum Site</a></li>
-  <li>The <a href="https://github.com/LGSAPAC/lfrgs-liferay-forums#readme">README</a>, with every detail of the installation</li>
 </ul>
 
     </article>

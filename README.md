@@ -4,6 +4,6 @@ A temporary, generated preview of the Liferay Community APAC website and the Lif
 published at <https://liferay-community-apac.github.io/site-preview/>. Every page is marked `noindex`,
 so search engines leave it out. Delete this repository once the preview has been reviewed.
 
-Built from the `site-updates` branches of:
-- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/site-updates) at 98df1f5
-- [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums/tree/site-updates) at 226da4d
+Built from:
+- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/marketplace-section), branch `marketplace-section` at 031fe11
+- [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums), `main` at 9dc0403
