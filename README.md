@@ -5,5 +5,5 @@ published at <https://liferay-community-apac.github.io/site-preview/>. Every pag
 so search engines leave it out. Delete this repository once the preview has been reviewed.
 
 Built from the `site-updates` branches of:
-- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/site-updates) at bc73853
+- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/site-updates) at 98df1f5
 - [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums/tree/site-updates) at 226da4d
