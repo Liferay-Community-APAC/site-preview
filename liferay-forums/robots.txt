@@ -1,0 +1,1 @@
+Sitemap: https://liferay-community-apac.github.io/site-preview/liferay-forums/sitemap.xml

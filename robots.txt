@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://liferay-community-apac.github.io/sitemap.xml
+
+# apps:sitemaps
+Sitemap: https://liferay-community-apac.github.io/liferay-forums/sitemap.xml
+# /apps:sitemaps

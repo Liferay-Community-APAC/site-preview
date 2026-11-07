@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Managing Categories · Liferay Forums · Liferay Community APAC</title>
+  <meta name="description" content="Documentation for Liferay Forums, discussion forums for Liferay DXP.">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/administering/categories.html">
+  <meta property="og:title" content="Managing Categories · Liferay Forums">
+  <meta property="og:description" content="Documentation for Liferay Forums, discussion forums for Liferay DXP.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/liferay-forums/administering/categories.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <meta property="og:image" content="https://liferay-community-apac.github.io/assets/kb/liferay-forums-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+</head>
+<body data-kb-page>
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-logo" src="/site-preview/assets/liferay-logo-reversed.png" alt="Liferay" width="102" height="28"><small>User Group APAC</small></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Forums docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/liferay-forums/">Overview</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/getting-started.html">Getting Started</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/paas.html">On Liferay PaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/saas.html">On Liferay SaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/creating-sites.html">Creating Forum Sites</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/deleting.html">Deleting a Forum Site</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/workspace.html">Developing With a Liferay Workspace</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/using/">Using the Forum</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/using/browsing-and-searching.html">Browsing and Searching</a></li>
+          <li><a href="/site-preview/liferay-forums/using/starting-a-discussion.html">Starting a Discussion</a></li>
+          <li><a href="/site-preview/liferay-forums/using/replying.html">Replying and Mentions</a></li>
+          <li><a href="/site-preview/liferay-forums/using/questions-and-answers.html">Questions and Answers</a></li>
+          <li><a href="/site-preview/liferay-forums/using/voting.html">Voting</a></li>
+          <li><a href="/site-preview/liferay-forums/using/subscriptions-and-notifications.html">Subscriptions and Notifications</a></li>
+          <li><a href="/site-preview/liferay-forums/using/reporting.html">Reporting Content</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/moderating/">Moderating</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/moderating/locking.html">Locking Topics</a></li>
+          <li><a href="/site-preview/liferay-forums/moderating/priority.html">Pinning Topics with Priority</a></li>
+          <li><a href="/site-preview/liferay-forums/moderating/reviewing-reports.html">Reviewing Reports</a></li>
+          <li><a href="/site-preview/liferay-forums/moderating/banning.html">Banning Members</a></li>
+        </ul>
+      </li>
+      <li class="open"><a href="/site-preview/liferay-forums/administering/">Administering</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/administering/categories.html" aria-current="page">Managing Categories</a></li>
+          <li><a href="/site-preview/liferay-forums/administering/email-notifications.html">Email Notifications</a></li>
+          <li><a href="/site-preview/liferay-forums/administering/customizing.html">Customizing the Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/administering/several-sites.html">Running Several Forum Sites</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/reference/roles-and-permissions.html">Roles and Permissions</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/pages.html">Pages</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/configuration.html">Configuration Reference</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/known-issues.html">Known Issues</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/knowledge-base/">Knowledge base</a><span>/</span><a href="/site-preview/knowledge-base/#marketplace-apps">Marketplace apps</a><span>/</span><a href="/site-preview/liferay-forums/">Liferay Forums</a><span>/</span><a href="/site-preview/liferay-forums/administering/">Administering</a>
+    </p>
+    <article class="prose" data-pagefind-body>
+      <h1 class="no_toc" id="managing-categories">Managing Categories</h1>
+
+<p>Every topic belongs to a category. A new forum site has no categories, so create them before members start posting.</p>
+
+<p class="important">Managing categories needs the <strong>Forum Category Admin</strong> role, or Liferay’s <strong>Administrator</strong> role. They see <strong>Forum Categories Admin</strong> in the forum’s navigation.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#adding-the-default-categories" id="markdown-toc-adding-the-default-categories">Adding the Default Categories</a></li>
+  <li><a href="#adding-a-category" id="markdown-toc-adding-a-category">Adding a Category</a></li>
+  <li><a href="#editing-or-deleting-a-category" id="markdown-toc-editing-or-deleting-a-category">Editing or Deleting a Category</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Related Information</a></li>
+</ol>
+
+<p><img src="../assets/images/categories-admin.png" alt="The Forum Categories Admin page with Seed Default Categories, the Add Custom Category form, and the existing categories." class="screenshot" /></p>
+
+<h2 id="adding-the-default-categories">Adding the Default Categories</h2>
+
+<p>Click <strong>Seed Default Categories</strong> to add four starter categories: <strong>General Discussion</strong>, <strong>Technical Help</strong>, <strong>Feature Requests</strong>, and <strong>Best Practices</strong>. Edit or delete them as you like.</p>
+
+<h2 id="adding-a-category">Adding a Category</h2>
+
+<ol>
+  <li>
+    <p>Under <strong>Add Custom Category</strong>, enter a <strong>Category Name</strong> and an optional <strong>Description</strong>.</p>
+  </li>
+  <li>
+    <p>To make it a subcategory, choose its <strong>Parent Category</strong>. Leave <strong>None (Top Level)</strong> for a top-level category.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong>.</p>
+  </li>
+</ol>
+
+<p>Categories have one level of subcategories. A category that has subcategories stays at the top level.</p>
+
+<h2 id="editing-or-deleting-a-category">Editing or Deleting a Category</h2>
+
+<p>Use the <strong>Edit</strong> (pencil) and <strong>Delete</strong> (trash) buttons next to a category.</p>
+
+<p class="warning">Deleting a category also deletes its subcategories. Their topics aren’t deleted: they lose the category and stay listed under <strong>All Discussions</strong>. This can’t be undone.</p>
+
+<p class="note">Categories are Liferay categories in the site’s <strong>Forum Categories</strong> vocabulary, so you can also manage them in <em>Site Menu</em> → <em>Categorization</em> → <em>Categories</em>.</p>
+
+<h2 id="related-information">Related Information</h2>
+
+<ul>
+  <li><a href="../using/browsing-and-searching.html">Browsing and Searching</a></li>
+  <li><a href="../reference/configuration.html">Configuration Reference</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/liferay-forums/administering/"><span>Previous</span>Administering</a><a class="next" href="/site-preview/liferay-forums/administering/email-notifications.html"><span>Next</span>Email Notifications</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Forums is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', 'Link to this section');
+      h.appendChild(a);
+    });
+  })();
+</script>
+</body>
+</html>
