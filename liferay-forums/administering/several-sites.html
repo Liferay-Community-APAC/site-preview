@@ -106,7 +106,38 @@
 
 <h2 id="an-existing-site">An Existing Site</h2>
 
-<p>The forum can’t be added to a site that already exists, because Liferay sets up a site’s forum pages only when it creates the site. Create a forum site instead, and link to it from the existing site, for example with a link page in its navigation.</p>
+<p>The forum can’t be added to a site that already exists, because Liferay sets up a site’s forum pages only when it creates the site. Forum sites are always top-level sites: they can’t be created as child sites of another. Create a forum site instead, and link the two sites to each other, so that members move between them as if they were one.</p>
+
+<h3 id="link-to-the-forum-from-the-existing-site">Link to the Forum From the Existing Site</h3>
+
+<p>In the existing site, add a page of the type <strong>Link to URL</strong> in <em>Site Builder</em> → <em>Pages</em>, for example <strong>Forums</strong>, pointing to the forum site’s address, such as <code>/web/forums</code>. It shows in the existing site’s navigation like its other pages.</p>
+
+<h3 id="link-back-from-the-forum-site">Link Back From the Forum Site</h3>
+
+<p>The forum’s header lists the forum site’s own pages, so members who open the forum lose the existing site’s navigation. Give the forum site a navigation menu with the existing site’s pages first:</p>
+
+<ol>
+  <li>
+    <p>In the forum site, go to <em>Site Builder</em> → <em>Navigation Menus</em>, and add a menu, for example <strong>Main</strong>. In its settings, mark it as <strong>Primary Navigation</strong>.</p>
+  </li>
+  <li>
+    <p>Add the existing site’s pages as <strong>URL</strong> items, in the order the existing site shows them, for example <strong>Home</strong> at <code>/web/intranet/home</code>, then <strong>News</strong> and <strong>People</strong>.</p>
+  </li>
+  <li>
+    <p>Add the forum’s pages with <strong>Add</strong> → <strong>Page</strong>: <strong>Forums</strong>, then <strong>Forums Moderation</strong> and <strong>Forum Categories Admin</strong>. Page items keep their permissions, so members don’t see the two moderator pages.</p>
+  </li>
+  <li>
+    <p>Go to <em>Design</em> → <em>Page Templates</em> → <em>Masters</em>, and open <strong>Forums</strong>. Select the header’s <strong>Menu Display</strong> widget, open its <strong>Options</strong> → <strong>Configuration</strong>, and set <strong>Select Navigation</strong> to <strong>Primary Navigation</strong>. Click <strong>Save</strong>, then <strong>Publish Master</strong>.</p>
+  </li>
+</ol>
+
+<p>The forum’s header now shows the existing site’s pages, with <strong>Forums</strong> highlighted on the forum’s home page. To match the two sites’ look too, see <a href="customizing.html#matching-your-companys-look">Matching Your Company’s Look</a>.</p>
+
+<p class="note">A <strong>Link to URL</strong> page in the forum site doesn’t work for this: Liferay doesn’t allow one as a site’s first page, so the existing site’s home page can’t come first that way.</p>
+
+<h2 id="your-changes-on-each-site">Your Changes on Each Site</h2>
+
+<p>Each forum site has its own <strong>Forums</strong> master page, style book, and navigation menus. Changes to the look or the navigation of one forum site, as in <a href="customizing.html">Customizing the Forum</a>, have to be made again on each of the others.</p>
 
 <h2 id="deleting-a-forum-site">Deleting a Forum Site</h2>
 
@@ -115,6 +146,7 @@
 <h2 id="related-information">Related Information</h2>
 
 <ul>
+  <li><a href="customizing.html">Customizing the Forum</a></li>
   <li><a href="../getting-started.html">Getting Started</a></li>
   <li><a href="../moderating/banning.html">Banning Members</a></li>
 </ul>

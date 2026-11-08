@@ -98,6 +98,7 @@
 
 <ol id="markdown-toc">
   <li><a href="#look-and-feel" id="markdown-toc-look-and-feel">Look and Feel</a></li>
+  <li><a href="#matching-your-companys-look" id="markdown-toc-matching-your-companys-look">Matching Your Company’s Look</a></li>
   <li><a href="#promoted-discussions" id="markdown-toc-promoted-discussions">Promoted Discussions</a></li>
   <li><a href="#page-and-list-settings" id="markdown-toc-page-and-list-settings">Page and List Settings</a></li>
   <li><a href="#error-pages" id="markdown-toc-error-pages">Error Pages</a></li>
@@ -116,15 +117,19 @@
   <tbody>
     <tr>
       <td>Header and footer colors</td>
-      <td><em>Site Builder</em> → <em>Style Books</em> → <strong>Forums</strong>. <strong>Brand Color 1</strong> and <strong>2</strong> are the header’s background and text, <strong>3</strong> and <strong>4</strong> the footer’s.</td>
+      <td><em>Design</em> → <em>Style Books</em> → <strong>Forums</strong>. <strong>Brand Color 1</strong> and <strong>2</strong> are the header’s background and text, <strong>3</strong> and <strong>4</strong> the footer’s.</td>
     </tr>
     <tr>
       <td>Header and footer</td>
-      <td><em>Site Builder</em> → <em>Master Pages</em> → <strong>Forums</strong></td>
+      <td><em>Design</em> → <em>Page Templates</em> → <em>Masters</em> → <strong>Forums</strong></td>
+    </tr>
+    <tr>
+      <td>Logo</td>
+      <td><em>Control Panel</em> → <em>Instance Settings</em> → <em>Instance Configuration</em> → <em>Appearance</em> → <strong>Logo</strong>. The header shows the instance’s logo, next to the site’s name. The logo is shared by every site that shows it.</td>
     </tr>
     <tr>
       <td>Navigation links</td>
-      <td><em>Site Builder</em> → <em>Pages</em>. <strong>Liferay Learn</strong> and <strong>Help Center</strong> are link pages you can edit or delete.</td>
+      <td><em>Site Builder</em> → <em>Pages</em>. <strong>Liferay Learn</strong> and <strong>Help Center</strong> are link pages you can edit or delete. For a company intranet, delete them or point them to your own help pages.</td>
     </tr>
     <tr>
       <td>Home page title and description</td>
@@ -132,6 +137,83 @@
     </tr>
   </tbody>
 </table>
+
+<p class="note">After you change a style book and click <strong>Publish</strong>, Liferay asks you to confirm in a <strong>Publishing Info</strong> dialog. Click its <strong>Publish</strong> too: until then, your changes stay in a draft and the site doesn’t change.</p>
+
+<h2 id="matching-your-companys-look">Matching Your Company’s Look</h2>
+
+<p>The style book only changes a few colors, and the <strong>Forums Footer</strong> fragment shows a fixed line of text. To give the forum your company’s header, colors, and footer, add your own styles and footer to the <strong>Forums</strong> master page. Every forum page uses it, so you do it once per forum site.</p>
+
+<ol>
+  <li>
+    <p>Go to <em>Design</em> → <em>Page Templates</em> → <em>Masters</em>, and open <strong>Forums</strong>.</p>
+  </li>
+  <li>
+    <p>From <em>Fragments and Widgets</em> → <em>Basic Components</em>, drag an <strong>HTML</strong> fragment onto the master page, below the content area, next to the <strong>Forums Footer</strong> fragment.</p>
+  </li>
+  <li>
+    <p>Select the HTML fragment, and replace its content with a <code>&lt;style&gt;</code> block and your footer. For example, a light header with an indigo highlight for the current page, and a footer with your links:</p>
+
+    <pre><code class="language-html"> &lt;style&gt;
+ .forums-header{background:#FFFFFF!important;color:#1B2257!important;box-shadow:0 1px 0 #E6E9F5}
+ .forums-header__brand,.forums-header__navigation .nav-link{color:#1B2257!important}
+ .forums-header__navigation .nav-link{border-radius:999px}
+ .forums-header__navigation .selected&gt;.nav-link{background:#3346CC!important;color:#FFFFFF!important}
+ .forums-hero{background-image:linear-gradient(135deg,#F3F5FF,#FFF4E1)!important}
+ .forums-hero__backdrop{background:transparent!important}
+ .forums-hero h1,.forums-hero .forums-hero__stat-value{color:#1B2257!important}
+ .forums-hero p,.forums-hero figcaption{color:#5A6290!important}
+ .btn-primary{background-color:#3346CC!important;border-color:#3346CC!important}
+ .company-footer{background:#F6F7FC;border-top:4px solid #FFB03B;padding:3rem 2rem;color:#4A5180}
+ .forums-footer{display:none}
+ &lt;/style&gt;
+ &lt;footer class="company-footer"&gt;
+   &lt;a href="/web/intranet"&gt;Intranet&lt;/a&gt; · &lt;a href="/web/intranet/help"&gt;Help&lt;/a&gt;
+   &lt;p&gt;© Your Company. For internal use only.&lt;/p&gt;
+ &lt;/footer&gt;
+</code></pre>
+
+    <p>The last rule hides the <strong>Forums Footer</strong> fragment. You can delete that fragment from the master page instead.</p>
+  </li>
+  <li>
+    <p>Click <strong>Publish Master</strong>.</p>
+  </li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>To Change</th>
+      <th>Style These Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The header</td>
+      <td><code>.forums-header</code>, with <code>.forums-header__brand</code> for the logo and site name, and <code>.forums-header__search</code> for the search box</td>
+    </tr>
+    <tr>
+      <td>The navigation links</td>
+      <td><code>.forums-header__navigation .nav-link</code>, and <code>.selected&gt;.nav-link</code> for the current page</td>
+    </tr>
+    <tr>
+      <td>The home page’s hero</td>
+      <td><code>.forums-hero</code>. Its <code>.forums-hero__backdrop</code> paints a dark overlay: make it transparent for a light hero, and set the hero’s text colors, as in the example.</td>
+    </tr>
+    <tr>
+      <td>The buttons</td>
+      <td><code>.btn-primary</code></td>
+    </tr>
+    <tr>
+      <td>The original footer</td>
+      <td><code>.forums-footer</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="tip">If your company’s existing Liferay site uses its own master page, use the same styles and footer there, so that moving between the two sites looks seamless. To link the two sites’ navigation, see <a href="several-sites.html#an-existing-site">An Existing Site</a>.</p>
+
+<p class="warning">These class names come from the forum’s fragments and may change in a later release. After an upgrade, check the forum’s header, home page, and footer.</p>
 
 <h2 id="promoted-discussions">Promoted Discussions</h2>
 
