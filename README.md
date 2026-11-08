@@ -5,5 +5,5 @@ published at <https://liferay-community-apac.github.io/site-preview/>. Every pag
 so search engines leave it out. Delete this repository once the preview has been reviewed.
 
 Built from:
-- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/marketplace-section), branch `marketplace-section` at b3ebe93
+- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/marketplace-section), branch `marketplace-section` at b53aa87
 - [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums), `main` at 8fa2ee6
