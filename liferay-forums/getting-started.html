@@ -98,7 +98,17 @@
 
 <ol id="markdown-toc">
   <li><a href="#install" id="markdown-toc-install">Install</a></li>
-  <li><a href="#first-time-setup" id="markdown-toc-first-time-setup">First-Time Setup</a></li>
+  <li><a href="#first-time-setup" id="markdown-toc-first-time-setup">First-Time Setup</a>    <ol>
+      <li><a href="#create-categories" id="markdown-toc-create-categories">Create Categories</a></li>
+      <li><a href="#name-your-forum" id="markdown-toc-name-your-forum">Name Your Forum</a></li>
+      <li><a href="#replace-the-liferay-links" id="markdown-toc-replace-the-liferay-links">Replace the Liferay Links</a></li>
+      <li><a href="#add-your-logo" id="markdown-toc-add-your-logo">Add Your Logo</a></li>
+      <li><a href="#set-up-email-notifications" id="markdown-toc-set-up-email-notifications">Set Up Email Notifications</a></li>
+      <li><a href="#let-members-sign-in" id="markdown-toc-let-members-sign-in">Let Members Sign In</a></li>
+      <li><a href="#assign-moderators" id="markdown-toc-assign-moderators">Assign Moderators</a></li>
+      <li><a href="#post-a-welcome-topic-and-promote-it" id="markdown-toc-post-a-welcome-topic-and-promote-it">Post a Welcome Topic and Promote It</a></li>
+    </ol>
+  </li>
   <li><a href="#related-topics" id="markdown-toc-related-topics">Related Topics</a></li>
 </ol>
 
@@ -108,22 +118,72 @@
 
 <h2 id="first-time-setup">First-Time Setup</h2>
 
-<p>After installing, complete these steps as an administrator:</p>
+<p>After installing, complete these steps as an administrator. Members can start posting after the first one.</p>
+
+<h3 id="create-categories">Create Categories</h3>
+
+<p>Open <strong>Forum Categories Admin</strong>, and click <strong>Seed Default Categories</strong>, or add your own. Members can’t post until at least one category exists. See <a href="administering/categories.html">Managing Categories</a>.</p>
+
+<p><img src="assets/images/categories-admin.png" alt="The Forum Categories Admin page with Seed Default Categories, the Add Custom Category form, and the existing categories." class="screenshot" /></p>
+
+<h3 id="name-your-forum">Name Your Forum</h3>
+
+<p>The home page’s title says <strong>Liferay Forums</strong> until you change it.</p>
 
 <ol>
-  <li>
-    <p><strong>Create categories.</strong> Open <strong>Forum Categories Admin</strong> and click <strong>Seed Default Categories</strong>, or add your own. Members can’t post until at least one category exists. See <a href="administering/categories.html">Managing Categories</a>.</p>
-  </li>
-  <li>
-    <p><strong>Set up email notifications.</strong> Set the sender address of the forum’s email templates and of your Liferay instance, then restart the microservice, which reads the templates only when it starts. See <a href="administering/email-notifications.html">Email Notifications</a>.</p>
-  </li>
-  <li>
-    <p><strong>Assign moderators.</strong> Give the <strong>Forum Moderator</strong> role to the people who will moderate, and <strong>Forum Category Admin</strong> to the people who will manage categories. See <a href="reference/roles-and-permissions.html">Roles and Permissions</a>.</p>
-  </li>
-  <li>
-    <p><strong>Post a welcome topic.</strong> Use <strong>New Discussion</strong> to post community guidelines, and give it the <strong>Announcement</strong> priority so it stays at the top.</p>
-  </li>
+  <li>Open the forum’s home page, for example <code>/web/forums</code>, and click the pencil icon to edit it.</li>
+  <li>Click the hero, the banner at the top. In its <strong>General</strong> settings, under <strong>Headings</strong>, set <strong>Hero Title</strong> and <strong>Hero Description</strong>.</li>
+  <li>Click <strong>Publish</strong>.</li>
 </ol>
+
+<p><img src="assets/images/setup-hero-title.png" alt="Editing the forum home page: the hero is selected, and its Hero Title and Hero Description settings are outlined." class="screenshot" /></p>
+
+<p>The site’s name, shown in the header, is set in <em>Site Settings</em>. To rename the site, see <a href="administering/several-sites.html">Running Several Forum Sites</a>, because the name also sets its address.</p>
+
+<h3 id="replace-the-liferay-links">Replace the Liferay Links</h3>
+
+<p>The header links to <strong>Liferay Learn</strong> and <strong>Help Center</strong>, two link pages the site initializer adds. In <em>Site Builder</em> → <em>Pages</em>, delete them, or edit them to point to your own help pages.</p>
+
+<h3 id="add-your-logo">Add Your Logo</h3>
+
+<p>The header shows your Liferay instance’s logo, next to the site’s name. Set it in <em>Control Panel</em> → <em>Instance Settings</em> → <em>Instance Configuration</em> → <em>Appearance</em> → <strong>Logo</strong>, and click <strong>Save</strong>. Every site that shows the instance’s logo shows the new one.</p>
+
+<p><img src="assets/images/logo.png" alt="Instance Configuration, Appearance: the Logo setting is outlined." class="screenshot" /></p>
+
+<p>To change the header’s and footer’s colors too, see <a href="administering/customizing.html">Customizing the Forum</a>.</p>
+
+<h3 id="set-up-email-notifications">Set Up Email Notifications</h3>
+
+<p>Set the sender address of the forum’s email templates and of your Liferay instance, then restart the microservice, which reads the templates only when it starts. See <a href="administering/email-notifications.html">Email Notifications</a>.</p>
+
+<h3 id="let-members-sign-in">Let Members Sign In</h3>
+
+<p>By default, Liferay asks every new account to verify its email address at its first sign-in, including accounts that you create or import. Until they do, members can’t post.</p>
+
+<ul>
+  <li>If members sign in with single sign-on, or you create their accounts for them, go to <em>Control Panel</em> → <em>Instance Settings</em> → <em>User Authentication</em>, clear <strong>Require strangers to verify their email address?</strong>, and click <strong>Save</strong>.</li>
+  <li>Otherwise, keep it, and make sure Liferay can send email first, as in <a href="#set-up-email-notifications">Set Up Email Notifications</a>.</li>
+</ul>
+
+<p><img src="assets/images/setup-verify-email.png" alt="User Authentication settings: Require strangers to verify their email address is outlined." class="screenshot" /></p>
+
+<h3 id="assign-moderators">Assign Moderators</h3>
+
+<p>In <em>Control Panel</em> → <em>Users</em> → <em>Roles</em>, click <strong>Forum Moderator</strong>, open <strong>Assignees</strong> → <strong>Users</strong>, click <strong>New</strong>, and add the people who will moderate. Do the same for <strong>Forum Category Admin</strong>, for the people who will manage categories. Both roles apply to every forum site. See <a href="reference/roles-and-permissions.html">Roles and Permissions</a>.</p>
+
+<p><img src="assets/images/setup-roles.png" alt="The Regular Roles list with Forum Category Admin and Forum Moderator outlined." class="screenshot" /></p>
+
+<h3 id="post-a-welcome-topic-and-promote-it">Post a Welcome Topic and Promote It</h3>
+
+<ol>
+  <li>Use <strong>New Discussion</strong> to post your community guidelines, as in <a href="using/starting-a-discussion.html">Starting a Discussion</a>.</li>
+  <li>As a moderator, open the topic, and choose <strong>Options</strong> → <strong>Edit Topic</strong>.</li>
+  <li>Add the tag <code>promoted</code>, set <strong>Priority</strong> to <strong>Announcement</strong>, and click <strong>Save</strong>.</li>
+</ol>
+
+<p><img src="assets/images/setup-promoted.png" alt="The Edit Topic window: the Tags field with welcome, guidelines, and promoted is outlined, and Priority is set to Announcement." class="screenshot" /></p>
+
+<p>The home page’s <strong>Promoted Discussions</strong> lists topics tagged <code>promoted</code>. Until at least one topic has that tag, it lists the most recently changed topics instead, whatever they are, so promote two or three topics, such as your guidelines and a how-to, before you announce the forum.</p>
 
 <h2 id="related-topics">Related Topics</h2>
 

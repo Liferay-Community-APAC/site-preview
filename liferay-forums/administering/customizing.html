@@ -140,6 +140,10 @@
 
 <p class="note">After you change a style book and click <strong>Publish</strong>, Liferay asks you to confirm in a <strong>Publishing Info</strong> dialog. Click its <strong>Publish</strong> too: until then, your changes stay in a draft and the site doesn’t change.</p>
 
+<p><img src="../assets/images/style-book.png" alt="The Forums style book: the four brand colors are outlined." class="screenshot" /></p>
+
+<p><img src="../assets/images/style-book-publish.png" alt="The Publishing Info dialog, with its Publish button outlined." class="screenshot" /></p>
+
 <h2 id="matching-your-companys-look">Matching Your Company’s Look</h2>
 
 <p>The style book only changes a few colors, and the <strong>Forums Footer</strong> fragment shows a fixed line of text. To give the forum your company’s header, colors, and footer, add your own styles and footer to the <strong>Forums</strong> master page. Every forum page uses it, so you do it once per forum site.</p>
@@ -150,9 +154,11 @@
   </li>
   <li>
     <p>From <em>Fragments and Widgets</em> → <em>Basic Components</em>, drag an <strong>HTML</strong> fragment onto the master page, below the content area, next to the <strong>Forums Footer</strong> fragment.</p>
+
+    <p><img src="../assets/images/master-html.png" alt="The Forums master page with the HTML fragment outlined in Basic Components, a company footer added below the content area, and Publish Master outlined." class="screenshot" /></p>
   </li>
   <li>
-    <p>Select the HTML fragment, and replace its content with a <code>&lt;style&gt;</code> block and your footer. For example, a light header with an indigo highlight for the current page, and a footer with your links:</p>
+    <p>Double-click the HTML fragment to edit its code, and replace its content with a <code>&lt;style&gt;</code> block and your footer. For example, a light header with an indigo highlight for the current page, and a footer with your links:</p>
 
     <pre><code class="language-html"> &lt;style&gt;
  .forums-header{background:#FFFFFF!important;color:#1B2257!important;box-shadow:0 1px 0 #E6E9F5}
@@ -173,7 +179,9 @@
  &lt;/footer&gt;
 </code></pre>
 
-    <p>The last rule hides the <strong>Forums Footer</strong> fragment. You can delete that fragment from the master page instead.</p>
+    <p>The last rule hides the <strong>Forums Footer</strong> fragment. You can delete that fragment from the master page instead. Click <strong>Save</strong>: the editor shows a preview of your footer next to the code.</p>
+
+    <p><img src="../assets/images/master-html-code.png" alt="The HTML fragment's Edit Content window, with the styles on the left and a preview of the footer on the right." class="screenshot" /></p>
   </li>
   <li>
     <p>Click <strong>Publish Master</strong>.</p>
