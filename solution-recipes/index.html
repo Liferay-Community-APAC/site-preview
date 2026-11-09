@@ -31,6 +31,12 @@
     .product-spotlight img { display: block; width: 96px; height: 96px; }
     .product-spotlight p { margin: 0; }
     .card.doc .card-logo { width: 56px; height: 56px; margin-bottom: 4px; }
+    /* Marketplace App logos: half the size of a product logo, on recipe cards and in ingredients tables. */
+    .card.doc .card-logos { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 4px; }
+    .card.doc .card-logos .card-logo { margin-bottom: 0; }
+    .card.doc .card-app-logo { width: 28px; height: 28px; }
+    .with-logo { display: inline-flex; align-items: center; gap: 8px; }
+    .prose img.inline-logo, img.inline-logo { display: inline-block; width: 24px; height: 24px; margin: 0; flex: none; border: 0; box-shadow: none; }
     @media (max-width: 560px) { .product-spotlight { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
@@ -68,8 +74,8 @@
 
 <h2 id="recipes">Recipes</h2>
 <div class="doc-cards">
-  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-assistant/"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><strong>Forums Assistant with AI Hub</strong><span>Add an AI chat to Liferay Forums that tells members where to find the discussions they're looking for, searching only what each member can see.</span></a>
-  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-summaries/"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><strong>AI Discussion Summaries with AI Hub</strong><span>Show an AI summary at the top of busy Liferay Forums discussions, written by a Liferay AI Hub agent and kept up to date as replies arrive.</span></a>
+  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-assistant/"><span class="card-logos"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><img class="card-app-logo" src="/site-preview/solution-recipes/assets/apps/liferay-forums.png" alt="" width="28" height="28" /></span><strong>Forums Assistant with AI Hub</strong><span>Add an AI chat to Liferay Forums that tells members where to find the discussions they're looking for, searching only what each member can see.</span></a>
+  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-summaries/"><span class="card-logos"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><img class="card-app-logo" src="/site-preview/solution-recipes/assets/apps/liferay-forums.png" alt="" width="28" height="28" /></span><strong>AI Discussion Summaries with AI Hub</strong><span>Show an AI summary at the top of busy Liferay Forums discussions, written by a Liferay AI Hub agent and kept up to date as replies arrive.</span></a>
 </div>
 <div class="product-spotlight">
   <a href="https://www.liferay.com/capabilities/ai-hub"><img src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="Liferay AI Hub" width="96" height="96" /></a>
