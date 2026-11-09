@@ -36,6 +36,22 @@
     .card.doc .card-logos .card-logo { margin-bottom: 0; }
     .card.doc .card-app-logo { width: 28px; height: 28px; }
     .with-logo { display: inline-flex; align-items: center; gap: 8px; }
+    /* Recipe tags, and the filter on the home page. */
+    .recipe-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .page-tags { margin: 0 0 14px; }
+    .rtag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.6;
+            background: var(--bg-alt); color: var(--muted); border: 1px solid var(--border); text-decoration: none; }
+    a.rtag:hover { color: var(--blue); border-color: var(--blue); }
+    .recipe-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+    .recipe-filter button { font: inherit; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; cursor: pointer;
+            border: 1px solid var(--border); background: var(--surface, #fff); color: var(--text); }
+    .recipe-filter button .n { color: var(--muted); font-weight: 400; margin-left: 2px; }
+    .recipe-filter button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .recipe-filter button[aria-pressed="true"] .n { color: rgba(255,255,255,.8); }
+    .recipe-filter button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .recipe-count { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+    .recipe-count:empty { display: none; }
+    .doc-cards .card.doc[hidden] { display: none; }
     .prose img.inline-logo, img.inline-logo { display: inline-block; width: 24px; height: 24px; margin: 0; flex: none; border: 0; box-shadow: none; }
     @media (max-width: 560px) { .product-spotlight { flex-direction: column; align-items: flex-start; } }
   </style>
@@ -73,10 +89,57 @@
 <p class="important">Recipes are unofficial guides, like the <a href="https://liferay-community-apac.github.io/">Marketplace Apps and tutorials</a> they use. Test them in a non-production environment before relying on them.</p>
 
 <h2 id="recipes">Recipes</h2>
-<div class="doc-cards">
-  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-assistant/"><span class="card-logos"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><img class="card-app-logo" src="/site-preview/solution-recipes/assets/apps/liferay-forums.png" alt="" width="28" height="28" /></span><strong>Forums Assistant with AI Hub</strong><span>Add an AI chat to Liferay Forums that tells members where to find the discussions they're looking for, searching only what each member can see.</span></a>
-  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-summaries/"><span class="card-logos"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><img class="card-app-logo" src="/site-preview/solution-recipes/assets/apps/liferay-forums.png" alt="" width="28" height="28" /></span><strong>AI Discussion Summaries with AI Hub</strong><span>Show an AI summary at the top of busy Liferay Forums discussions, written by a Liferay AI Hub agent and kept up to date as replies arrive.</span></a>
+<div class="recipe-filter" role="group" aria-label="Filter recipes by tag" hidden="">
+  <button type="button" data-tag="" aria-pressed="true">All <span class="n">2</span></button>
+  <button type="button" data-tag="AI chat" aria-pressed="false">AI chat <span class="n">1</span></button>
+  <button type="button" data-tag="AI Hub" aria-pressed="false">AI Hub <span class="n">2</span></button>
+  <button type="button" data-tag="AI summaries" aria-pressed="false">AI summaries <span class="n">1</span></button>
+  <button type="button" data-tag="Client extensions" aria-pressed="false">Client extensions <span class="n">1</span></button>
+  <button type="button" data-tag="Display page templates" aria-pressed="false">Display page templates <span class="n">1</span></button>
+  <button type="button" data-tag="Fragments" aria-pressed="false">Fragments <span class="n">2</span></button>
+  <button type="button" data-tag="Liferay Forums" aria-pressed="false">Liferay Forums <span class="n">2</span></button>
+  <button type="button" data-tag="Master pages" aria-pressed="false">Master pages <span class="n">1</span></button>
+  <button type="button" data-tag="Objects" aria-pressed="false">Objects <span class="n">1</span></button>
+  <button type="button" data-tag="Search" aria-pressed="false">Search <span class="n">1</span></button>
 </div>
+<p class="recipe-count" aria-live="polite"></p>
+<div class="doc-cards">
+  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-assistant/" data-tags="|AI Hub|Liferay Forums|AI chat|Search|Fragments|Master pages|"><span class="card-logos"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><img class="card-app-logo" src="/site-preview/solution-recipes/assets/apps/liferay-forums.png" alt="" width="28" height="28" /></span><strong>Forums Assistant with AI Hub</strong><span>Add an AI chat to Liferay Forums that tells members where to find the discussions they're looking for, searching only what each member can see.</span><span class="recipe-tags"><span class="rtag">AI Hub</span><span class="rtag">Liferay Forums</span><span class="rtag">AI chat</span><span class="rtag">Search</span><span class="rtag">Fragments</span><span class="rtag">Master pages</span></span></a>
+  <a class="card doc" href="/site-preview/solution-recipes/forums-ai-summaries/" data-tags="|AI Hub|Liferay Forums|AI summaries|Objects|Client extensions|Fragments|Display page templates|"><span class="card-logos"><img class="card-logo" src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="" width="56" height="56" /><img class="card-app-logo" src="/site-preview/solution-recipes/assets/apps/liferay-forums.png" alt="" width="28" height="28" /></span><strong>AI Discussion Summaries with AI Hub</strong><span>Show an AI summary at the top of busy Liferay Forums discussions, written by a Liferay AI Hub agent and kept up to date as replies arrive.</span><span class="recipe-tags"><span class="rtag">AI Hub</span><span class="rtag">Liferay Forums</span><span class="rtag">AI summaries</span><span class="rtag">Objects</span><span class="rtag">Client extensions</span><span class="rtag">Fragments</span><span class="rtag">Display page templates</span></span></a>
+</div>
+
+<script>
+  // Recipe filter: show the recipes with the chosen tag. The tag is kept in the address (?tag=…), so a
+  // tag on a recipe page links straight to the filtered list.
+  (function () {
+    var bar = document.querySelector('.recipe-filter');
+    if (!bar) return;
+    var cards = [].slice.call(document.querySelectorAll('.doc-cards .card.doc[data-tags]'));
+    var count = document.querySelector('.recipe-count');
+    function apply(tag, push) {
+      var shown = 0;
+      cards.forEach(function (c) {
+        var on = !tag || c.getAttribute('data-tags').indexOf('|' + tag + '|') !== -1;
+        c.hidden = !on; if (on) shown++;
+      });
+      [].forEach.call(bar.querySelectorAll('button'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-tag') === tag ? 'true' : 'false'); });
+      count.textContent = tag ? shown + (shown === 1 ? ' recipe' : ' recipes') + ' tagged \u201c' + tag + '\u201d' : '';
+      if (push) {
+        var u = new URL(location.href);
+        if (tag) u.searchParams.set('tag', tag); else u.searchParams.delete('tag');
+        history.replaceState(null, '', u);
+      }
+    }
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (b) apply(b.getAttribute('data-tag'), true);
+    });
+    bar.hidden = false;
+    var start = new URL(location.href).searchParams.get('tag') || '';
+    if (start && !bar.querySelector('button[data-tag="' + start.replace(/"/g, '\\"') + '"]')) start = '';
+    apply(start, false);
+  })();
+</script>
+
 <div class="product-spotlight">
   <a href="https://www.liferay.com/capabilities/ai-hub"><img src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="Liferay AI Hub" width="96" height="96" /></a>
   <p><strong>Powered by Liferay AI Hub.</strong> Liferay AI Hub lets you deploy AI agents that learn, make decisions, and improve your digital experiences, without the technical barriers. <a href="https://www.liferay.com/capabilities/ai-hub">Learn about Liferay AI Hub</a></p>

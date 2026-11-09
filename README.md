@@ -25,4 +25,4 @@ For a quick check that only you need to see, open the site locally instead of pu
 
 - [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io), branches `forums-logo` at 9390b7d and `community-online` at 16afcfc, combined
 - [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums): `main` at d2297d2
-- [solution-recipes](https://github.com/Liferay-Community-APAC/solution-recipes/tree/forums-logo), branch `forums-logo` at c574fe7
+- [solution-recipes](https://github.com/Liferay-Community-APAC/solution-recipes/tree/recipe-tags), branch `recipe-tags` at d6197ce (includes `forums-logo`)
