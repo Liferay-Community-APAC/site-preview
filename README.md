@@ -5,6 +5,6 @@ Solution Recipes, published at <https://liferay-community-apac.github.io/site-pr
 `noindex`, so search engines leave it out. Delete this repository once the preview has been reviewed.
 
 Built from:
-- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/indonesian), branch `indonesian` at e2c5f19
-- [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums/tree/header-mark), branch `header-mark` at 666df66
+- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io/tree/remember-language), branch `remember-language` at 8306329
+- [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums/tree/main), `main` at d2297d2
 - [solution-recipes](https://github.com/Liferay-Community-APAC/solution-recipes), `main` at 32f5cd6

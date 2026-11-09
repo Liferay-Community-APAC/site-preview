@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memulai · Liferay Forums · Liferay Community APAC</title>
+  <meta name="description" content="Liferay Forums menambahkan situs forum yang lengkap ke Liferay DXP. Halaman ini memandu Anda dari instalasi hingga forum yang dapat digunakan anggota.">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/getting-started.html">
+  <link rel="alternate" hreflang="en" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/getting-started.html">
+  <link rel="alternate" hreflang="ja" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/getting-started.html">
+  <link rel="alternate" hreflang="id" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/getting-started.html">
+  <link rel="alternate" hreflang="x-default" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/getting-started.html">
+  <meta property="og:title" content="Memulai · Liferay Forums">
+  <meta property="og:description" content="Liferay Forums menambahkan situs forum yang lengkap ke Liferay DXP. Halaman ini memandu Anda dari instalasi hingga forum yang dapat digunakan anggota.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/getting-started.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <meta property="og:image" content="https://liferay-community-apac.github.io/assets/kb/liferay-forums-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    .docs-langs { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+    .docs-langs a[aria-current] { font-weight: 600; text-decoration: none; color: inherit; }
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: inherit; font-size: 13px; line-height: 1.5;
+      color: var(--muted); background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: inherit; border-color: currentColor; }
+    .download-file { display: inline-flex; align-items: center; gap: 8px; margin-top: -6px; padding: 7px 14px; border: 1px solid var(--c-note);
+      border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
+    .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
+    .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Forums dokumentasi</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/liferay-forums/id/">Ikhtisar</a>
+      </li>
+      <li class="open"><a href="/site-preview/liferay-forums/id/getting-started.html" aria-current="page">Memulai</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/installing/">Instalasi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/paas.html">Di Liferay PaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/saas.html">Di Liferay SaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/creating-sites.html">Membuat Situs Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/checking.html">Memeriksa Instalasi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/deleting.html">Menghapus Situs Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/workspace.html">Pengembangan dengan Liferay Workspace</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/using/">Menggunakan Forum</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/using/browsing-and-searching.html">Menjelajah dan Mencari</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/starting-a-discussion.html">Memulai Diskusi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/replying.html">Membalas dan Mention</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/questions-and-answers.html">Pertanyaan dan Jawaban</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/voting.html">Pemberian Suara</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/subscriptions-and-notifications.html">Langganan dan Notifikasi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/reporting.html">Melaporkan Konten</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/moderating/">Moderasi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/moderating/locking.html">Mengunci Topik</a></li>
+          <li><a href="/site-preview/liferay-forums/id/moderating/priority.html">Menyematkan Topik dengan Prioritas</a></li>
+          <li><a href="/site-preview/liferay-forums/id/moderating/reviewing-reports.html">Meninjau Laporan</a></li>
+          <li><a href="/site-preview/liferay-forums/id/moderating/banning.html">Memblokir Anggota</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/administering/">Administrasi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/administering/categories.html">Mengelola Kategori</a></li>
+          <li><a href="/site-preview/liferay-forums/id/administering/email-notifications.html">Notifikasi Email</a></li>
+          <li><a href="/site-preview/liferay-forums/id/administering/customizing.html">Menyesuaikan Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/id/administering/several-sites.html">Menjalankan Beberapa Situs Forum</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/reference/">Referensi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/reference/roles-and-permissions.html">Role dan Izin</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/pages.html">Halaman</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/configuration.html">Referensi Konfigurasi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/known-issues.html">Masalah yang Diketahui</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/reporting-a-bug.html">Melaporkan Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Beranda</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/liferay-forums/id/">Liferay Forums</a>
+    </p>
+    <nav class="docs-langs" aria-label="Bahasa">
+      <a href="/site-preview/liferay-forums/getting-started.html" hreflang="en" lang="en">English</a>
+      <a href="/site-preview/liferay-forums/ja/getting-started.html" hreflang="ja" lang="ja">日本語</a>
+      <a href="/site-preview/liferay-forums/id/getting-started.html" hreflang="id" lang="id" aria-current="true">Bahasa Indonesia</a>
+    </nav>
+    <article class="prose" data-pagefind-body>
+      <p class="note">Halaman ini adalah terjemahan dari versi bahasa Inggris. Label antarmuka dan nama menu ditulis dalam bahasa Inggris. Jika ada perbedaan, <a href="/site-preview/liferay-forums/getting-started.html">versi bahasa Inggris</a> yang berlaku.</p>
+      <h1 id="getting-started" class="no_toc">Memulai</h1>
+
+<p>Liferay Forums menambahkan situs forum yang lengkap ke Liferay DXP. Halaman ini memandu Anda dari instalasi hingga forum yang dapat digunakan anggota.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#install" id="markdown-toc-install">Instalasi</a></li>
+  <li><a href="#first-time-setup" id="markdown-toc-first-time-setup">Penyiapan Pertama Kali</a>    <ol>
+      <li><a href="#create-categories" id="markdown-toc-create-categories">Buat Kategori</a></li>
+      <li><a href="#name-your-forum" id="markdown-toc-name-your-forum">Beri Nama Forum Anda</a></li>
+      <li><a href="#replace-the-liferay-links" id="markdown-toc-replace-the-liferay-links">Ganti Tautan Liferay</a></li>
+      <li><a href="#add-your-logo" id="markdown-toc-add-your-logo">Tambahkan Logo Anda</a></li>
+      <li><a href="#set-up-email-notifications" id="markdown-toc-set-up-email-notifications">Siapkan Notifikasi Email</a></li>
+      <li><a href="#let-members-sign-in" id="markdown-toc-let-members-sign-in">Izinkan Anggota Masuk</a></li>
+      <li><a href="#assign-moderators" id="markdown-toc-assign-moderators">Tetapkan Moderator</a></li>
+      <li><a href="#post-a-welcome-topic-and-promote-it" id="markdown-toc-post-a-welcome-topic-and-promote-it">Posting Topik Sambutan dan Promosikan</a></li>
+    </ol>
+  </li>
+  <li><a href="#related-topics" id="markdown-toc-related-topics">Topik Terkait</a></li>
+</ol>
+
+<h2 id="install">Instalasi</h2>
+
+<p>Liferay Forums 1.0.0 berjalan di Liferay DXP 2026.Q1 LTS dengan <a href="installing/#required-liferay-fixes">perbaikan Liferay yang diperlukan</a>. <a href="installing/">Instalasi</a> mencantumkan isi Liferay Forums, dan memandu Anda menginstalnya di Liferay Self-Hosted (Tomcat atau Docker), di Liferay PaaS, atau di Liferay SaaS. Setelah selesai, forum tersedia di <code>/web/forums</code>.</p>
+
+<h2 id="first-time-setup">Penyiapan Pertama Kali</h2>
+
+<p>Setelah instalasi, selesaikan langkah-langkah berikut sebagai administrator. Anggota dapat mulai memposting setelah langkah pertama.</p>
+
+<h3 id="create-categories">Buat Kategori</h3>
+
+<p>Buka <strong>Forum Categories Admin</strong>, lalu klik <strong>Seed Default Categories</strong>, atau tambahkan kategori Anda sendiri. Anggota tidak dapat memposting sampai setidaknya ada satu kategori. Lihat <a href="administering/categories.html">Mengelola Kategori</a>.</p>
+
+<p><img src="../assets/images/categories-admin.png" alt="Halaman Forum Categories Admin dengan Seed Default Categories, formulir Add Custom Category, dan kategori yang sudah ada." class="screenshot" /></p>
+
+<h3 id="name-your-forum">Beri Nama Forum Anda</h3>
+
+<p>Judul halaman beranda menampilkan <strong>Liferay Forums</strong> sampai Anda mengubahnya.</p>
+
+<ol>
+  <li>Buka halaman beranda forum, misalnya <code>/web/forums</code>, lalu klik ikon pensil untuk mengeditnya.</li>
+  <li>Klik hero, yaitu banner di bagian atas. Di pengaturan <strong>General</strong>-nya, di bawah <strong>Headings</strong>, atur <strong>Hero Title</strong> dan <strong>Hero Description</strong>.</li>
+  <li>Klik <strong>Publish</strong>.</li>
+</ol>
+
+<p><img src="../assets/images/setup-hero-title.png" alt="Mengedit halaman beranda forum: hero dipilih, dan pengaturan Hero Title dan Hero Description diberi garis tepi." class="screenshot" /></p>
+
+<p>Nama situs, yang ditampilkan di header, diatur di <em>Site Settings</em>. Untuk mengganti nama situs, lihat <a href="administering/several-sites.html">Menjalankan Beberapa Situs Forum</a>, karena nama tersebut juga menentukan alamatnya.</p>
+
+<h3 id="replace-the-liferay-links">Ganti Tautan Liferay</h3>
+
+<p>Header menautkan ke <strong>Liferay Learn</strong> dan <strong>Help Center</strong>, dua halaman tautan yang ditambahkan oleh site initializer. Di <em>Site Builder</em> → <em>Pages</em>, hapus halaman tersebut, atau edit agar mengarah ke halaman bantuan Anda sendiri.</p>
+
+<h3 id="add-your-logo">Tambahkan Logo Anda</h3>
+
+<p>Header menampilkan logo instance Liferay Anda, di samping nama situs. Atur logo di <em>Control Panel</em> → <em>Instance Settings</em> → <em>Instance Configuration</em> → <em>Appearance</em> → <strong>Logo</strong>, lalu klik <strong>Save</strong>. Setiap situs yang menampilkan logo instance akan menampilkan logo yang baru.</p>
+
+<p><img src="../assets/images/logo.png" alt="Instance Configuration, Appearance: pengaturan Logo diberi garis tepi." class="screenshot" /></p>
+
+<p>Untuk mengubah warna header dan footer juga, lihat <a href="administering/customizing.html">Menyesuaikan Forum</a>.</p>
+
+<h3 id="set-up-email-notifications">Siapkan Notifikasi Email</h3>
+
+<p>Atur alamat pengirim templat email forum dan instance Liferay Anda, lalu mulai ulang microservice, yang hanya membaca templat saat dimulai. Lihat <a href="administering/email-notifications.html">Notifikasi Email</a>.</p>
+
+<h3 id="let-members-sign-in">Izinkan Anggota Masuk</h3>
+
+<p>Secara default, Liferay meminta setiap akun baru memverifikasi alamat emailnya saat pertama kali masuk, termasuk akun yang Anda buat atau impor. Sampai verifikasi dilakukan, anggota tidak dapat memposting.</p>
+
+<ul>
+  <li>Jika anggota masuk dengan single sign-on, atau Anda membuatkan akun mereka, buka <em>Control Panel</em> → <em>Instance Settings</em> → <em>User Authentication</em>, kosongkan <strong>Require strangers to verify their email address?</strong>, lalu klik <strong>Save</strong>.</li>
+  <li>Jika tidak, biarkan pengaturan tersebut, dan pastikan terlebih dahulu bahwa Liferay dapat mengirim email, seperti pada <a href="#set-up-email-notifications">Siapkan Notifikasi Email</a>.</li>
+</ul>
+
+<p><img src="../assets/images/setup-verify-email.png" alt="Pengaturan User Authentication: Require strangers to verify their email address diberi garis tepi." class="screenshot" /></p>
+
+<h3 id="assign-moderators">Tetapkan Moderator</h3>
+
+<p>Di <em>Control Panel</em> → <em>Users</em> → <em>Roles</em>, klik <strong>Forum Moderator</strong>, buka <strong>Assignees</strong> → <strong>Users</strong>, klik <strong>New</strong>, lalu tambahkan orang-orang yang akan menjadi moderator. Lakukan hal yang sama untuk <strong>Forum Category Admin</strong>, bagi orang-orang yang akan mengelola kategori. Kedua peran berlaku untuk setiap situs forum. Lihat <a href="reference/roles-and-permissions.html">Peran dan Izin</a>.</p>
+
+<p><img src="../assets/images/setup-roles.png" alt="Daftar Regular Roles dengan Forum Category Admin dan Forum Moderator diberi garis tepi." class="screenshot" /></p>
+
+<h3 id="post-a-welcome-topic-and-promote-it">Posting Topik Sambutan dan Promosikan</h3>
+
+<ol>
+  <li>Gunakan <strong>New Discussion</strong> untuk memposting pedoman komunitas Anda, seperti pada <a href="using/starting-a-discussion.html">Memulai Diskusi</a>.</li>
+  <li>Sebagai moderator, buka topik tersebut, lalu pilih <strong>Options</strong> → <strong>Edit Topic</strong>.</li>
+  <li>Tambahkan tag <code>promoted</code>, atur <strong>Priority</strong> ke <strong>Announcement</strong>, lalu klik <strong>Save</strong>.</li>
+</ol>
+
+<p><img src="../assets/images/setup-promoted.png" alt="Jendela Edit Topic: kolom Tags dengan welcome, guidelines, dan promoted diberi garis tepi, dan Priority diatur ke Announcement." class="screenshot" /></p>
+
+<p><strong>Promoted Discussions</strong> di halaman beranda mencantumkan topik yang diberi tag <code>promoted</code>. Sampai setidaknya satu topik memiliki tag tersebut, bagian ini mencantumkan topik yang paling baru diubah, apa pun topiknya. Jadi, promosikan dua atau tiga topik, seperti pedoman Anda dan sebuah panduan cara, sebelum Anda mengumumkan forum.</p>
+
+<h2 id="related-topics">Topik Terkait</h2>
+
+<ul>
+  <li><a href="installing/">Instalasi</a></li>
+  <li><a href="using/starting-a-discussion.html">Memulai Diskusi</a></li>
+  <li><a href="reference/roles-and-permissions.html">Role dan Izin</a></li>
+  <li><a href="administering/several-sites.html">Menjalankan Beberapa Situs Forum</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/liferay-forums/id/"><span>Sebelumnya</span>Ikhtisar</a><a class="next" href="/site-preview/liferay-forums/id/installing/"><span>Berikutnya</span>Instalasi</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Forums is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc.</p>
+  <p class="wrap disclaimer">Aplikasi, tutorial, contoh kode, dan panduan di situs ini tidak resmi dan disediakan apa adanya. Gunakan dengan risiko Anda sendiri.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', "Tautan ke bagian ini");
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    var copyText = "Salin", copiedText = "Tersalin", failedText = "Tekan Ctrl+C untuk menyalin";
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); ok ? resolve() : reject();
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = copyText;
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        // Drop indentation shared by every line, which code blocks inside lists can pick up.
+        var lines = code.textContent.replace(/\n$/, '').split('\n');
+        var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+          .map(function (l) { return l.match(/^ */)[0].length; }));
+        if (indent > 0 && isFinite(indent)) lines = lines.map(function (l) { return l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
+        copy(lines.join('\n')).then(function () { b.textContent = copiedText; },
+          function () {
+            // Select the code so the reader can copy it with the keyboard.
+            var r = document.createRange(); r.selectNodeContents(code);
+            var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+            b.textContent = failedText;
+          });
+        clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = copyText; }, 2000);
+      });
+      wrap.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

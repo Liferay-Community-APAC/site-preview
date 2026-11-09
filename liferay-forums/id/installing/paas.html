@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Di Liferay PaaS · Liferay Forums · Liferay Community APAC</title>
+  <meta name="description" content="Di Liferay PaaS, Anda menambahkan tiga proyek forum ke repositori proyek PaaS Anda, lalu men-deploy-nya bersama bagian proyek lainnya. Masing-masing berjalan...">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/installing/paas.html">
+  <link rel="alternate" hreflang="en" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/paas.html">
+  <link rel="alternate" hreflang="ja" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/paas.html">
+  <link rel="alternate" hreflang="id" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/installing/paas.html">
+  <link rel="alternate" hreflang="x-default" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/paas.html">
+  <meta property="og:title" content="Di Liferay PaaS · Liferay Forums">
+  <meta property="og:description" content="Di Liferay PaaS, Anda menambahkan tiga proyek forum ke repositori proyek PaaS Anda, lalu men-deploy-nya bersama bagian proyek lainnya. Masing-masing berjalan...">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/installing/paas.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <meta property="og:image" content="https://liferay-community-apac.github.io/assets/kb/liferay-forums-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    .docs-langs { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+    .docs-langs a[aria-current] { font-weight: 600; text-decoration: none; color: inherit; }
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: inherit; font-size: 13px; line-height: 1.5;
+      color: var(--muted); background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: inherit; border-color: currentColor; }
+    .download-file { display: inline-flex; align-items: center; gap: 8px; margin-top: -6px; padding: 7px 14px; border: 1px solid var(--c-note);
+      border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
+    .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
+    .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Forums dokumentasi</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/liferay-forums/id/">Ikhtisar</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/getting-started.html">Memulai</a>
+      </li>
+      <li class="open"><a href="/site-preview/liferay-forums/id/installing/">Instalasi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/paas.html" aria-current="page">Di Liferay PaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/saas.html">Di Liferay SaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/creating-sites.html">Membuat Situs Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/checking.html">Memeriksa Instalasi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/deleting.html">Menghapus Situs Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/id/installing/workspace.html">Pengembangan dengan Liferay Workspace</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/using/">Menggunakan Forum</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/using/browsing-and-searching.html">Menjelajah dan Mencari</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/starting-a-discussion.html">Memulai Diskusi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/replying.html">Membalas dan Mention</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/questions-and-answers.html">Pertanyaan dan Jawaban</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/voting.html">Pemberian Suara</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/subscriptions-and-notifications.html">Langganan dan Notifikasi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/using/reporting.html">Melaporkan Konten</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/moderating/">Moderasi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/moderating/locking.html">Mengunci Topik</a></li>
+          <li><a href="/site-preview/liferay-forums/id/moderating/priority.html">Menyematkan Topik dengan Prioritas</a></li>
+          <li><a href="/site-preview/liferay-forums/id/moderating/reviewing-reports.html">Meninjau Laporan</a></li>
+          <li><a href="/site-preview/liferay-forums/id/moderating/banning.html">Memblokir Anggota</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/administering/">Administrasi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/administering/categories.html">Mengelola Kategori</a></li>
+          <li><a href="/site-preview/liferay-forums/id/administering/email-notifications.html">Notifikasi Email</a></li>
+          <li><a href="/site-preview/liferay-forums/id/administering/customizing.html">Menyesuaikan Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/id/administering/several-sites.html">Menjalankan Beberapa Situs Forum</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/id/reference/">Referensi</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/id/reference/roles-and-permissions.html">Role dan Izin</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/pages.html">Halaman</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/configuration.html">Referensi Konfigurasi</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/known-issues.html">Masalah yang Diketahui</a></li>
+          <li><a href="/site-preview/liferay-forums/id/reference/reporting-a-bug.html">Melaporkan Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Beranda</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/liferay-forums/id/">Liferay Forums</a><span>/</span><a href="/site-preview/liferay-forums/id/installing/">Instalasi</a>
+    </p>
+    <nav class="docs-langs" aria-label="Bahasa">
+      <a href="/site-preview/liferay-forums/installing/paas.html" hreflang="en" lang="en">English</a>
+      <a href="/site-preview/liferay-forums/ja/installing/paas.html" hreflang="ja" lang="ja">日本語</a>
+      <a href="/site-preview/liferay-forums/id/installing/paas.html" hreflang="id" lang="id" aria-current="true">Bahasa Indonesia</a>
+    </nav>
+    <article class="prose" data-pagefind-body>
+      <p class="note">Halaman ini adalah terjemahan dari versi bahasa Inggris. Label antarmuka dan nama menu ditulis dalam bahasa Inggris. Jika ada perbedaan, <a href="/site-preview/liferay-forums/installing/paas.html">versi bahasa Inggris</a> yang berlaku.</p>
+      <h1 id="installing-on-liferay-paas" class="no_toc">Instalasi di Liferay PaaS</h1>
+
+<p>Di Liferay PaaS, Anda menambahkan tiga proyek forum ke repositori proyek PaaS Anda, lalu men-deploy-nya bersama bagian proyek lainnya. Masing-masing berjalan sebagai layanan PaaS tersendiri: batch dan situs forum sebagai job, dan microservice sebagai layanan yang terus berjalan.</p>
+
+<p class="warning">Langkah-langkah ini telah diuji pada Liferay DXP 2026.Q1.4 LTS yang bersih dengan perbaikan yang diperlukan, di salinan lokal dari cara Liferay PaaS menjalankan client extension, tetapi belum di lingkungan Liferay PaaS. Client extension adalah fitur beta di Liferay PaaS.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#step-1-prepare-the-project" id="markdown-toc-step-1-prepare-the-project">Langkah 1: Siapkan Proyek</a></li>
+  <li><a href="#step-2-install-the-liferay-fixes" id="markdown-toc-step-2-install-the-liferay-fixes">Langkah 2: Instal Perbaikan Liferay</a></li>
+  <li><a href="#step-3-add-the-forums-projects" id="markdown-toc-step-3-add-the-forums-projects">Langkah 3: Tambahkan Proyek-Proyek Forum</a></li>
+  <li><a href="#step-4-deploy-the-first-build" id="markdown-toc-step-4-deploy-the-first-build">Langkah 4: Deploy Build Pertama</a></li>
+  <li><a href="#step-5-deploy-a-second-build" id="markdown-toc-step-5-deploy-a-second-build">Langkah 5: Deploy Build Kedua</a></li>
+  <li><a href="#step-6-restart-the-microservice" id="markdown-toc-step-6-restart-the-microservice">Langkah 6: Restart Microservice</a></li>
+  <li><a href="#step-7-set-up-email-notifications" id="markdown-toc-step-7-set-up-email-notifications">Langkah 7: Siapkan Notifikasi Email</a></li>
+  <li><a href="#step-8-check-the-installation" id="markdown-toc-step-8-check-the-installation">Langkah 8: Periksa Instalasi</a></li>
+  <li><a href="#adding-more-forum-sites" id="markdown-toc-adding-more-forum-sites">Menambahkan Situs Forum Lain</a></li>
+  <li><a href="#later-deploys" id="markdown-toc-later-deploys">Deploy Berikutnya</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Informasi Terkait</a></li>
+</ol>
+
+<h2 id="step-1-prepare-the-project">Langkah 1: Siapkan Proyek</h2>
+
+<p>Ikuti panduan Liferay <a href="https://learn.liferay.com/w/dxp/cloud/customizing-liferay-dxp-in-the-cloud/configuring-liferay-paas-for-client-extensions">Configuring Liferay PaaS for Client Extensions</a>. Khususnya:</p>
+
+<ol>
+  <li>
+    <p>Jika lingkungan <code>infra</code> Anda tidak memiliki pipeline build client extension, minta Liferay Cloud Support untuk mengaktifkannya.</p>
+  </li>
+  <li>
+    <p>Jika suatu lingkungan menggunakan autentikasi dasar (basic authentication) di web server-nya, izinkan path <code>/o</code> lewat tanpa autentikasi tersebut. Liferay dan microservice saling memanggil di bawah <code>/o</code>.</p>
+  </li>
+  <li>
+    <p>Hapus <code>virtual.hosts.valid.hosts</code> dan <code>web.server.protocol</code> dari pengaturan layanan Liferay, jika diatur. Client extension tidak berfungsi dengan pengaturan tersebut.</p>
+  </li>
+</ol>
+
+<h2 id="step-2-install-the-liferay-fixes">Langkah 2: Instal Perbaikan Liferay</h2>
+
+<p>Instal hotfix dengan <a href="./#required-liferay-fixes">perbaikan Liferay yang diperlukan</a> sebelum Anda menambahkan proyek-proyek forum.</p>
+
+<ol>
+  <li>
+    <p>Tambahkan hotfix ke proyek Anda dengan salah satu cara berikut:</p>
+
+    <ul>
+      <li>
+        <p><strong>Untuk setiap lingkungan:</strong> di <code>ci/LCP.json</code>, atur variabel lingkungan <code>LCP_CI_LIFERAY_DXP_HOTFIXES_COMMON</code> ke nama hotfix tanpa <code>.zip</code>:</p>
+
+        <pre><code class="language-json">  "env": {
+    "LCP_CI_LIFERAY_DXP_HOTFIXES_COMMON": "&lt;hotfix-name&gt;"
+  }
+</code></pre>
+      </li>
+      <li><strong>Untuk satu lingkungan:</strong> gunakan <code>LCP_CI_LIFERAY_DXP_HOTFIXES_&lt;ENVIRONMENT&gt;</code> sebagai gantinya, misalnya <code>LCP_CI_LIFERAY_DXP_HOTFIXES_PRD</code>.</li>
+      <li><strong>Di repositori:</strong> letakkan zip hotfix di <code>liferay/configs/&lt;environment&gt;/patching/</code>, misalnya <code>liferay/configs/prd/patching/</code>, satu kali untuk setiap lingkungan.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Push perubahan tersebut, lalu deploy build-nya ke lingkungan Anda, seperti pada <a href="#step-4-deploy-the-first-build">Langkah 4</a>.</p>
+  </li>
+  <li>
+    <p>Setelah layanan Liferay di-restart, pastikan log-nya menampilkan <code>The following patches are installed:</code> dengan hotfix tersebut.</p>
+  </li>
+</ol>
+
+<p>Lihat panduan Liferay <a href="https://learn.liferay.com/w/dxp/cloud/customizing-liferay-dxp-in-the-cloud/using-the-liferay-dxp-service/deploying-to-the-liferay-service">Deploying to the Liferay Service</a> untuk informasi lebih lanjut tentang menginstal hotfix.</p>
+
+<h2 id="step-3-add-the-forums-projects">Langkah 3: Tambahkan Proyek-Proyek Forum</h2>
+
+<ol>
+  <li>
+    <p>Dari <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest">rilis terbaru</a>, unduh kode sumber forum, <code>liferay-forums-&lt;version&gt;-source.zip</code>, lalu ekstrak. Hasil ekstraksinya adalah folder bernama <code>liferay-forums-&lt;version&gt;</code>, seperti <code>liferay-forums-1.0.0</code>.</p>
+  </li>
+  <li>
+    <p>Salin tiga folder berikut ke <code>liferay/client-extensions</code> di repositori proyek PaaS Anda:</p>
+
+    <ul>
+      <li><code>client-extensions/liferay-forums-batch</code></li>
+      <li><code>client-extensions/liferay-forums-etc-spring-boot</code></li>
+      <li><code>client-extensions/liferay-forums-site-initializer</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="step-4-deploy-the-first-build">Langkah 4: Deploy Build Pertama</h2>
+
+<ol>
+  <li>
+    <p>Push proyek tersebut. Liferay Cloud akan membangunnya; build client extension adalah build <strong>Custom Services</strong>.</p>
+  </li>
+  <li>
+    <p>Di konsol Liferay Cloud, buka <strong>Builds</strong>, lalu pada build tersebut, pilih <strong>Deploy Build to…</strong>, lalu lingkungan Anda.</p>
+  </li>
+</ol>
+
+<p>Setelah deploy selesai, job-job telah membuat data forum dan situs forum di <code>/web/forums</code>, dan microservice telah dimulai. Pastikan bahwa:</p>
+
+<ul>
+  <li>Log layanan Liferay menampilkan lima baris yang berisi <code>Finished batch engine import task</code>, satu untuk setiap file batch.</li>
+  <li><em>Control Panel</em> → <em>Objects</em> menampilkan folder <strong>C2M0 Forums</strong>, dengan tujuh object: C2M0 Attachment, C2M0 Message, C2M0 Subscription, C2M0 Suspicious Activity, C2M0 Thread, C2M0 User, dan C2M0 Vote.</li>
+  <li><em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em> menampilkan empat aplikasi forum: masing-masing satu untuk batch dan site initializer, serta dua untuk microservice, <strong>Liferay Forums Etc Spring Boot OAuth Application Headless Server</strong> dan <strong>User Agent</strong>.</li>
+</ul>
+
+<p>Pada tahap ini, setiap balasan ditolak dengan pesan <strong>Your account has been banned from participating in the forums.</strong> Hal ini memang diharapkan: Liferay mendaftarkan microservice sebelum data forum ada, sehingga microservice belum memiliki akses ke data tersebut. Dua langkah berikutnya memperbaikinya.</p>
+
+<h2 id="step-5-deploy-a-second-build">Langkah 5: Deploy Build Kedua</h2>
+
+<p>Job-job forum berjalan lagi pada setiap deploy, padahal seharusnya tidak, karena data dan situs forum kini sudah ada:</p>
+
+<ul>
+  <li>Mulai dari deploy kedua, job batch akan melaporkan item yang gagal untuk dua template email forum, karena template tersebut sudah ada.</li>
+  <li>Setiap kali job site initializer berjalan lagi, alamat situs forum direset ke <code>/web/group-&lt;number&gt;</code>, yang merusak tautan forum. LPD-85594 tidak mencegah hal ini di Liferay PaaS.</li>
+</ul>
+
+<p>Oleh karena itu, build kedua tidak menyertakan file template email dan site initializer:</p>
+
+<ol>
+  <li>
+    <p>Hapus file dan folder berikut dari repositori Anda:</p>
+
+    <pre><code> liferay/client-extensions/liferay-forums-batch/batch/05-notification-email-template.batch-engine-data.json
+ liferay/client-extensions/liferay-forums-site-initializer
+</code></pre>
+  </li>
+  <li>
+    <p>Push, lalu deploy build baru tersebut ke lingkungan Anda, seperti pada Langkah 4.</p>
+  </li>
+</ol>
+
+<p>Liferay mendaftarkan microservice lagi, kali ini dengan akses ke data forum, dan memberikan kredensial baru kepadanya. Job batch berhasil, pada deploy ini dan setiap deploy berikutnya, dan template email, beserta perubahan yang Anda buat padanya, tetap seperti apa adanya. Situs forum tetap berada di <code>/web/forums</code>, dengan halaman dan kontennya: menghapus site initializer tidak menghapus situsnya.</p>
+
+<h2 id="step-6-restart-the-microservice">Langkah 6: Restart Microservice</h2>
+
+<p>Di konsol Liferay Cloud, restart layanan <code>liferayforumsetcspringboot</code>, agar layanan tersebut menggunakan kredensial baru. Balasan kini diterima.</p>
+
+<p class="note">Jika balasan masih ditolak setelah restart, Liferay mungkin tidak dapat menjangkau microservice di <code>localhost:58081</code>. Di <code>liferay/client-extensions/liferay-forums-etc-spring-boot/client-extension.yaml</code>, ubah kedua baris <code>.serviceAddress: localhost:58081</code> menjadi <code>liferayforumsetcspringboot:58081</code>, yaitu alamat layanan microservice, lalu deploy lagi. Hal ini belum diverifikasi di Liferay PaaS.</p>
+
+<h2 id="step-7-set-up-email-notifications">Langkah 7: Siapkan Notifikasi Email</h2>
+
+<p>Batch membuat dua template email dengan alamat pengirim placeholder. Atur alamat yang sebenarnya, lalu restart layanan <code>liferayforumsetcspringboot</code>, sebelum anggota menerima email. Lihat <a href="../administering/email-notifications.html">Notifikasi Email</a>.</p>
+
+<h2 id="step-8-check-the-installation">Langkah 8: Periksa Instalasi</h2>
+
+<p>Lanjutkan dengan <a href="checking.html">Memeriksa Instalasi</a>, untuk situs forum di <code>/web/forums</code>.</p>
+
+<h2 id="adding-more-forum-sites">Menambahkan Situs Forum Lain</h2>
+
+<p>Setiap situs forum mendapatkan proyek site initializer tersendiri di repositori Anda, yang di-deploy satu kali, lalu dihapus lagi, seperti pada situs pertama. Lihat <a href="creating-sites.html#several-sites">Beberapa Situs</a>.</p>
+
+<h2 id="later-deploys">Deploy Berikutnya</h2>
+
+<p>Liferay memberikan kredensial baru kepada microservice pada setiap deploy proyek Anda, bahkan deploy yang tidak mengubah forum. Sampai microservice di-restart dengan kredensial tersebut, balasan ditolak dengan pesan <strong>Your account has been banned from participating in the forums.</strong> Setelah setiap deploy, restart layanan <code>liferayforumsetcspringboot</code>, seperti pada <a href="#step-6-restart-the-microservice">Langkah 6</a>, dan pastikan balasan diterima.</p>
+
+<h2 id="related-information">Informasi Terkait</h2>
+
+<ul>
+  <li><a href="saas.html">Di Liferay SaaS</a></li>
+  <li><a href="./">Instalasi</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/liferay-forums/id/installing/docker.html"><span>Sebelumnya</span>Liferay Self-Hosted (Docker)</a><a class="next" href="/site-preview/liferay-forums/id/installing/saas.html"><span>Berikutnya</span>Di Liferay SaaS</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Forums is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc.</p>
+  <p class="wrap disclaimer">Aplikasi, tutorial, contoh kode, dan panduan di situs ini tidak resmi dan disediakan apa adanya. Gunakan dengan risiko Anda sendiri.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', "Tautan ke bagian ini");
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    var copyText = "Salin", copiedText = "Tersalin", failedText = "Tekan Ctrl+C untuk menyalin";
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); ok ? resolve() : reject();
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = copyText;
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        // Drop indentation shared by every line, which code blocks inside lists can pick up.
+        var lines = code.textContent.replace(/\n$/, '').split('\n');
+        var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+          .map(function (l) { return l.match(/^ */)[0].length; }));
+        if (indent > 0 && isFinite(indent)) lines = lines.map(function (l) { return l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
+        copy(lines.join('\n')).then(function () { b.textContent = copiedText; },
+          function () {
+            // Select the code so the reader can copy it with the keyboard.
+            var r = document.createRange(); r.selectNodeContents(code);
+            var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+            b.textContent = failedText;
+          });
+        clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = copyText; }, 2000);
+      });
+      wrap.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

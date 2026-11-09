@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liferay SaaS の場合 · Liferay Forums · Liferay Community APAC</title>
+  <meta name="description" content="Liferay SaaS では、Liferay Cloud のコマンドラインツールを使って、フォーラムの 3 つの zip を 1 つずつ順番にデプロイします。Liferay Cloud は、batch とフォーラムサイトをジョブとして、マイクロサービスを常時稼働するサービスとして実行します。">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/saas.html">
+  <link rel="alternate" hreflang="en" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/saas.html">
+  <link rel="alternate" hreflang="ja" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/saas.html">
+  <link rel="alternate" hreflang="id" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/installing/saas.html">
+  <link rel="alternate" hreflang="x-default" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/saas.html">
+  <meta property="og:title" content="Liferay SaaS の場合 · Liferay Forums">
+  <meta property="og:description" content="Liferay SaaS では、Liferay Cloud のコマンドラインツールを使って、フォーラムの 3 つの zip を 1 つずつ順番にデプロイします。Liferay Cloud は、batch とフォーラムサイトをジョブとして、マイクロサービスを常時稼働するサービスとして実行します。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/saas.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <meta property="og:image" content="https://liferay-community-apac.github.io/assets/kb/liferay-forums-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    .docs-langs { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+    .docs-langs a[aria-current] { font-weight: 600; text-decoration: none; color: inherit; }
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: inherit; font-size: 13px; line-height: 1.5;
+      color: var(--muted); background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: inherit; border-color: currentColor; }
+    .download-file { display: inline-flex; align-items: center; gap: 8px; margin-top: -6px; padding: 7px 14px; border: 1px solid var(--c-note);
+      border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
+    .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
+    .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Forums ドキュメント</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/liferay-forums/ja/">概要</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/getting-started.html">はじめに</a>
+      </li>
+      <li class="open"><a href="/site-preview/liferay-forums/ja/installing/">インストール</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/paas.html">Liferay PaaS の場合</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/saas.html" aria-current="page">Liferay SaaS の場合</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/creating-sites.html">フォーラムサイトの作成</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/checking.html">インストールの確認</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/deleting.html">フォーラムサイトの削除</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/workspace.html">Liferay Workspace を使った開発</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/using/">フォーラムの使い方</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/using/browsing-and-searching.html">閲覧と検索</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/starting-a-discussion.html">ディスカッションの開始</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/replying.html">返信とメンション</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/questions-and-answers.html">質問と回答</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/voting.html">投票</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/subscriptions-and-notifications.html">購読と通知</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/reporting.html">コンテンツの報告</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/moderating/">モデレーション</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/locking.html">トピックのロック</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/priority.html">優先度によるトピックの固定</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/reviewing-reports.html">報告のレビュー</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/banning.html">メンバーの禁止</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/administering/">管理</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/administering/categories.html">カテゴリーの管理</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/administering/email-notifications.html">メール通知</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/administering/customizing.html">フォーラムのカスタマイズ</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/administering/several-sites.html">複数のフォーラムサイトの運用</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/reference/">リファレンス</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/reference/roles-and-permissions.html">ロールと権限</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/pages.html">ページ</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/configuration.html">設定リファレンス</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/known-issues.html">既知の問題</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/reporting-a-bug.html">バグの報告</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">ホーム</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/liferay-forums/ja/">Liferay Forums</a><span>/</span><a href="/site-preview/liferay-forums/ja/installing/">インストール</a>
+    </p>
+    <nav class="docs-langs" aria-label="言語">
+      <a href="/site-preview/liferay-forums/installing/saas.html" hreflang="en" lang="en">English</a>
+      <a href="/site-preview/liferay-forums/ja/installing/saas.html" hreflang="ja" lang="ja" aria-current="true">日本語</a>
+      <a href="/site-preview/liferay-forums/id/installing/saas.html" hreflang="id" lang="id">Bahasa Indonesia</a>
+    </nav>
+    <article class="prose" data-pagefind-body>
+      <p class="note">このページは英語版を翻訳したものです。UI のラベルとメニュー名は英語で表記しています。内容が異なる場合は、<a href="/site-preview/liferay-forums/installing/saas.html">英語版</a>が優先されます。</p>
+      <h1 id="installing-on-liferay-saas" class="no_toc">Liferay SaaS へのインストール</h1>
+
+<p>Liferay SaaS では、Liferay Cloud のコマンドラインツールを使って、フォーラムの 3 つの zip を 1 つずつ順番にデプロイします。Liferay Cloud は、batch とフォーラムサイトをジョブとして、マイクロサービスを常時稼働するサービスとして実行します。</p>
+
+<p class="warning">これらの手順は、必要な修正を適用したクリーンな Liferay DXP 2026.Q1.4 LTS で、Liferay Cloud が client extension を実行する方法をローカルで再現した環境でテストされたものです。Liferay SaaS の環境ではまだテストされていません。</p>
+
+<ol id="markdown-toc">
+  <li><a href="#step-1-check-the-liferay-version-and-fixes" id="markdown-toc-step-1-check-the-liferay-version-and-fixes">手順 1: Liferay のバージョンと修正を確認する</a></li>
+  <li><a href="#step-2-get-ready-to-deploy" id="markdown-toc-step-2-get-ready-to-deploy">手順 2: デプロイの準備をする</a></li>
+  <li><a href="#step-3-deploy-the-batch" id="markdown-toc-step-3-deploy-the-batch">手順 3: batch をデプロイする</a></li>
+  <li><a href="#step-4-deploy-the-microservice" id="markdown-toc-step-4-deploy-the-microservice">手順 4: マイクロサービスをデプロイする</a></li>
+  <li><a href="#step-5-deploy-the-site-initializer" id="markdown-toc-step-5-deploy-the-site-initializer">手順 5: site initializer をデプロイする</a></li>
+  <li><a href="#step-6-set-up-email-notifications" id="markdown-toc-step-6-set-up-email-notifications">手順 6: メール通知を設定する</a></li>
+  <li><a href="#step-7-check-the-installation" id="markdown-toc-step-7-check-the-installation">手順 7: インストールを確認する</a></li>
+  <li><a href="#api-call-limit" id="markdown-toc-api-call-limit">API 呼び出しの上限</a></li>
+  <li><a href="#later-deploys" id="markdown-toc-later-deploys">以降のデプロイ</a></li>
+  <li><a href="#adding-more-forum-sites" id="markdown-toc-adding-more-forum-sites">フォーラムサイトの追加</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">関連情報</a></li>
+</ol>
+
+<h2 id="step-1-check-the-liferay-version-and-fixes">手順 1: Liferay のバージョンと修正を確認する</h2>
+
+<p>Liferay SaaS では、Liferay のバージョンと hotfix は Liferay が管理し、同じクラスター上のすべての環境に一度に適用されます。hotfix をお使いの環境だけにインストールすることはできません。そのため、お使いの環境で動作しているリリースを前提に作業します。</p>
+
+<ol>
+  <li>
+    <p>お使いの環境で動作しているリリースと hotfix を Liferay サポートに問い合わせ、2026.Q1 LTS リリースであることを確認します。</p>
+  </li>
+  <li>
+    <p>それを<a href="./#required-liferay-fixes">必要な Liferay の修正</a>と比較します。含まれていない修正については、インストール後に<a href="./#without-a-hotfix">回避策</a>を使用します。LPD-85594 は Liferay SaaS では関係ありません。以下の手順では、site initializer を 2 回実行することはないためです。</p>
+  </li>
+</ol>
+
+<h2 id="step-2-get-ready-to-deploy">手順 2: デプロイの準備をする</h2>
+
+<ol>
+  <li>
+    <p>Liferay Cloud の<a href="https://learn.liferay.com/w/dxp/cloud/reference/command-line-tool">コマンドラインツール</a>をインストールし、<code>lcp login</code> でサインインします。</p>
+  </li>
+  <li>
+    <p>デプロイ先の拡張環境の ID を <code>&lt;project&gt;-&lt;environment&gt;</code> の形式で確認します。Liferay Cloud コンソールに表示されています。</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest">最新リリース</a>から、次のファイルをダウンロードします。</p>
+
+    <ul>
+      <li><a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest/download/liferay-forums-batch.zip"><code>liferay-forums-batch.zip</code></a></li>
+      <li><a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest/download/liferay-forums-etc-spring-boot.zip"><code>liferay-forums-etc-spring-boot.zip</code></a></li>
+      <li><a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest/download/liferay-forums-site-initializer.zip"><code>liferay-forums-site-initializer.zip</code></a></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="step-3-deploy-the-batch">手順 3: batch をデプロイする</h2>
+
+<ol>
+  <li>
+    <p>batch をデプロイします。</p>
+
+    <pre><code class="language-bash"> lcp deploy -p &lt;project&gt;-&lt;environment&gt; --extension liferay-forums-batch.zip
+</code></pre>
+  </li>
+  <li>
+    <p>ジョブが完了するまで待ちます。<em>Applications</em> → <em>Notification Templates</em> に、batch が最後に作成する <strong>C2M0 Notification Email Reply</strong> と <strong>C2M0 Notification Email Mention</strong> が表示されれば完了です。その後、<em>Control Panel</em> → <em>Objects</em> に <strong>C2M0 Forums</strong> フォルダーが表示され、7 つのオブジェクト（C2M0 Attachment、C2M0 Message、C2M0 Subscription、C2M0 Suspicious Activity、C2M0 Thread、C2M0 User、C2M0 Vote）が含まれています。</p>
+  </li>
+</ol>
+
+<p class="warning">batch が完了するまで先に進まないでください。次の手順でデプロイするマイクロサービスは、その時点で存在するフォーラムの部分にしかアクセス権を得られません。早すぎるタイミングでデプロイすると、アクセス権を得られず、すべての投稿が <strong>Your account has been banned from participating in the forums.</strong> というメッセージで拒否されます。</p>
+
+<h2 id="step-4-deploy-the-microservice">手順 4: マイクロサービスをデプロイする</h2>
+
+<pre><code class="language-bash">lcp deploy -p &lt;project&gt;-&lt;environment&gt; --extension liferay-forums-etc-spring-boot.zip
+</code></pre>
+
+<p>Liferay がマイクロサービスを登録し、Liferay Cloud がその認証情報を使ってマイクロサービスを起動します。その後、<em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em> に <strong>Liferay Forums Etc Spring Boot OAuth Application Headless Server</strong> と <strong>Liferay Forums Etc Spring Boot OAuth Application User Agent</strong> が表示されます。</p>
+
+<h2 id="step-5-deploy-the-site-initializer">手順 5: site initializer をデプロイする</h2>
+
+<pre><code class="language-bash">lcp deploy -p &lt;project&gt;-&lt;environment&gt; --extension liferay-forums-site-initializer.zip
+</code></pre>
+
+<p>そのジョブによって、<code>/web/forums</code> にフォーラムサイトが作成されます。</p>
+
+<h2 id="step-6-set-up-email-notifications">手順 6: メール通知を設定する</h2>
+
+<p>batch によって、仮の送信元アドレスを持つメールテンプレートが 2 つ作成されています。メンバーにメールが届く前に、実際のアドレスを設定し、Liferay Cloud コンソールからマイクロサービスのサービス <code>liferayforumsetcspringboot</code> を再起動してください。<a href="../administering/email-notifications.html">メール通知</a>を参照してください。</p>
+
+<h2 id="step-7-check-the-installation">手順 7: インストールを確認する</h2>
+
+<p><code>/web/forums</code> のフォーラムサイトについて、<a href="checking.html">インストールの確認</a>に進みます。</p>
+
+<p>返信が拒否される場合は、<a href="checking.html#posts-are-rejected">æç¨¿ãæå¦ããã</a> を参照してください。</p>
+
+<h2 id="api-call-limit">API 呼び出しの上限</h2>
+
+<p>Liferay SaaS では、ユーザーごと、1 時間あたりの API 呼び出し数に上限があります。マイクロサービスは、投稿のたびに単一のユーザーとして、すべてのフォーラムサイトの分をまとめて Liferay を呼び出します。利用の多いフォーラムや、利用の多いフォーラムサイトが複数ある場合は上限に達することがあり、その場合はその 1 時間が終わるまで投稿が拒否されます。大量の利用が見込まれる場合は、現在の上限を Liferay サポートに確認してください。</p>
+
+<h2 id="later-deploys">以降のデプロイ</h2>
+
+<ul>
+  <li><strong>batch を再度デプロイしないでください。</strong> デプロイのたびにそのジョブが再実行され、メールテンプレートがすでに存在するため、失敗した項目が報告されます。データとテンプレートへの変更は保持されますが、ジョブは失敗として表示されます。</li>
+  <li><strong>site initializer を再度デプロイしないでください。</strong> そのジョブが再実行され、フォーラムサイトのアドレスが <code>/web/group-&lt;number&gt;</code> にリセットされて、フォーラムのリンクが壊れます。LPD-85594 では、Liferay SaaS でこれを防げません。これが起きた場合は、<em>Site Settings</em> でフレンドリー URL を元に戻してください。</li>
+  <li><strong>マイクロサービスを再度デプロイする</strong>のは、その新しいバージョンがある場合だけにし、デプロイ後に返信を確認してください。</li>
+</ul>
+
+<h2 id="adding-more-forum-sites">フォーラムサイトの追加</h2>
+
+<p>フォーラムサイトごとに、リリースのソースコードからビルドした専用の site initializer の zip を用意し、1 回だけデプロイします。マイクロサービスの再起動は不要です。<a href="creating-sites.html#several-sites">複数のサイト</a>を参照してください。</p>
+
+<h2 id="related-information">関連情報</h2>
+
+<ul>
+  <li><a href="paas.html">Liferay PaaS の場合</a></li>
+  <li><a href="./">インストール</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/liferay-forums/ja/installing/paas.html"><span>前へ</span>Liferay PaaS の場合</a><a class="next" href="/site-preview/liferay-forums/ja/installing/creating-sites.html"><span>次へ</span>フォーラムサイトの作成</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Forums is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc.</p>
+  <p class="wrap disclaimer">このサイトのアプリ、チュートリアル、サンプルコード、ガイドは非公式のもので、現状のまま提供されます。ご自身の責任でご利用ください。</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', "このセクションへのリンク");
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    var copyText = "コピー", copiedText = "コピーしました", failedText = "Ctrl+C でコピーしてください";
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); ok ? resolve() : reject();
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = copyText;
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        // Drop indentation shared by every line, which code blocks inside lists can pick up.
+        var lines = code.textContent.replace(/\n$/, '').split('\n');
+        var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+          .map(function (l) { return l.match(/^ */)[0].length; }));
+        if (indent > 0 && isFinite(indent)) lines = lines.map(function (l) { return l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
+        copy(lines.join('\n')).then(function () { b.textContent = copiedText; },
+          function () {
+            // Select the code so the reader can copy it with the keyboard.
+            var r = document.createRange(); r.selectNodeContents(code);
+            var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+            b.textContent = failedText;
+          });
+        clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = copyText; }, 2000);
+      });
+      wrap.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

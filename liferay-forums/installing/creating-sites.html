@@ -7,6 +7,10 @@
   <title>Creating Forum Sites · Liferay Forums · Liferay Community APAC</title>
   <meta name="description" content="Each forum is a Liferay site, created by a site initializer when it’s deployed into a running Liferay. A site initializer creates exactly one site, so each f...">
   <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/creating-sites.html">
+  <link rel="alternate" hreflang="en" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/creating-sites.html">
+  <link rel="alternate" hreflang="ja" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/creating-sites.html">
+  <link rel="alternate" hreflang="id" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/installing/creating-sites.html">
+  <link rel="alternate" hreflang="x-default" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/creating-sites.html">
   <meta property="og:title" content="Creating Forum Sites · Liferay Forums">
   <meta property="og:description" content="Each forum is a Liferay site, created by a site initializer when it’s deployed into a running Liferay. A site initializer creates exactly one site, so each f...">
   <meta property="og:type" content="article">
@@ -20,6 +24,20 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/site-preview/assets/site.css">
   <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    .docs-langs { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+    .docs-langs a[aria-current] { font-weight: 600; text-decoration: none; color: inherit; }
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: inherit; font-size: 13px; line-height: 1.5;
+      color: var(--muted); background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: inherit; border-color: currentColor; }
+    .download-file { display: inline-flex; align-items: center; gap: 8px; margin-top: -6px; padding: 7px 14px; border: 1px solid var(--c-note);
+      border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
+    .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
+    .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
+  </style>
 </head>
 <body data-section="marketplace-apps">
 
@@ -82,6 +100,7 @@
           <li><a href="/site-preview/liferay-forums/reference/pages.html">Pages</a></li>
           <li><a href="/site-preview/liferay-forums/reference/configuration.html">Configuration Reference</a></li>
           <li><a href="/site-preview/liferay-forums/reference/known-issues.html">Known Issues</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/reporting-a-bug.html">Reporting a Bug</a></li>
         </ul>
       </li>
     </ul>
@@ -91,6 +110,11 @@
     <p class="docs-crumbs">
       <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/liferay-forums/">Liferay Forums</a><span>/</span><a href="/site-preview/liferay-forums/installing/">Installing</a>
     </p>
+    <nav class="docs-langs" aria-label="Languages">
+      <a href="/site-preview/liferay-forums/installing/creating-sites.html" hreflang="en" lang="en" aria-current="true">English</a>
+      <a href="/site-preview/liferay-forums/ja/installing/creating-sites.html" hreflang="ja" lang="ja">日本語</a>
+      <a href="/site-preview/liferay-forums/id/installing/creating-sites.html" hreflang="id" lang="id">Bahasa Indonesia</a>
+    </nav>
     <article class="prose" data-pagefind-body>
       <h1 class="no_toc" id="creating-forum-sites">Creating Forum Sites</h1>
 
@@ -137,7 +161,7 @@
 
 <ol>
   <li>
-    <p>Download the forum’s source code, <a href="https://raw.githubusercontent.com/Liferay-Community-APAC/liferay-forums/downloads/1.0.0/liferay-forums-1.0.0-source.zip">liferay-forums-1.0.0-source.zip</a>, from the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/tree/downloads/1.0.0">release</a>, and unzip it. It unzips to a folder named <code>liferay-forums-1.0.0</code>; run the commands below from there.</p>
+    <p>From the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest">latest release</a>, download the forum’s source code, <code>liferay-forums-&lt;version&gt;-source.zip</code>, and unzip it. It unzips to a folder named <code>liferay-forums-&lt;version&gt;</code>, such as <code>liferay-forums-1.0.0</code>; run the commands below from there.</p>
   </li>
   <li>
     <p>Copy the whole <code>client-extensions/liferay-forums-site-initializer</code> folder, with everything in it, to a new folder next to it, named for the site. For a site named <em>Acme</em>:</p>
@@ -160,20 +184,22 @@
   <li>
     <p>In the copy, open <code>client-extension.yaml</code>, and replace all of its contents with names for the new site. Every name in it must be unique to the copy: the two keys, the OAuth application, and the site’s external reference code. For a site named <em>Acme</em>:</p>
 
-    <pre><code class="language-yaml"> liferay-forums-site-initializer-acme:
-     name: Liferay Forums Site Initializer Acme
-     oAuthApplicationHeadlessServer: liferay-forums-site-initializer-acme-oahs
-     siteExternalReferenceCode: LIFERAY_ACME
-     siteName: Acme
-     type: siteInitializer
- liferay-forums-site-initializer-acme-oahs:
-     .serviceAddress: localhost:8080
-     .serviceScheme: http
-     name: Liferay Forums Site Initializer Acme OAuth Application Headless Server
-     scopes:
-         -   Liferay.Headless.Site.everything
-     type: oAuthApplicationHeadlessServer
+    <pre><code class="language-yaml">liferay-forums-site-initializer-acme:
+    name: Liferay Forums Site Initializer Acme
+    oAuthApplicationHeadlessServer: liferay-forums-site-initializer-acme-oahs
+    siteExternalReferenceCode: LIFERAY_ACME
+    siteName: Acme
+    type: siteInitializer
+liferay-forums-site-initializer-acme-oahs:
+    .serviceAddress: localhost:8080
+    .serviceScheme: http
+    name: Liferay Forums Site Initializer Acme OAuth Application Headless Server
+    scopes:
+        -   Liferay.Headless.Site.everything
+    type: oAuthApplicationHeadlessServer
 </code></pre>
+
+    <p><a class="download-file" href="/site-preview/liferay-forums/assets/downloads/client-extension.yaml" download="client-extension.yaml"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"></path></svg>Download <code>client-extension.yaml</code></a></p>
 
     <p>Liferay builds the site’s address from <code>siteName</code>: this site is served at <code>/web/acme</code>.</p>
   </li>
@@ -204,7 +230,7 @@
 
 <h3 id="a-shortcut-on-liferay-self-hosted">A Shortcut on Liferay Self-Hosted</h3>
 
-<p>On Liferay Self-Hosted (Tomcat or Docker), the <code>generate-site-initializer-zips.sh</code> script, attached to the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/tree/downloads/1.0.0">release</a>, makes the copies from <code>liferay-forums-site-initializer.zip</code> without building them. It runs on Linux, with Bash, <code>unzip</code>, and <code>zip</code>. Don’t use its zips on Liferay PaaS or SaaS: they all share one OAuth application, which works only when they’re deployed to Liferay itself.</p>
+<p>On Liferay Self-Hosted (Tomcat or Docker), the <code>generate-site-initializer-zips.sh</code> script, attached to the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest">latest release</a>, makes the copies from <code>liferay-forums-site-initializer.zip</code> without building them. It runs on Linux, with Bash, <code>unzip</code>, and <code>zip</code>. Don’t use its zips on Liferay PaaS or SaaS: they all share one OAuth application, which works only when they’re deployed to Liferay itself.</p>
 
 <ol>
   <li>
@@ -261,8 +287,44 @@
     document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
       var a = document.createElement('a');
       a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
-      a.setAttribute('aria-label', 'Link to this section');
+      a.setAttribute('aria-label', "Link to this section");
       h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    var copyText = "Copy", copiedText = "Copied", failedText = "Press Ctrl+C to copy";
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); ok ? resolve() : reject();
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = copyText;
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        // Drop indentation shared by every line, which code blocks inside lists can pick up.
+        var lines = code.textContent.replace(/\n$/, '').split('\n');
+        var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+          .map(function (l) { return l.match(/^ */)[0].length; }));
+        if (indent > 0 && isFinite(indent)) lines = lines.map(function (l) { return l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
+        copy(lines.join('\n')).then(function () { b.textContent = copiedText; },
+          function () {
+            // Select the code so the reader can copy it with the keyboard.
+            var r = document.createRange(); r.selectNodeContents(code);
+            var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+            b.textContent = failedText;
+          });
+        clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = copyText; }, 2000);
+      });
+      wrap.appendChild(b);
     });
   })();
 </script>

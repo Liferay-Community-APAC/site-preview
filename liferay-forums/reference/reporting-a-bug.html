@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reporting a Bug · Liferay Forums · Liferay Community APAC</title>
+  <meta name="description" content="Report problems with Liferay Forums, and suggest improvements, as issues in the liferay-forums repository on GitHub. You need a GitHub account.">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/reference/reporting-a-bug.html">
+  <link rel="alternate" hreflang="en" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/reference/reporting-a-bug.html">
+  <link rel="alternate" hreflang="ja" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/reference/reporting-a-bug.html">
+  <link rel="alternate" hreflang="id" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/reference/reporting-a-bug.html">
+  <link rel="alternate" hreflang="x-default" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/reference/reporting-a-bug.html">
+  <meta property="og:title" content="Reporting a Bug · Liferay Forums">
+  <meta property="og:description" content="Report problems with Liferay Forums, and suggest improvements, as issues in the liferay-forums repository on GitHub. You need a GitHub account.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/liferay-forums/reference/reporting-a-bug.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <meta property="og:image" content="https://liferay-community-apac.github.io/assets/kb/liferay-forums-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    .docs-langs { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+    .docs-langs a[aria-current] { font-weight: 600; text-decoration: none; color: inherit; }
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: inherit; font-size: 13px; line-height: 1.5;
+      color: var(--muted); background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: inherit; border-color: currentColor; }
+    .download-file { display: inline-flex; align-items: center; gap: 8px; margin-top: -6px; padding: 7px 14px; border: 1px solid var(--c-note);
+      border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
+    .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
+    .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Forums docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/liferay-forums/">Overview</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/getting-started.html">Getting Started</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/paas.html">On Liferay PaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/saas.html">On Liferay SaaS</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/creating-sites.html">Creating Forum Sites</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/deleting.html">Deleting a Forum Site</a></li>
+          <li><a href="/site-preview/liferay-forums/installing/workspace.html">Developing With a Liferay Workspace</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/using/">Using the Forum</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/using/browsing-and-searching.html">Browsing and Searching</a></li>
+          <li><a href="/site-preview/liferay-forums/using/starting-a-discussion.html">Starting a Discussion</a></li>
+          <li><a href="/site-preview/liferay-forums/using/replying.html">Replying and Mentions</a></li>
+          <li><a href="/site-preview/liferay-forums/using/questions-and-answers.html">Questions and Answers</a></li>
+          <li><a href="/site-preview/liferay-forums/using/voting.html">Voting</a></li>
+          <li><a href="/site-preview/liferay-forums/using/subscriptions-and-notifications.html">Subscriptions and Notifications</a></li>
+          <li><a href="/site-preview/liferay-forums/using/reporting.html">Reporting Content</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/moderating/">Moderating</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/moderating/locking.html">Locking Topics</a></li>
+          <li><a href="/site-preview/liferay-forums/moderating/priority.html">Pinning Topics with Priority</a></li>
+          <li><a href="/site-preview/liferay-forums/moderating/reviewing-reports.html">Reviewing Reports</a></li>
+          <li><a href="/site-preview/liferay-forums/moderating/banning.html">Banning Members</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/administering/">Administering</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/administering/categories.html">Managing Categories</a></li>
+          <li><a href="/site-preview/liferay-forums/administering/email-notifications.html">Email Notifications</a></li>
+          <li><a href="/site-preview/liferay-forums/administering/customizing.html">Customizing the Forum</a></li>
+          <li><a href="/site-preview/liferay-forums/administering/several-sites.html">Running Several Forum Sites</a></li>
+        </ul>
+      </li>
+      <li class="open"><a href="/site-preview/liferay-forums/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/reference/roles-and-permissions.html">Roles and Permissions</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/pages.html">Pages</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/configuration.html">Configuration Reference</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/known-issues.html">Known Issues</a></li>
+          <li><a href="/site-preview/liferay-forums/reference/reporting-a-bug.html" aria-current="page">Reporting a Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/liferay-forums/">Liferay Forums</a><span>/</span><a href="/site-preview/liferay-forums/reference/">Reference</a>
+    </p>
+    <nav class="docs-langs" aria-label="Languages">
+      <a href="/site-preview/liferay-forums/reference/reporting-a-bug.html" hreflang="en" lang="en" aria-current="true">English</a>
+      <a href="/site-preview/liferay-forums/ja/reference/reporting-a-bug.html" hreflang="ja" lang="ja">日本語</a>
+      <a href="/site-preview/liferay-forums/id/reference/reporting-a-bug.html" hreflang="id" lang="id">Bahasa Indonesia</a>
+    </nav>
+    <article class="prose" data-pagefind-body>
+      <h1 class="no_toc" id="reporting-a-bug">Reporting a Bug</h1>
+
+<p>Report problems with Liferay Forums, and suggest improvements, as issues in the
+<a href="https://github.com/Liferay-Community-APAC/liferay-forums/issues">liferay-forums repository on GitHub</a>. You need a
+GitHub account.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#if-you-have-a-tam-package" id="markdown-toc-if-you-have-a-tam-package">If You Have a TAM Package</a></li>
+  <li><a href="#before-you-report" id="markdown-toc-before-you-report">Before You Report</a></li>
+  <li><a href="#report-a-bug" id="markdown-toc-report-a-bug">Report a Bug</a></li>
+  <li><a href="#security-problems" id="markdown-toc-security-problems">Security Problems</a></li>
+  <li><a href="#questions" id="markdown-toc-questions">Questions</a></li>
+  <li><a href="#what-happens-next" id="markdown-toc-what-happens-next">What Happens Next</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Related Information</a></li>
+</ol>
+
+<h2 id="if-you-have-a-tam-package">If You Have a TAM Package</h2>
+
+<p>If your Liferay subscription includes a Technical Account Manager (TAM) package, log the problem directly with
+Liferay Support instead of opening a GitHub issue. A ticket keeps your logs and environment details private, and
+your TAM can follow it up.</p>
+
+<ol>
+  <li>Sign in to the <a href="https://support.liferay.com/">Liferay Help Center</a> with your liferay.com account.</li>
+  <li>Create a ticket, as described in
+<a href="https://learn.liferay.com/kb-article/help-center-ticket-creation-process">Help Center Ticket Creation Process</a>.</li>
+  <li>In the ticket, say that the problem is in <strong>Liferay Forums</strong>, with its version, and include the same details as
+a <a href="#report-a-bug">bug report</a>: the Liferay DXP version, the install type, the steps to reproduce, and the log
+lines.</li>
+  <li>Let your TAM know about the ticket.</li>
+</ol>
+
+<h2 id="before-you-report">Before You Report</h2>
+
+<ul>
+  <li>Check <a href="known-issues.html">Known Issues</a> for your release.</li>
+  <li>If posts are rejected, topic links show a not found page, or no email arrives, follow
+<a href="../installing/checking.html#if-somethings-wrong">If Something’s Wrong</a>.</li>
+  <li>Search the <a href="https://github.com/Liferay-Community-APAC/liferay-forums/issues">open issues</a> for the same problem. If
+you find it, add what you know to it, or give it a 👍, instead of opening another.</li>
+</ul>
+
+<h2 id="report-a-bug">Report a Bug</h2>
+
+<ol>
+  <li>Open <a href="https://github.com/Liferay-Community-APAC/liferay-forums/issues/new/choose">New issue</a>, and choose
+<strong>Bug report</strong>.</li>
+  <li>Fill in the form:
+    <ul>
+      <li>the Liferay Forums version and the Liferay DXP version;</li>
+      <li>how you installed it: Liferay Self-Hosted (Tomcat or Docker), Liferay PaaS, Liferay SaaS, or a Liferay Workspace;</li>
+      <li>whether the <a href="../installing/#required-liferay-fixes">required Liferay fixes</a> are installed;</li>
+      <li>what happened, what you expected, and the steps to reproduce it, with the role of the member who does each
+step;</li>
+      <li>errors from the Liferay log and the microservice’s log.</li>
+    </ul>
+  </li>
+  <li>Click <strong>Create</strong>.</li>
+</ol>
+
+<p class="warning">Issues are public. Before you paste logs or screenshots, remove email addresses, user names, hostnames, internal
+addresses, tokens, and any customer data.</p>
+
+<p>To suggest an improvement, choose <strong>Feature request</strong> instead, and describe what you’re trying to do.</p>
+
+<h2 id="security-problems">Security Problems</h2>
+
+<p>Don’t report a security problem in a public issue. Report it privately, in the repository’s <strong>Security</strong> tab →
+<a href="https://github.com/Liferay-Community-APAC/liferay-forums/security/advisories/new"><strong>Report a vulnerability</strong></a>. Only
+the maintainers see it. See the repository’s
+<a href="https://github.com/Liferay-Community-APAC/liferay-forums/security/policy">security policy</a>.</p>
+
+<h2 id="questions">Questions</h2>
+
+<p>For questions about installing, setting up, or using the forum, start a
+<a href="https://github.com/Liferay-Community-APAC/liferay-forums/discussions">discussion</a> instead of an issue.</p>
+
+<h2 id="what-happens-next">What Happens Next</h2>
+
+<p>The maintainers review new issues, and ask for more details if they need them. A confirmed bug is planned for a
+release, usually the next patch of the latest release line, and the issue says which. When that release is
+published, the issue is closed with a link to it. Its release notes say how to install it.</p>
+
+<p>Liferay Forums is a community project, so issues are handled on a best-effort basis.</p>
+
+<h2 id="related-information">Related Information</h2>
+
+<ul>
+  <li><a href="known-issues.html">Known Issues</a></li>
+  <li><a href="../installing/checking.html">Checking the Installation</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/liferay-forums/reference/known-issues.html"><span>Previous</span>Known Issues</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Forums is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', "Link to this section");
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    var copyText = "Copy", copiedText = "Copied", failedText = "Press Ctrl+C to copy";
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); ok ? resolve() : reject();
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = copyText;
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        // Drop indentation shared by every line, which code blocks inside lists can pick up.
+        var lines = code.textContent.replace(/\n$/, '').split('\n');
+        var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+          .map(function (l) { return l.match(/^ */)[0].length; }));
+        if (indent > 0 && isFinite(indent)) lines = lines.map(function (l) { return l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
+        copy(lines.join('\n')).then(function () { b.textContent = copiedText; },
+          function () {
+            // Select the code so the reader can copy it with the keyboard.
+            var r = document.createRange(); r.selectNodeContents(code);
+            var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+            b.textContent = failedText;
+          });
+        clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = copyText; }, 2000);
+      });
+      wrap.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

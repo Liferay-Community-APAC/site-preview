@@ -1,0 +1,13 @@
+[Unit]
+Description=Liferay Forums microservice
+After=network.target
+
+[Service]
+User=liferay
+Environment=LIFERAY_HOME=/opt/liferay
+WorkingDirectory=/opt/liferay-forums
+ExecStart=/opt/liferay-forums/start.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

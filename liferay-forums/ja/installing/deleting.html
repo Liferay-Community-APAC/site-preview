@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>フォーラムサイトの削除 · Liferay Forums · Liferay Community APAC</title>
+  <meta name="description" content="フォーラムサイトを削除すると、そのページとすべてのフォーラムコンテンツ（トピック、返信、フォロー、投票、報告）が削除されます。他のフォーラムサイトには影響しません。">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/deleting.html">
+  <link rel="alternate" hreflang="en" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/deleting.html">
+  <link rel="alternate" hreflang="ja" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/deleting.html">
+  <link rel="alternate" hreflang="id" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/id/installing/deleting.html">
+  <link rel="alternate" hreflang="x-default" href="https://liferay-community-apac.github.io/site-preview/liferay-forums/installing/deleting.html">
+  <meta property="og:title" content="フォーラムサイトの削除 · Liferay Forums">
+  <meta property="og:description" content="フォーラムサイトを削除すると、そのページとすべてのフォーラムコンテンツ（トピック、返信、フォロー、投票、報告）が削除されます。他のフォーラムサイトには影響しません。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/liferay-forums/ja/installing/deleting.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <meta property="og:image" content="https://liferay-community-apac.github.io/assets/kb/liferay-forums-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    .docs-langs { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+    .docs-langs a[aria-current] { font-weight: 600; text-decoration: none; color: inherit; }
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: inherit; font-size: 13px; line-height: 1.5;
+      color: var(--muted); background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: inherit; border-color: currentColor; }
+    .download-file { display: inline-flex; align-items: center; gap: 8px; margin-top: -6px; padding: 7px 14px; border: 1px solid var(--c-note);
+      border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
+    .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
+    .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Forums ドキュメント</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/liferay-forums/ja/">概要</a>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/getting-started.html">はじめに</a>
+      </li>
+      <li class="open"><a href="/site-preview/liferay-forums/ja/installing/">インストール</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/paas.html">Liferay PaaS の場合</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/saas.html">Liferay SaaS の場合</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/creating-sites.html">フォーラムサイトの作成</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/checking.html">インストールの確認</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/deleting.html" aria-current="page">フォーラムサイトの削除</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/installing/workspace.html">Liferay Workspace を使った開発</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/using/">フォーラムの使い方</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/using/browsing-and-searching.html">閲覧と検索</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/starting-a-discussion.html">ディスカッションの開始</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/replying.html">返信とメンション</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/questions-and-answers.html">質問と回答</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/voting.html">投票</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/subscriptions-and-notifications.html">購読と通知</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/using/reporting.html">コンテンツの報告</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/moderating/">モデレーション</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/locking.html">トピックのロック</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/priority.html">優先度によるトピックの固定</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/reviewing-reports.html">報告のレビュー</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/moderating/banning.html">メンバーの禁止</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/administering/">管理</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/administering/categories.html">カテゴリーの管理</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/administering/email-notifications.html">メール通知</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/administering/customizing.html">フォーラムのカスタマイズ</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/administering/several-sites.html">複数のフォーラムサイトの運用</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/liferay-forums/ja/reference/">リファレンス</a>
+        <ul>
+          <li><a href="/site-preview/liferay-forums/ja/reference/roles-and-permissions.html">ロールと権限</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/pages.html">ページ</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/configuration.html">設定リファレンス</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/known-issues.html">既知の問題</a></li>
+          <li><a href="/site-preview/liferay-forums/ja/reference/reporting-a-bug.html">バグの報告</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">ホーム</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/liferay-forums/ja/">Liferay Forums</a><span>/</span><a href="/site-preview/liferay-forums/ja/installing/">インストール</a>
+    </p>
+    <nav class="docs-langs" aria-label="言語">
+      <a href="/site-preview/liferay-forums/installing/deleting.html" hreflang="en" lang="en">English</a>
+      <a href="/site-preview/liferay-forums/ja/installing/deleting.html" hreflang="ja" lang="ja" aria-current="true">日本語</a>
+      <a href="/site-preview/liferay-forums/id/installing/deleting.html" hreflang="id" lang="id">Bahasa Indonesia</a>
+    </nav>
+    <article class="prose" data-pagefind-body>
+      <p class="note">このページは英語版を翻訳したものです。UI のラベルとメニュー名は英語で表記しています。内容が異なる場合は、<a href="/site-preview/liferay-forums/installing/deleting.html">英語版</a>が優先されます。</p>
+      <h1 id="deleting-a-forum-site">フォーラムサイトの削除</h1>
+
+<p>フォーラムサイトを削除すると、そのページとすべてのフォーラムコンテンツ（トピック、返信、フォロー、投票、報告）が削除されます。他のフォーラムサイトには影響しません。</p>
+
+<p class="warning">サイトの削除は元に戻せません。コンテンツが必要になる可能性がある場合は、先に Liferay のデータベースをバックアップしてください。</p>
+
+<ol>
+  <li>
+    <p>そのサイトの site initializer の zip が、Liferay の <code>osgi/client-extensions</code> フォルダーにないことを確認します。<a href="creating-sites.html">フォーラムサイトの作成</a>では、サイトが作成されたら zip を削除するよう説明しています。後で再度デプロイされると、サイトが空の状態で再作成されます。Liferay PaaS では、<code>liferay/client-extensions</code> にあるその site initializer プロジェクトについても同様に確認します。</p>
+  </li>
+  <li>
+    <p><em>Control Panel</em> → <em>Sites</em> で、サイトの <strong>Actions</strong> メニューを開き、<strong>Delete</strong> をクリックして確定します。</p>
+  </li>
+</ol>
+
+<p>フォーラムの共有部分は、他のフォーラムサイトが使用するため残ります。batch によるデータモデル、マイクロサービス、および <strong>Forum Moderator</strong>、<strong>Forum Category Admin</strong>、<strong>Forum Banned</strong> の各ロールです。</p>
+
+<h2 id="related-information">関連情報</h2>
+
+<ul>
+  <li><a href="../administering/several-sites.html">複数のフォーラムサイトの運用</a></li>
+  <li><a href="./">インストール</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/liferay-forums/ja/installing/checking.html"><span>前へ</span>インストールの確認</a><a class="next" href="/site-preview/liferay-forums/ja/installing/workspace.html"><span>次へ</span>Liferay Workspace を使った開発</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Forums is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc.</p>
+  <p class="wrap disclaimer">このサイトのアプリ、チュートリアル、サンプルコード、ガイドは非公式のもので、現状のまま提供されます。ご自身の責任でご利用ください。</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', "このセクションへのリンク");
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    var copyText = "コピー", copiedText = "コピーしました", failedText = "Ctrl+C でコピーしてください";
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); ok ? resolve() : reject();
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = copyText;
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        // Drop indentation shared by every line, which code blocks inside lists can pick up.
+        var lines = code.textContent.replace(/\n$/, '').split('\n');
+        var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+          .map(function (l) { return l.match(/^ */)[0].length; }));
+        if (indent > 0 && isFinite(indent)) lines = lines.map(function (l) { return l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
+        copy(lines.join('\n')).then(function () { b.textContent = copiedText; },
+          function () {
+            // Select the code so the reader can copy it with the keyboard.
+            var r = document.createRange(); r.selectNodeContents(code);
+            var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+            b.textContent = failedText;
+          });
+        clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = copyText; }, 2000);
+      });
+      wrap.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>
