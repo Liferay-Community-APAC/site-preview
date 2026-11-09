@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Liferay Workspace を使った開発 · Liferay Forums · Liferay Community APAC</title>
   <meta name="description" content="ご自身の Liferay のコードを Liferay Workspace でビルドしている場合は、フォーラムのプロジェクトを Workspace に追加し、ご自身のコードと一緒にビルドして、開発用に Workspace 自体の Liferay バンドルにデプロイできます。">
@@ -35,6 +36,12 @@
       border-radius: 8px; color: var(--c-note); font-weight: 600; text-decoration: none; }
     .download-file:hover, .download-file:focus-visible { background: var(--c-note); color: #fff; }
     .download-file:hover code, .download-file:focus-visible code { color: inherit; }
+    .product-spotlight { display: flex; align-items: center; gap: 20px; margin: 20px 0; padding: 16px 20px;
+      border: 1px solid var(--border); border-radius: 12px; background: var(--code-bg); }
+    .product-spotlight > a { flex: none; line-height: 0; }
+    .product-spotlight img { display: block; width: 96px; height: 96px; }
+    .product-spotlight p { margin: 0; }
+    @media (max-width: 560px) { .product-spotlight { flex-direction: column; align-items: flex-start; } }
     .download-file code { background: none; border: 0; padding: 0; color: inherit; font-weight: 400; }
   </style>
 </head>
@@ -137,7 +144,7 @@
 
 <ol>
   <li>
-    <p><a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest">最新リリース</a>から、フォーラムのソースコード <code>liferay-forums-&lt;version&gt;-source.zip</code> をダウンロードして展開します。<code>liferay-forums-1.0.0</code> のように、<code>liferay-forums-&lt;version&gt;</code> という名前のフォルダーに展開されます。</p>
+    <p><a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest">最新リリース</a>から、フォーラムのソースコード <a href="https://github.com/Liferay-Community-APAC/liferay-forums/releases/latest" data-release-asset="-source.zip"><code>liferay-forums-&lt;version&gt;-source.zip</code></a> をダウンロードして展開します。<span data-release-example=""><code>liferay-forums-1.0.0</code> のように、</span><span data-release-folder=""><code>liferay-forums-&lt;version&gt;</code></span> という名前のフォルダーに展開されます。</p>
   </li>
   <li>
     <p>次の 3 つのフォルダーを、Workspace の <code>client-extensions</code> フォルダーにコピーします。</p>
@@ -280,6 +287,33 @@
       });
       wrap.appendChild(b);
     });
+    // Fill in versioned file names, such as the source zip, from the latest GitHub release.
+    var assets = document.querySelectorAll('[data-release-asset]'), folders = document.querySelectorAll('[data-release-folder]');
+    if ((assets.length || folders.length) && window.fetch) {
+      var key = 'latest-release:Liferay-Community-APAC/liferay-forums', cached = null;
+      try { cached = JSON.parse(sessionStorage.getItem(key)); } catch (e) {}
+      (cached ? Promise.resolve(cached) : fetch('https://api.github.com/repos/Liferay-Community-APAC/liferay-forums/releases/latest',
+        { headers: { Accept: 'application/vnd.github+json' } })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (r) {
+          var rel = { version: r.tag_name.replace(/^v/, ''),
+            assets: r.assets.map(function (x) { return { name: x.name, url: x.browser_download_url }; }) };
+          try { sessionStorage.setItem(key, JSON.stringify(rel)); } catch (e) {}
+          return rel;
+        }))
+        .then(function (rel) {
+          assets.forEach(function (a) {
+            var suffix = a.getAttribute('data-release-asset');
+            var match = rel.assets.filter(function (x) { return x.name.slice(-suffix.length) === suffix; })[0];
+            if (!match) return;
+            a.href = match.url;
+            (a.querySelector('code') || a).textContent = match.name;
+          });
+          folders.forEach(function (f) { (f.querySelector('code') || f).textContent = 'liferay-forums-' + rel.version; });
+          if (folders.length) document.querySelectorAll('[data-release-example]').forEach(function (e) { e.hidden = true; });
+        })
+        .catch(function () { /* Keep the placeholders and the link to the release page. */ });
+    }
   })();
 </script>
 </body>
