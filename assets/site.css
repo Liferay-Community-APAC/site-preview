@@ -643,3 +643,6 @@ main > .lang-note { margin: 16px auto; max-width: var(--max); width: calc(100% -
 .online-card .online-tip { font-size: 14px; padding: 10px 12px; border-radius: 8px; background: var(--bg-alt); }
 .online-card > .btn { align-self: flex-start; margin-top: auto; }
 @media (max-width: 860px) { .online { grid-template-columns: 1fr; } }
+/* An app's logo next to its name in its showcase: half the size of a "Powered by" product logo. */
+.showcase h3.with-logo { display: flex; align-items: center; gap: 10px; }
+.app-logo { width: 32px; height: 32px; flex: none; }

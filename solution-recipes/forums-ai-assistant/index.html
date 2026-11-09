@@ -50,6 +50,8 @@
       </li>
       <li class="open"><a href="/site-preview/solution-recipes/forums-ai-assistant/" aria-current="page">Forums Assistant with AI Hub</a>
       </li>
+      <li><a href="/site-preview/solution-recipes/forums-ai-summaries/">AI Discussion Summaries with AI Hub</a>
+      </li>
     </ul>
   </details>
 
@@ -90,7 +92,7 @@
 
 <p>The screenshots show a forum branded as a fictitious company, <em>Lumora Community</em>, as the Liferay Forums guide describes in <a href="/liferay-forums/administering/customizing.html#matching-your-companys-look">Matching Your Company’s Look</a>.</p>
 
-<p class="note">AI summaries at the top of each discussion come in a later version of this recipe.</p>
+<p class="note">For AI summaries at the top of each discussion, see the <a href="../forums-ai-summaries/">AI Discussion Summaries with AI Hub</a> recipe. The two recipes work on their own or together, and share the same fragment set.</p>
 
 <h2 id="ingredients">Ingredients</h2>
 
@@ -138,7 +140,7 @@
   <tbody>
     <tr>
       <td><a href="downloads/forums-ai-fragments.zip">forums-ai-fragments.zip</a></td>
-      <td>The <strong>Forums AI</strong> fragment set, with the <strong>AI Hub Chat</strong> fragment that puts AI Hub’s chat on the forum’s pages</td>
+      <td>The <strong>Forums AI</strong> fragment set: <strong>AI Hub Chat</strong> puts AI Hub’s chat on the forum’s pages, and <strong>AI Summary</strong> is for the <a href="../forums-ai-summaries/">AI Discussion Summaries</a></td>
     </tr>
     <tr>
       <td><a href="downloads/forums-discussion-finder.workflow.xml">forums-discussion-finder.workflow.xml</a></td>
@@ -256,7 +258,7 @@ curl -u "admin@example.com:password" "https://forums.example.com/o/object-admin/
 
 <ol>
   <li>
-    <p><strong>Import the fragment.</strong> Download <a href="downloads/forums-ai-fragments.zip">forums-ai-fragments.zip</a>. In the forum site, go to <em>Design</em> → <em>Fragments</em>, open the actions menu (⋮) next to <em>Fragment Sets</em>, and choose <strong>Import</strong>. Select the zip and click <strong>Import</strong>. The <strong>Forums AI</strong> fragment set appears, with the <strong>AI Hub Chat</strong> fragment.</p>
+    <p><strong>Import the fragment.</strong> Download <a href="downloads/forums-ai-fragments.zip">forums-ai-fragments.zip</a>. In the forum site, go to <em>Design</em> → <em>Fragments</em>, open the actions menu (⋮) next to <em>Fragment Sets</em>, and choose <strong>Import</strong>. Select the zip and click <strong>Import</strong>. The <strong>Forums AI</strong> fragment set appears, with the <strong>AI Hub Chat</strong> and <strong>AI Summary</strong> fragments. If you’ve already imported it for the <a href="../forums-ai-summaries/">AI Discussion Summaries</a>, you have it already.</p>
 
     <p><img src="import-fragments.png" alt="The fragment Import page with forums-ai-fragments.zip selected." class="screenshot" /></p>
   </li>
@@ -300,11 +302,11 @@ curl -u "admin@example.com:password" "https://forums.example.com/o/object-admin/
 
 <ul>
   <li><a href="/liferay-forums/administering/customizing.html#matching-your-companys-look">Matching Your Company’s Look</a> in the Liferay Forums guide, to brand the forum like the screenshots.</li>
-  <li>AI summaries of each discussion, in a later version of this recipe.</li>
+  <li><a href="../forums-ai-summaries/">AI Discussion Summaries with AI Hub</a>, for a summary at the top of each busy discussion.</li>
 </ul>
 
     </article>
-    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/solution-recipes/"><span>Previous</span>Overview</a>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/solution-recipes/"><span>Previous</span>Overview</a><a class="next" href="/site-preview/solution-recipes/forums-ai-summaries/"><span>Next</span>AI Discussion Summaries with AI Hub</a>
     </nav>
   </main>
 </div>
