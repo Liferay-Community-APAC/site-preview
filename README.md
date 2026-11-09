@@ -23,6 +23,6 @@ For a quick check that only you need to see, open the site locally instead of pu
 
 ## Currently showing
 
-- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io), branches `forums-logo` at d82d345 and `community-online` at 16afcfc, combined
+- [liferay-community-apac.github.io](https://github.com/Liferay-Community-APAC/liferay-community-apac.github.io), branches `forums-logo` at 9390b7d and `community-online` at 16afcfc, combined
 - [liferay-forums](https://github.com/Liferay-Community-APAC/liferay-forums): `main` at d2297d2
 - [solution-recipes](https://github.com/Liferay-Community-APAC/solution-recipes): `main` at 32f5cd6
