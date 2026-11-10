@@ -74,6 +74,8 @@
       </li>
       <li><a href="/site-preview/solution-recipes/forums-ai-summaries/">AI Discussion Summaries with AI Hub</a>
       </li>
+      <li><a href="/site-preview/solution-recipes/sharepoint-discussions-to-forums/">SharePoint Discussions to Liferay Forums</a>
+      </li>
     </ul>
   </details>
 
@@ -177,7 +179,7 @@
 <p><strong>Before you start, you need:</strong></p>
 
 <ul>
-  <li>Liferay DXP 2026.Q3 or later, or Liferay DXP 2026.Q1 LTS with AI Hub support (Step 2), with Liferay Forums 1.0.0 installed and its forum site created. This recipe was tested on 2026.Q1.4 with hotfix 84 and PostgreSQL.</li>
+  <li>Liferay DXP 2026.Q3 or later, or Liferay DXP 2026.Q1 LTS with AI Hub support (Step 2), with Liferay Forums 1.0.0 installed, with its <a href="/liferay-forums/installing/#required-liferay-fixes">required Liferay fixes</a>, and its forum site created. This recipe was tested on 2026.Q1.4 with PostgreSQL.</li>
   <li>An AI Hub account, with the <strong>Client ID</strong> and <strong>Client Secret</strong> Liferay provided for it.</li>
   <li>Administrator access to the forum’s Liferay.</li>
   <li>The forum’s Liferay reachable from the internet, so AI Hub can reach it. For testing on your own computer, see the note on tunnels in <a href="https://learn.liferay.com/w/ai-hub/integrating-ai-hub-with-liferay-dxp">Integrating AI Hub with Liferay DXP</a>.</li>
@@ -196,7 +198,32 @@
 <p>The chat runs on the forum’s pages and searches the forum as the signed-in member, so the forum’s Liferay must be connected to AI Hub. <a href="https://learn.liferay.com/w/ai-hub/integrating-ai-hub-with-liferay-dxp">Integrating AI Hub with Liferay DXP</a> describes the connection.</p>
 
 <ol>
-  <li><strong>On Liferay DXP 2026.Q1, request AI Hub support from Liferay Support.</strong> 2026.Q1.4 with hotfix 84, the update this recipe was tested on, doesn’t include everything the connection needs. Open a Support ticket asking for <strong>AI Hub support (LPD-93555 and LPD-107054)</strong> for your 2026.Q1 update (for example, 2026.Q1.4), and give your current update and hotfix. Liferay Support provides it as a hotfix or as the update that includes it. AI Hub is in beta on 2026.Q1 and backports are in progress, so a later 2026.Q1 update may include them: check with Liferay Support. On 2026.Q3 and later, where AI Hub is generally available, skip this step.</li>
+  <li>
+    <p><strong>On Liferay DXP 2026.Q1, request AI Hub support from Liferay Support.</strong> 2026.Q1 updates, including 2026.Q1.4 that this recipe was tested on, don’t include everything the connection needs. Open a Support ticket asking for <strong>AI Hub support (LPD-93555 and LPD-107054)</strong> for your 2026.Q1 update (for example, 2026.Q1.4), and give your current update and hotfix:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>LPD</th>
+          <th>What it adds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LPD-107054</td>
+          <td>The connection to AI Hub: the <em>AI Hub</em> settings in <em>Instance Settings</em> (Step 3), and the sign-in the chat uses for members</td>
+        </tr>
+        <tr>
+          <td>LPD-93555</td>
+          <td>AI Hub’s searches of the forum as the signed-in member, so the chat only finds what that member can see</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The <strong>AI Hub Chat</strong> fragment loads AI Hub’s own chat, so you don’t need other AI Hub backports for this recipe. If you also add the <a href="../forums-ai-summaries/">AI Discussion Summaries</a>, ask for LPD-107058 in the same ticket: the summaries run their agent in a workflow step it adds.</p>
+
+    <p>Liferay Support provides it as a hotfix or as the update that includes it. AI Hub is in beta on 2026.Q1 and backports are in progress, so a later 2026.Q1 update may include them: check with Liferay Support. On 2026.Q3 and later, where AI Hub is generally available, skip this step.</p>
+  </li>
   <li>
     <p><strong>On 2026.Q1, turn on the feature flag:</strong> <em>Control Panel</em> → <em>Instance Settings</em> → <em>Feature Flags</em> → <em>Release</em>, then enable <strong>AI Hub (LPD-62272)</strong>. On Liferay Self-Hosted, you can set it in <code>portal-ext.properties</code> instead:</p>
 
@@ -237,10 +264,21 @@ curl -u "admin@example.com:password" "https://forums.example.com/o/object-admin/
     <p>Each returns a class name such as <code>com.liferay.object.model.ObjectDefinition#J6B8</code>. You can also run the same request, <strong>getObjectDefinitionByExternalReferenceCode</strong>, from the forum’s API Explorer (<code>/o/api</code>, <em>object-admin</em>).</p>
   </li>
   <li><strong>Download</strong> <a href="downloads/forums-discussion-finder.workflow.xml">forums-discussion-finder.workflow.xml</a>. Replace <code>C2M0_THREAD_CLASS_NAME</code> and <code>C2M0_MESSAGE_CLASS_NAME</code> with the two class names.</li>
-  <li><strong>In AI Hub, add an agent:</strong>
+  <li><strong>In AI Hub, open the agent builder and click New Agent.</strong></li>
+  <li><strong>Add the workflow first,</strong> before you fill in the form: the form may not keep what you typed while you edit the workflow.
+    <ol>
+      <li>Click <strong>Edit Workflow</strong>, then <strong>Source View</strong>.</li>
+      <li>Replace the whole source with your edited workflow file, and click <strong>Update</strong>.</li>
+      <li>Wait for <em>Workflow updated successfully.</em> AI Hub names the workflow after the agent, so the name in the file doesn’t matter.</li>
+      <li>Click <strong>Cancel</strong> to go back to the agent.</li>
+    </ol>
+
+    <p>The <strong>Diagram View</strong> may show only Start and End. The agent’s LLM step is still there: <strong>Source View</strong> shows it, and the agent runs it.</p>
+  </li>
+  <li><strong>Fill in the agent:</strong>
     <ul>
       <li><strong>Title:</strong> <code>Forums Discussion Finder</code></li>
-      <li><strong>External Reference Code:</strong> <code>FORUMS_DISCUSSION_FINDER</code>, or the code AI Hub suggests. Codes are unique across the whole AI Hub, so use AI Hub’s code if this one is taken.</li>
+      <li><strong>External Reference Code:</strong> keep the code AI Hub filled in. Codes are unique across the whole AI Hub, and AI Hub doesn’t warn you when a code you type is taken: it just doesn’t save the agent.</li>
       <li>
         <p><strong>Description:</strong> the chatbot picks an agent by its description, so use this one, or one that says the same:</p>
 
@@ -253,7 +291,7 @@ curl -u "admin@example.com:password" "https://forums.example.com/o/object-admin/
 
     <p><img src="agent-finder.png" alt="Creating the Forums Discussion Finder agent in AI Hub: its title, external reference code, description, and variables." class="screenshot" /></p>
   </li>
-  <li>Click <strong>Edit Workflow</strong>, open the workflow’s code view, replace its content with your edited workflow file, and click <strong>Update</strong>. Then <strong>Save</strong> the agent.</li>
+  <li><strong>Turn on Enable Agent,</strong> and click <strong>Publish</strong>. The agent appears in the agent builder’s list. Without <strong>Enable Agent</strong>, it’s published inactive and doesn’t run.</li>
 </ol>
 
 <p>The workflow has one LLM step. It names each discussion by its exact title, so people can find it with the forum’s search. Its instructions treat forum posts as data written by members, never as instructions, and only list discussions that appear in the search results.</p>

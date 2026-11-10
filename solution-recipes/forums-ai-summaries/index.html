@@ -74,6 +74,8 @@
       </li>
       <li class="open"><a href="/site-preview/solution-recipes/forums-ai-summaries/" aria-current="page">AI Discussion Summaries with AI Hub</a>
       </li>
+      <li><a href="/site-preview/solution-recipes/sharepoint-discussions-to-forums/">SharePoint Discussions to Liferay Forums</a>
+      </li>
     </ul>
   </details>
 
@@ -81,11 +83,11 @@
     <p class="docs-crumbs">
       <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/solution-recipes/">Solution Recipes</a>
     </p>
-    <p class="recipe-tags page-tags"><a class="rtag" href="/site-preview/solution-recipes/?tag=AI+Hub#recipes">AI Hub</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Liferay+Forums#recipes">Liferay Forums</a><a class="rtag" href="/site-preview/solution-recipes/?tag=AI+summaries#recipes">AI summaries</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Objects#recipes">Objects</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Client+extensions#recipes">Client extensions</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Fragments#recipes">Fragments</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Display+page+templates#recipes">Display page templates</a></p>
+    <p class="recipe-tags page-tags"><a class="rtag" href="/site-preview/solution-recipes/?tag=AI+Hub#recipes">AI Hub</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Liferay+Forums#recipes">Liferay Forums</a><a class="rtag" href="/site-preview/solution-recipes/?tag=AI+summaries#recipes">AI summaries</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Workflow#recipes">Workflow</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Objects#recipes">Objects</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Client+extensions#recipes">Client extensions</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Fragments#recipes">Fragments</a><a class="rtag" href="/site-preview/solution-recipes/?tag=Display+page+templates#recipes">Display page templates</a></p>
     <article class="prose" data-pagefind-body>
       <h1 class="no_toc" id="ai-discussion-summaries-with-ai-hub">AI Discussion Summaries with AI Hub</h1>
 
-<p class="important">Liferay AI Hub is <a href="https://learn.liferay.com/w/updates/release-notes/liferay-dxp/2026.q3/highlights/ai-hub-generally-available">generally available from Liferay DXP 2026.Q3</a>, with a 30-day free trial. The summaries don’t need the forum’s Liferay connected to AI Hub, so on Liferay DXP 2026.Q1, where AI Hub is in beta, you don’t need AI Hub support from Liferay Support. This recipe was tested on Liferay Self-Hosted with Docker; other Liferay environments haven’t been tried yet.</p>
+<p class="important">Liferay AI Hub is <a href="https://learn.liferay.com/w/updates/release-notes/liferay-dxp/2026.q3/highlights/ai-hub-generally-available">generally available from Liferay DXP 2026.Q3</a>, with a 30-day free trial. On Liferay DXP 2026.Q1, where AI Hub is in beta, you also need AI Hub support for your update, which you request from Liferay Support (Step 2). This recipe was tested on Liferay Self-Hosted with Docker; other Liferay environments haven’t been tried yet.</p>
 
 <div class="product-spotlight">
   <a href="https://www.liferay.com/capabilities/ai-hub"><img src="/site-preview/solution-recipes/assets/products/ai-hub.png" alt="Liferay AI Hub" width="96" height="96" /></a>
@@ -97,10 +99,12 @@
   <li><a href="#ingredients" id="markdown-toc-ingredients">Ingredients</a></li>
   <li><a href="#steps" id="markdown-toc-steps">Steps</a>    <ol>
       <li><a href="#step-1-install-liferay-forums" id="markdown-toc-step-1-install-liferay-forums">Step 1: Install Liferay Forums</a></li>
-      <li><a href="#step-2-create-the-forums-discussion-summary-agent" id="markdown-toc-step-2-create-the-forums-discussion-summary-agent">Step 2: Create the Forums Discussion Summary Agent</a></li>
-      <li><a href="#step-3-deploy-the-summary-object" id="markdown-toc-step-3-deploy-the-summary-object">Step 3: Deploy the Summary Object</a></li>
-      <li><a href="#step-4-deploy-and-run-the-summary-service" id="markdown-toc-step-4-deploy-and-run-the-summary-service">Step 4: Deploy and Run the Summary Service</a></li>
-      <li><a href="#step-5-show-the-summary-on-the-topic-page" id="markdown-toc-step-5-show-the-summary-on-the-topic-page">Step 5: Show the Summary on the Topic Page</a></li>
+      <li><a href="#step-2-connect-the-forums-liferay-to-ai-hub" id="markdown-toc-step-2-connect-the-forums-liferay-to-ai-hub">Step 2: Connect the Forum’s Liferay to AI Hub</a></li>
+      <li><a href="#step-3-create-the-forums-discussion-summary-agent" id="markdown-toc-step-3-create-the-forums-discussion-summary-agent">Step 3: Create the Forums Discussion Summary Agent</a></li>
+      <li><a href="#step-4-deploy-the-summary-object" id="markdown-toc-step-4-deploy-the-summary-object">Step 4: Deploy the Summary Object</a></li>
+      <li><a href="#step-5-deploy-and-run-the-summary-service" id="markdown-toc-step-5-deploy-and-run-the-summary-service">Step 5: Deploy and Run the Summary Service</a></li>
+      <li><a href="#step-6-deploy-the-workflow" id="markdown-toc-step-6-deploy-the-workflow">Step 6: Deploy the Workflow</a></li>
+      <li><a href="#step-7-show-the-summary-on-the-topic-page" id="markdown-toc-step-7-show-the-summary-on-the-topic-page">Step 7: Show the Summary on the Topic Page</a></li>
     </ol>
   </li>
   <li><a href="#result" id="markdown-toc-result">Result</a></li>
@@ -115,7 +119,7 @@
 <ul>
   <li><strong>One summary per discussion, shared by every reader.</strong> It’s written on the server once a discussion has enough replies and has gone quiet, and again after new replies settle, not on every page view.</li>
   <li><strong>Marked as AI-generated,</strong> with when it was written and how many replies it covers. Discussions without a summary look as they do today.</li>
-  <li><strong>Written by an AI Hub agent</strong> in your AI Hub account, so you manage its model, instructions and guardrails in AI Hub.</li>
+  <li><strong>Written by an AI Hub agent</strong> in your AI Hub account, so you manage its model, instructions and guardrails in AI Hub. Liferay runs it in a workflow, through its own connection to AI Hub, so the AI Hub credentials stay in Liferay.</li>
   <li><strong>Follows the forum’s moderation:</strong> a flagged topic shows no summary, and a summary is written again when posts are edited or deleted, so it never keeps what a moderator removed.</li>
 </ul>
 
@@ -145,6 +149,16 @@
       <td><a href="https://learn.liferay.com/w/ai-hub/index">AI Hub</a>, <a href="https://learn.liferay.com/w/ai-hub/agent-workflows">Agent Workflows</a></td>
     </tr>
     <tr>
+      <td>Liferay DXP connected to AI Hub</td>
+      <td>DXP feature</td>
+      <td><a href="https://learn.liferay.com/w/ai-hub/integrating-ai-hub-with-liferay-dxp">Integrating AI Hub with Liferay DXP</a></td>
+    </tr>
+    <tr>
+      <td>A workflow with an AI Hub agent step</td>
+      <td>DXP feature</td>
+      <td><a href="https://learn.liferay.com/w/dxp/low-code/workflow">Workflow</a></td>
+    </tr>
+    <tr>
       <td>The summary object and service</td>
       <td>Client extensions</td>
       <td><a href="https://learn.liferay.com/w/dxp/development/client-extensions">Client Extensions</a></td>
@@ -157,7 +171,7 @@
   </tbody>
 </table>
 
-<p><strong>Downloads:</strong> version 0.1.0 of the add-on.</p>
+<p><strong>Downloads:</strong> version 0.2.0 of the add-on.</p>
 
 <table>
   <thead>
@@ -173,7 +187,11 @@
     </tr>
     <tr>
       <td><a href="downloads/liferay-forums-ai-summary-etc-spring-boot.zip">liferay-forums-ai-summary-etc-spring-boot.zip</a></td>
-      <td>The <strong>summary service</strong>, which finds discussions that need a summary, asks the AI Hub agent, and saves the result (32 MB)</td>
+      <td>The <strong>summary service</strong>, which finds discussions that need a summary, starts the workflow for each, and saves the summary the workflow writes (32 MB)</td>
+    </tr>
+    <tr>
+      <td><a href="downloads/forums-ai-summary.workflow.xml">forums-ai-summary.workflow.xml</a></td>
+      <td>The <strong>Forums AI Summary</strong> workflow: it runs the agent through the forum’s AI Hub connection, then hands the summary to the service</td>
     </tr>
     <tr>
       <td><a href="downloads/forums-discussion-summary.workflow.xml">forums-discussion-summary.workflow.xml</a></td>
@@ -184,7 +202,7 @@
       <td>The <strong>Forums AI</strong> fragment set: <strong>AI Summary</strong> shows the summary on the topic page, and <strong>AI Hub Chat</strong> is for the <a href="../forums-ai-assistant/">Forums Assistant</a></td>
     </tr>
     <tr>
-      <td><a href="downloads/liferay-forums-ai-summary-0.1.0-source.zip">liferay-forums-ai-summary-0.1.0-source.zip</a></td>
+      <td><a href="downloads/liferay-forums-ai-summary-0.2.0-source.zip">liferay-forums-ai-summary-0.2.0-source.zip</a></td>
       <td>The <strong>source</strong> of all of the above, to read or change them. Its README says how to build the zips</td>
     </tr>
   </tbody>
@@ -195,12 +213,10 @@
 <p><strong>Before you start, you need:</strong></p>
 
 <ul>
-  <li>Liferay DXP 2026.Q1 LTS on Liferay Self-Hosted with Docker, with Liferay Forums 1.0.0 installed and its forum site created. This recipe was tested on 2026.Q1.4 with hotfix 84 and PostgreSQL.</li>
-  <li>An AI Hub account, with the <strong>Client ID</strong> and <strong>Client Secret</strong> Liferay provided for it. The summary service signs in to AI Hub with them to run the agent, so they must be allowed to run agents: the scope <code>Liferay.AI.Hub.REST.everything</code>. If you’re not sure that yours are, ask Liferay Support.</li>
+  <li>Liferay DXP 2026.Q1 LTS on Liferay Self-Hosted with Docker, with AI Hub support (Step 2), with Liferay Forums 1.0.0 installed, with its <a href="/liferay-forums/installing/#required-liferay-fixes">required Liferay fixes</a>, and its forum site created. This recipe was tested on 2026.Q1.4 with PostgreSQL.</li>
+  <li>An AI Hub account, with the <strong>Client ID</strong> and <strong>Client Secret</strong> Liferay provided for it.</li>
   <li>Administrator access to the forum’s Liferay, and access to the server that runs its Docker containers.</li>
 </ul>
-
-<p>Unlike the <a href="../forums-ai-assistant/">Forums Assistant</a>, the summaries don’t need the forum’s Liferay connected to AI Hub: the summary service calls AI Hub itself.</p>
 
 <h2 id="steps">Steps</h2>
 
@@ -208,18 +224,71 @@
 
 <p>Install Liferay Forums and create the forum site as the <a href="/liferay-forums/">Liferay Forums guide</a> describes.</p>
 
-<p>Once the site exists, remove the site initializer zip as the guide says. If it stays deployed, it runs again at every Liferay start and resets the site’s templates, including the summary you add in Step 5.</p>
+<p>Once the site exists, remove the site initializer zip as the guide says. If it stays deployed, it runs again at every Liferay start and resets the site’s templates, including the summary you add in Step 7.</p>
 
-<h3 id="step-2-create-the-forums-discussion-summary-agent">Step 2: Create the Forums Discussion Summary Agent</h3>
+<h3 id="step-2-connect-the-forums-liferay-to-ai-hub">Step 2: Connect the Forum’s Liferay to AI Hub</h3>
 
-<p>The agent turns one discussion into a short summary. It has a single LLM step and doesn’t search anything: the summary service sends it the discussion.</p>
+<p>Liferay runs the summary agent through its own connection to AI Hub, so the AI Hub credentials stay in Liferay. <a href="https://learn.liferay.com/w/ai-hub/integrating-ai-hub-with-liferay-dxp">Integrating AI Hub with Liferay DXP</a> describes the connection.</p>
+
+<ol>
+  <li>
+    <p><strong>On Liferay DXP 2026.Q1, request AI Hub support from Liferay Support.</strong> 2026.Q1 updates, including 2026.Q1.4 that this recipe was tested on, don’t include everything the summaries need. Open a Support ticket asking for <strong>AI Hub support (LPD-107054 and LPD-107058)</strong> for your 2026.Q1 update (for example, 2026.Q1.4), and give your current update and hotfix:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>LPD</th>
+          <th>What it adds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LPD-107054</td>
+          <td>The connection to AI Hub: the <em>AI Hub</em> settings in <em>Instance Settings</em></td>
+        </tr>
+        <tr>
+          <td>LPD-107058</td>
+          <td>The <strong>AI Hub agent</strong> step for workflows, which runs an AI Hub agent through that connection</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>If you also add the <a href="../forums-ai-assistant/">Forums Assistant</a>, ask for LPD-93555 in the same ticket. Liferay Support provides it as a hotfix or as the update that includes it. AI Hub is in beta on 2026.Q1 and backports are in progress, so a later 2026.Q1 update may include them: check with Liferay Support. On 2026.Q3 and later, skip this step.</p>
+  </li>
+  <li>
+    <p><strong>On 2026.Q1, turn on the feature flag:</strong> <em>Control Panel</em> → <em>Instance Settings</em> → <em>Feature Flags</em> → <em>Release</em>, then enable <strong>AI Hub (LPD-62272)</strong>. On Liferay Self-Hosted, you can set it in <code>portal-ext.properties</code> instead:</p>
+
+    <pre><code class="language-properties"> feature.flag.LPD-62272=true
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Connect it:</strong> go to <em>Control Panel</em> → <em>Instance Settings</em>, and under <em>Platform</em> click <strong>AI Hub</strong>. Enter the <strong>Client ID</strong> and <strong>Client Secret</strong> Liferay provided, and the AI Hub <strong>Service URL</strong> given in <a href="https://learn.liferay.com/w/ai-hub/integrating-ai-hub-with-liferay-dxp">Integrating AI Hub with Liferay DXP</a>. Click <strong>Save</strong>.</p>
+  </li>
+</ol>
+
+<p class="note">This recipe was tested on 2026.Q1.4 with pre-release builds of these AI Hub backports, so some labels may differ slightly in your version.</p>
+
+<h3 id="step-3-create-the-forums-discussion-summary-agent">Step 3: Create the Forums Discussion Summary Agent</h3>
+
+<p>The agent turns one discussion into a short summary. It has a single LLM step and doesn’t search anything: the workflow sends it the discussion.</p>
 
 <ol>
   <li><strong>Download</strong> <a href="downloads/forums-discussion-summary.workflow.xml">forums-discussion-summary.workflow.xml</a>.</li>
-  <li><strong>In AI Hub, add an agent:</strong>
+  <li><strong>In AI Hub, open the agent builder and click New Agent.</strong></li>
+  <li><strong>Add the workflow first,</strong> before you fill in the form: the form may not keep what you typed while you edit the workflow.
+    <ol>
+      <li>Click <strong>Edit Workflow</strong>, then <strong>Source View</strong>.</li>
+      <li>Replace the whole source with the content of the downloaded file, and click <strong>Update</strong>.</li>
+      <li>Wait for <em>Workflow updated successfully.</em> AI Hub names the workflow after the agent, so the name in the file doesn’t matter.</li>
+      <li>Click <strong>Cancel</strong> to go back to the agent.</li>
+    </ol>
+
+    <p>The <strong>Diagram View</strong> may show only Start and End. The agent’s LLM step is still there: <strong>Source View</strong> shows it, and the agent runs it.</p>
+  </li>
+  <li><strong>Fill in the agent:</strong>
     <ul>
       <li><strong>Title:</strong> <code>Forums Discussion Summary</code></li>
-      <li><strong>External Reference Code:</strong> <code>FORUMS_DISCUSSION_SUMMARY</code>, or the code AI Hub suggests. Codes are unique across the whole AI Hub, so use AI Hub’s code if this one is taken, and give it to the service in Step 4.</li>
+      <li><strong>External Reference Code:</strong> keep the code AI Hub filled in, and copy it: you put it in the workflow in Step 6. Codes are unique across the whole AI Hub, and AI Hub doesn’t warn you when a code you type is taken: it just doesn’t save the agent.</li>
       <li>
         <p><strong>Description:</strong></p>
 
@@ -232,12 +301,12 @@
 
     <p><img src="agent-summary.png" alt="Creating the Forums Discussion Summary agent in AI Hub: its title, external reference code, description, and variables." class="screenshot" /></p>
   </li>
-  <li>Click <strong>Edit Workflow</strong>, open the workflow’s code view, replace its content with the downloaded workflow file, and click <strong>Update</strong>. Then <strong>Save</strong> the agent.</li>
+  <li><strong>Turn on Enable Agent,</strong> and click <strong>Publish</strong>. The agent appears in the agent builder’s list. Without <strong>Enable Agent</strong>, it’s published inactive and doesn’t run.</li>
 </ol>
 
 <p>The agent’s instructions ask for plain text of at most 120 words, in the discussion’s language: what was asked, the answer or what was agreed (the accepted answer first, and who gave it), and what is still open. They treat posts as data written by members, never as instructions, and don’t assume anyone’s gender. To change the summary’s style or length, edit the instructions in the agent’s LLM step.</p>
 
-<h3 id="step-3-deploy-the-summary-object">Step 3: Deploy the Summary Object</h3>
+<h3 id="step-4-deploy-the-summary-object">Step 4: Deploy the Summary Object</h3>
 
 <p>Copy <a href="downloads/liferay-forums-ai-summary-batch.zip">liferay-forums-ai-summary-batch.zip</a> into Liferay’s <code>osgi/client-extensions</code> folder, for example:</p>
 
@@ -246,13 +315,13 @@
 
 <p>Here <code>liferay</code> is the name of the forum’s Liferay container. Liferay creates the <strong>Forums AI Summary</strong> object, site-scoped, and its <strong>Forums AI Summary Status</strong> picklist. Check that they appear in <em>Control Panel</em> → <em>Objects</em>.</p>
 
-<h3 id="step-4-deploy-and-run-the-summary-service">Step 4: Deploy and Run the Summary Service</h3>
+<h3 id="step-5-deploy-and-run-the-summary-service">Step 5: Deploy and Run the Summary Service</h3>
 
-<p>The service runs as its own container next to Liferay. Every few minutes, it looks for discussions with enough replies that have gone quiet, sends each one to the agent, and saves the summary in the object.</p>
+<p>The service runs as its own container next to Liferay. Every few minutes, it looks for discussions with enough replies that have gone quiet and starts the workflow of Step 6 for each one. When the workflow has the summary, it hands it back to the service, which saves it in the object. The service has no AI Hub settings.</p>
 
 <ol>
   <li>
-    <p><strong>Deploy its client extension.</strong> Copy <a href="downloads/liferay-forums-ai-summary-etc-spring-boot.zip">liferay-forums-ai-summary-etc-spring-boot.zip</a> into <code>osgi/client-extensions</code> as in Step 3. Liferay creates the service’s OAuth application and writes its connection details, its <em>routes</em>, to <code>/opt/liferay/routes/default/liferay-forums-ai-summary-etc-spring-boot</code>.</p>
+    <p><strong>Deploy its client extension.</strong> Copy <a href="downloads/liferay-forums-ai-summary-etc-spring-boot.zip">liferay-forums-ai-summary-etc-spring-boot.zip</a> into <code>osgi/client-extensions</code> as in Step 4. Liferay creates the service’s OAuth applications and its workflow action, <strong>Forums AI Summary Save</strong>, and writes its connection details, its <em>routes</em>, to <code>/opt/liferay/routes/default/liferay-forums-ai-summary-etc-spring-boot</code>.</p>
 
     <p>The service reads those routes, so Liferay’s <code>/opt/liferay/routes</code> folder must be in a Docker volume or a folder on the server. In these examples, it’s the volume <code>liferay-routes</code>, mounted when the Liferay container was created with <code>-v liferay-routes:/opt/liferay/routes</code>.</p>
   </li>
@@ -263,22 +332,17 @@
  docker build -t forums-ai-summary-service forums-ai-summary-service
 </code></pre>
   </li>
-  <li><strong>Save the AI Hub client secret in a file</strong> that only you can read, such as <code>aihub-client-secret</code>, so it isn’t in your shell history or the container’s settings.</li>
   <li>
     <p><strong>Run the service</strong> in the Liferay container’s network, so it reaches Liferay, and Liferay reaches it, at <code>localhost</code>:</p>
 
     <pre><code class="language-bash"> docker run -d --name forums-ai-summary --network container:liferay --restart unless-stopped \
    -v liferay-routes:/opt/liferay/routes:ro \
-   -v "$PWD/aihub-client-secret:/run/secrets/aihub-client-secret:ro" \
    -e LIFERAY_ROUTES_CLIENT_EXTENSION=/opt/liferay/routes/default/liferay-forums-ai-summary-etc-spring-boot \
    -e LIFERAY_ROUTES_DXP=/opt/liferay/routes/default/dxp \
-   -e FORUMS_AI_SUMMARY_AIHUB_URL=https://ai.hub.liferay.com \
-   -e FORUMS_AI_SUMMARY_AIHUB_CLIENT_ID=your-client-id \
-   -e FORUMS_AI_SUMMARY_AIHUB_CLIENT_SECRET_FILE=/run/secrets/aihub-client-secret \
    forums-ai-summary-service
 </code></pre>
 
-    <p>Replace <code>your-client-id</code> with your AI Hub account’s <strong>Client ID</strong>, and <code>FORUMS_AI_SUMMARY_AIHUB_URL</code> with your AI Hub’s address if it’s different. If your forum site’s friendly URL isn’t <code>/forums</code>, add <code>-e FORUMS_AI_SUMMARY_SITES=</code> with its path.</p>
+    <p>If your forum site’s friendly URL isn’t <code>/forums</code>, add <code>-e FORUMS_AI_SUMMARY_SITES=</code> with its path.</p>
   </li>
   <li>
     <p><strong>Check that it’s ready:</strong></p>
@@ -302,9 +366,9 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>FORUMS_AI_SUMMARY_AIHUB_AGENT</code></td>
-      <td><code>FORUMS_DISCUSSION_SUMMARY</code></td>
-      <td>The agent’s external reference code, from Step 2</td>
+      <td><code>FORUMS_AI_SUMMARY_WORKFLOW</code></td>
+      <td><code>Forums AI Summary</code></td>
+      <td>The workflow’s name, from Step 6</td>
     </tr>
     <tr>
       <td><code>FORUMS_AI_SUMMARY_SITES</code></td>
@@ -334,7 +398,7 @@
     <tr>
       <td><code>FORUMS_AI_SUMMARY_RETRY_MINUTES</code></td>
       <td><code>60</code></td>
-      <td>Time before a failed summary is tried again</td>
+      <td>Time before a summary whose workflow didn’t start, or hasn’t saved it, is tried again. The stuck workflow is deleted first</td>
     </tr>
     <tr>
       <td><code>FORUMS_AI_SUMMARY_EDIT_LOOKBACK_HOURS</code></td>
@@ -354,7 +418,27 @@
   </tbody>
 </table>
 
-<h3 id="step-5-show-the-summary-on-the-topic-page">Step 5: Show the Summary on the Topic Page</h3>
+<h3 id="step-6-deploy-the-workflow">Step 6: Deploy the Workflow</h3>
+
+<p>The <strong>Forums AI Summary</strong> workflow writes each summary in two steps: its <strong>AI Hub agent</strong> step runs the Forums Discussion Summary agent through the connection of Step 2, then its last step hands the summary to the service’s workflow action.</p>
+
+<ol>
+  <li><strong>Download</strong> <a href="downloads/forums-ai-summary.workflow.xml">forums-ai-summary.workflow.xml</a>, and replace <code>FORUMS_DISCUSSION_SUMMARY</code> in it with the agent’s external reference code from Step 3. It appears once, in <code>agent-definition-external-reference-code</code>.</li>
+  <li>
+    <p><strong>Deploy it</strong> through Liferay’s workflow API, with an administrator’s email address and password, for example with <code>jq</code> and <code>curl</code>:</p>
+
+    <pre><code class="language-bash"> jq -Rs '{name: "Forums AI Summary", title: "Forums AI Summary", content: .}' forums-ai-summary.workflow.xml |
+   curl -u "admin@example.com:password" -H "Content-Type: application/json" -d @- \
+     "https://forums.example.com/o/headless-admin-workflow/v1.0/workflow-definitions/deploy"
+</code></pre>
+
+    <p>The answer lists the workflow’s steps, with <code>AI_HUB_AGENT</code> among them. You can also run the same request, <strong>postWorkflowDefinitionDeploy</strong>, from the forum’s API Explorer (<code>/o/api</code>, <em>headless-admin-workflow</em>). The workflow then appears in <em>Control Panel</em> → <em>Workflow</em> → <em>Process Builder</em>.</p>
+  </li>
+</ol>
+
+<p>You don’t assign the workflow to anything: the service starts it, once for each summary, and it usually finishes in a few seconds.</p>
+
+<h3 id="step-7-show-the-summary-on-the-topic-page">Step 7: Show the Summary on the Topic Page</h3>
 
 <ol>
   <li><strong>Import the fragments.</strong> Download <a href="downloads/forums-ai-fragments.zip">forums-ai-fragments.zip</a>. In the forum site, go to <em>Design</em> → <em>Fragments</em>, open the actions menu (⋮) next to <em>Fragment Sets</em>, and choose <strong>Import</strong>. Select the zip and click <strong>Import</strong>. The <strong>Forums AI</strong> fragment set appears, with the <strong>AI Summary</strong> and <strong>AI Hub Chat</strong> fragments. If you’ve already imported it for the <a href="../forums-ai-assistant/">Forums Assistant</a>, you have it already.</li>
@@ -392,10 +476,12 @@
   <li><strong>Tested only on Liferay Self-Hosted with Docker.</strong> On other Liferay environments, the client extension and service may need other settings.</li>
   <li><strong>Summaries cover the whole topic for everyone who can open it:</strong> the service summarizes what’s posted in the topic, and the summary is shown to every reader of the topic page.</li>
   <li><strong>A summary isn’t immediate:</strong> it waits for the quiet period and the next pass. Lower the two settings to see it sooner, at the cost of more AI Hub runs.</li>
-  <li><strong>If summaries don’t appear,</strong> check <code>docker logs forums-ai-summary</code>. The service logs each summary it writes, hides or removes, and why a run failed, such as a wrong agent code or credentials. A failed run is tried again after <code>FORUMS_AI_SUMMARY_RETRY_MINUTES</code>.</li>
+  <li><strong>If summaries don’t appear,</strong> check <code>docker logs forums-ai-summary</code>: the service logs each workflow it starts and each summary it saves, hides or removes. If it started a workflow but saved nothing, the agent didn’t answer: Liferay’s log says <em>Unable to complete AI hub agent node “summarize”</em> with the reason. Check the AI Hub connection (Step 2) and the agent’s code in the workflow (Step 6). The service deletes a stuck workflow and tries again after <code>FORUMS_AI_SUMMARY_RETRY_MINUTES</code>.</li>
 </ul>
 
-<p><strong>To remove the summaries:</strong> take the AI Summary fragment off the <strong>Forum Thread</strong> template and publish it, stop and remove the <code>forums-ai-summary</code> container, and remove both zips from <code>osgi/client-extensions</code>. The forum works as before. To delete the summaries too, delete the <strong>Forums AI Summary</strong> object and its <strong>Forums AI Summary Status</strong> picklist.</p>
+<p><strong>To remove the summaries:</strong> take the AI Summary fragment off the <strong>Forum Thread</strong> template and publish it, stop and remove the <code>forums-ai-summary</code> container, remove both zips from <code>osgi/client-extensions</code>, and unpublish and delete the <strong>Forums AI Summary</strong> workflow in <em>Workflow</em> → <em>Process Builder</em>. The forum works as before. To delete the summaries too, delete the <strong>Forums AI Summary</strong> object and its <strong>Forums AI Summary Status</strong> picklist.</p>
+
+<p>If Liferay won’t delete the workflow because it has unfinished instances, an agent step never finished. Before you remove the container, find their IDs in its log (<code>docker logs forums-ai-summary | grep "started"</code> lists <em>workflow &lt;ID&gt; started</em> for each), and delete each one that never saved a summary with <code>DELETE /o/headless-admin-workflow/v1.0/workflow-instances/&lt;ID&gt;</code>, from the forum’s API Explorer or with <code>curl</code>.</p>
 
 <p><strong>Where next:</strong></p>
 
@@ -405,7 +491,7 @@
 </ul>
 
     </article>
-    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/solution-recipes/forums-ai-assistant/"><span>Previous</span>Forums Assistant with AI Hub</a>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/solution-recipes/forums-ai-assistant/"><span>Previous</span>Forums Assistant with AI Hub</a><a class="next" href="/site-preview/solution-recipes/sharepoint-discussions-to-forums/"><span>Next</span>SharePoint Discussions to Liferay Forums</a>
     </nav>
   </main>
 </div>
