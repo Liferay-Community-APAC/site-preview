@@ -1,0 +1,39 @@
+# OAuth 2 connection between Liferay and the Liferay Legacy MCP server.
+#
+# Liferay creates an OAuth 2 application from this definition and publishes its client ID,
+# client secret and token address as routes (files) for the MCP server to read.
+#
+# The application acts as the service user named in userAccountScreenName, which needs the
+# "MCP OAuth Client" role to be issued tokens. The scopes limit it to the APIs the tools call.
+#
+# Writes are decided here, and Liferay enforces it:
+#   Liferay.Headless.Delivery.everything        read and write
+#   Liferay.Headless.Delivery.everything.read   read-only: Liferay refuses every write, and the
+#                                               MCP server reports its write tools as unavailable
+#                                               (make the Admin Content, Admin Workflow and
+#                                               Batch Engine scopes .read too)
+# Admin Content: drafts and article status. Admin Workflow: review tasks. Batch Engine: exports.
+# Admin Taxonomy and Form: the tags and categories, and forms areas of the generic API tools.
+#
+# .serviceAddress and .serviceScheme give the application its home page, the MCP server's own
+# address; Liferay requires one. They don't affect how the server connects.
+#
+# After changing it, deploy it again and restart the MCP server.
+assemble: []
+liferay-mcp-oauth-headless-server:
+  name: Liferay MCP server
+  description: OAuth 2 connection for the Liferay MCP server
+  scopes:
+    - Liferay.Data.Engine.REST.everything.read
+    - Liferay.Headless.Admin.Content.everything
+    - Liferay.Headless.Admin.Taxonomy.everything
+    - Liferay.Headless.Admin.User.everything.read
+    - Liferay.Headless.Admin.Workflow.everything
+    - Liferay.Headless.Batch.Engine.everything
+    - Liferay.Headless.Delivery.everything
+    - Liferay.Headless.Form.everything
+    - liferay-json-web-services.everything.read
+  .serviceAddress: localhost:3333
+  .serviceScheme: http
+  type: oAuthApplicationHeadlessServer
+  userAccountScreenName: mcp-service

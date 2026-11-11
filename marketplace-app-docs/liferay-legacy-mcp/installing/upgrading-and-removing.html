@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upgrading and Removing · Liferay Legacy MCP · Liferay Community APAC</title>
+  <meta name="description" content="Pull the new tag, and start the container again with the same volumes and settings:">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">
+  <meta property="og:title" content="Upgrading and Removing · Liferay Legacy MCP">
+  <meta property="og:description" content="Pull the new tag, and start the container again with the same volumes and settings:">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    /* Copy buttons on code blocks (added by the script at the end of the page). */
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: 600 12px/1.6 var(--font, inherit); color: var(--muted); background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: var(--text); border-color: var(--muted); }
+    .copy-code.copied { color: var(--blue); border-color: var(--blue); }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Legacy MCP docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Overview</a>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/getting-started.html">Getting Started</a>
+      </li>
+      <li class="open"><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html">Creating the Service User</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html">Liferay PaaS</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-code.html">With Claude Code</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-desktop.html">With the Claude Desktop App</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/stdio.html">Other AI Assistants</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html">For Services and People</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html" aria-current="page">Upgrading and Removing</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/">Using the Server</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/what-to-ask.html">What to Ask</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/writes.html">Writes and Previews</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/page-inspection.html">Inspecting Pages</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/tools.html">Tools</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">Settings</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">Compatibility</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html">Known Issues</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/reporting-a-bug.html">Reporting a Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Liferay Legacy MCP</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+    </p>
+    <article class="prose" data-pagefind-body>
+      <h1 class="no_toc" id="upgrading-and-removing">Upgrading and Removing</h1>
+
+<ol id="markdown-toc">
+  <li><a href="#upgrading-the-server" id="markdown-toc-upgrading-the-server">Upgrading the Server</a></li>
+  <li><a href="#removing" id="markdown-toc-removing">Removing</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Related Information</a></li>
+</ol>
+
+<h2 id="upgrading-the-server">Upgrading the Server</h2>
+
+<p>Pull the new tag, and start the container again with the same volumes and settings:</p>
+
+<pre><code class="language-bash">docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:&lt;new tag&gt;
+</code></pre>
+
+<p>For an AI assistant that starts the server itself, change the tag in its <code>mcpServers</code> setting, and restart the assistant.</p>
+
+<p>The server keeps nothing between restarts except its audit log in <code>/data</code>. Sign-in sessions are in memory, so a restart drops them, and people sign in again. After changing the OAuth application, copy the routes again if they changed, and restart the server.</p>
+
+<h2 id="removing">Removing</h2>
+
+<ol>
+  <li>Stop and remove the container. Keep the <code>/data</code> volume if you need the audit log.</li>
+  <li>In Liferay, undeploy the client extension, or delete the application in <em>OAuth 2 Administration</em>.</li>
+  <li>Delete the sign-in application and its role, if you created them.</li>
+  <li>Deactivate the service user, and delete its two roles.</li>
+</ol>
+
+<h2 id="related-information">Related Information</h2>
+
+<ul>
+  <li><a href="./">Installing</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html"><span>Previous</span>Checking the Installation</a><a class="next" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/"><span>Next</span>Using the Server</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Legacy MCP is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc. A Liferay Community APAC app for experimental use, not supported by Liferay, and not meant for production.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (nav && mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', 'Link to this section');
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var t = document.createElement('textarea');
+        t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+        document.body.removeChild(t);
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var box = document.createElement('div');
+      box.className = 'code-block';
+      pre.parentNode.insertBefore(box, pre);
+      box.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = 'Copy';
+      b.setAttribute('aria-label', 'Copy the code to the clipboard');
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        copyText(code.innerText.replace(/\n$/, '')).then(function () {
+          b.textContent = 'Copied'; b.classList.add('copied');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+        }, function () {
+          // No clipboard access: select the code so it can be copied by hand.
+          var range = document.createRange(); range.selectNodeContents(code);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        });
+      });
+      box.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

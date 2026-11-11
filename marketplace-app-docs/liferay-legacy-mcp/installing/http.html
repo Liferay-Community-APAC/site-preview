@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For Services and People · Liferay Legacy MCP · Liferay Community APAC</title>
+  <meta name="description" content="Over HTTPS, one server is shared: services call it with API keys, and people sign in with their Liferay account from an AI assistant that connects to remote ...">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html">
+  <meta property="og:title" content="For Services and People · Liferay Legacy MCP">
+  <meta property="og:description" content="Over HTTPS, one server is shared: services call it with API keys, and people sign in with their Liferay account from an AI assistant that connects to remote ...">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    /* Copy buttons on code blocks (added by the script at the end of the page). */
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: 600 12px/1.6 var(--font, inherit); color: var(--muted); background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: var(--text); border-color: var(--muted); }
+    .copy-code.copied { color: var(--blue); border-color: var(--blue); }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Legacy MCP docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Overview</a>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/getting-started.html">Getting Started</a>
+      </li>
+      <li class="open"><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html">Creating the Service User</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html">Liferay PaaS</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-code.html">With Claude Code</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-desktop.html">With the Claude Desktop App</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/stdio.html">Other AI Assistants</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html" aria-current="page">For Services and People</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">Upgrading and Removing</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/">Using the Server</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/what-to-ask.html">What to Ask</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/writes.html">Writes and Previews</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/page-inspection.html">Inspecting Pages</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/tools.html">Tools</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">Settings</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">Compatibility</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html">Known Issues</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/reporting-a-bug.html">Reporting a Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Liferay Legacy MCP</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+    </p>
+    <article class="prose" data-pagefind-body>
+      <h1 class="no_toc" id="for-services-and-people-https">For Services and People (HTTPS)</h1>
+
+<p>Over HTTPS, one server is shared: services call it with API keys, and people sign in with their Liferay account from an AI assistant that connects to remote MCP servers. Signed-in people act as themselves, with their own Liferay permissions, and are read-only.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#step-1-start-the-server" id="markdown-toc-step-1-start-the-server">Step 1: Start the Server</a></li>
+  <li><a href="#step-2-give-services-api-keys" id="markdown-toc-step-2-give-services-api-keys">Step 2: Give Services API Keys</a></li>
+  <li><a href="#step-3-let-people-sign-in-with-liferay-optional" id="markdown-toc-step-3-let-people-sign-in-with-liferay-optional">Step 3: Let People Sign In With Liferay (Optional)</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Related Information</a></li>
+</ol>
+
+<h2 id="step-1-start-the-server">Step 1: Start the Server</h2>
+
+<p>Run the server next to Liferay, as in the page for where your Liferay runs (<a href="tomcat.html">Tomcat</a>, <a href="docker.html">Docker</a>, <a href="paas.html">PaaS</a>), behind a reverse proxy or load balancer that terminates TLS at an <code>https</code> address, for example <code>https://mcp.example.com</code>, and forwards to port 3333:</p>
+
+<pre><code class="language-bash">docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333 \
+  -v /srv/liferay-mcp/routes:/run/liferay-routes:ro \
+  -v /srv/liferay-mcp/secrets:/run/mcp-secrets:ro \
+  -v liferay-mcp-data:/data \
+  -e LIFERAY_URL=https://liferay.example.com \
+  -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
+  -e MCP_HTTP_HOST=0.0.0.0 \
+  -e MCP_PUBLIC_URL=https://mcp.example.com \
+  -e MCP_TRUST_PROXY=private \
+  -e MCP_HTTP_API_KEYS_FILE=/run/mcp-secrets/api-keys \
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim --http
+</code></pre>
+
+<p>The server refuses to start on an address other than loopback without an <code>https</code> public address and at least one way to identify callers: API keys (Step 2) or Liferay sign-in (Step 3).</p>
+
+<h2 id="step-2-give-services-api-keys">Step 2: Give Services API Keys</h2>
+
+<p>Each service gets its own key, with <code>read</code> or <code>write</code> access. The keys file holds only a hash of each key. To make a key and its line for the file:</p>
+
+<pre><code class="language-bash">KEY="lmcp_$(openssl rand -base64 32 | tr '+/' '-_' | tr -d '=')"
+echo "Give the caller this key, once: $KEY"
+echo "reporting:read:$(printf '%s' "$KEY" | openssl dgst -sha256 | awk '{print $NF}')" &gt;&gt; /srv/liferay-mcp/secrets/api-keys
+</code></pre>
+
+<p>Replace <code>reporting</code> with the service’s name, and <code>read</code> with <code>write</code> for a service that may write. Keep the keys file readable only by the server, as user ID 1000 in the container. Callers send <code>Authorization: Bearer &lt;key&gt;</code>. To revoke a key, remove its line and restart the server.</p>
+
+<p class="note">Over HTTPS, writes stay off even for <code>write</code> keys, unless you also set <code>MCP_WRITE_MODE=confirm</code> and <code>MCP_HTTP_WRITES=true</code>. Nobody sees a service’s preview, so turn this on only for an unattended job you trust.</p>
+
+<h2 id="step-3-let-people-sign-in-with-liferay-optional">Step 3: Let People Sign In With Liferay (Optional)</h2>
+
+<ol>
+  <li>
+    <p>In <em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em>, add an application:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><code>Liferay MCP sign-in</code></td>
+        </tr>
+        <tr>
+          <td>Website URL</td>
+          <td>The server’s address, for example <code>https://mcp.example.com</code></td>
+        </tr>
+        <tr>
+          <td>Callback URIs</td>
+          <td><code>https://mcp.example.com/oauth/callback</code></td>
+        </tr>
+        <tr>
+          <td>Client Profile</td>
+          <td>Web Application</td>
+        </tr>
+        <tr>
+          <td>Allowed Authorization Types</td>
+          <td>Authorization Code and Refresh Token only</td>
+        </tr>
+        <tr>
+          <td>Trusted Application</td>
+          <td>Off, so people see what they’re allowing</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>On its <strong>Scopes</strong> tab, select these read scopes, and save: <code>Liferay.Headless.Delivery.everything.read</code>, <code>Liferay.Headless.Admin.Content.everything.read</code>, <code>Liferay.Headless.Admin.User.everything.read</code>, <code>Liferay.Headless.Admin.Taxonomy.everything.read</code>, <code>Liferay.Headless.Admin.Workflow.everything.read</code>, <code>Liferay.Data.Engine.REST.everything.read</code>, <code>Liferay.Headless.Form.everything.read</code> and <code>liferay-json-web-services.everything.read</code>.</li>
+  <li>Decide who may sign in: create a regular role, for example <strong>MCP Sign-In User</strong>. On the application’s <strong>Permissions</strong>, give that role <strong>View</strong> and <strong>Create Token</strong>, and assign the role to the people who may use the server.</li>
+  <li>
+    <p>Save the application’s client secret in a file in <code>/srv/liferay-mcp/secrets/</code>, and add to the <code>docker run</code> command:</p>
+
+    <pre><code class="language-bash"> -e LIFERAY_SIGN_IN_CLIENT_ID=&lt;the application's client ID&gt; \
+ -e LIFERAY_SIGN_IN_CLIENT_SECRET_FILE=/run/mcp-secrets/sign-in-secret \
+</code></pre>
+  </li>
+</ol>
+
+<p>People then add the server to their AI assistant as a remote MCP server at <code>https://mcp.example.com/mcp</code>. The first time, they sign in on Liferay’s own page, and the server asks them to approve the AI assistant by name.</p>
+
+<h2 id="related-information">Related Information</h2>
+
+<ul>
+  <li><a href="../reference/settings.html">Settings</a></li>
+  <li><a href="checking.html">Checking the Installation</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/stdio.html"><span>Previous</span>Other AI Assistants</a><a class="next" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html"><span>Next</span>Checking the Installation</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Legacy MCP is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc. A Liferay Community APAC app for experimental use, not supported by Liferay, and not meant for production.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (nav && mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', 'Link to this section');
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var t = document.createElement('textarea');
+        t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+        document.body.removeChild(t);
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var box = document.createElement('div');
+      box.className = 'code-block';
+      pre.parentNode.insertBefore(box, pre);
+      box.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = 'Copy';
+      b.setAttribute('aria-label', 'Copy the code to the clipboard');
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        copyText(code.innerText.replace(/\n$/, '')).then(function () {
+          b.textContent = 'Copied'; b.classList.add('copied');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+        }, function () {
+          // No clipboard access: select the code so it can be copied by hand.
+          var range = document.createRange(); range.selectNodeContents(code);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        });
+      });
+      box.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liferay PaaS · Liferay Legacy MCP · Liferay Community APAC</title>
+  <meta name="description" content="On Liferay PaaS, you add the OAuth 2 client extension to your PaaS project’s repository, and deploy it with the rest of the project. The server then runs out...">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html">
+  <meta property="og:title" content="Liferay PaaS · Liferay Legacy MCP">
+  <meta property="og:description" content="On Liferay PaaS, you add the OAuth 2 client extension to your PaaS project’s repository, and deploy it with the rest of the project. The server then runs out...">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    /* Copy buttons on code blocks (added by the script at the end of the page). */
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: 600 12px/1.6 var(--font, inherit); color: var(--muted); background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: var(--text); border-color: var(--muted); }
+    .copy-code.copied { color: var(--blue); border-color: var(--blue); }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Legacy MCP docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Overview</a>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/getting-started.html">Getting Started</a>
+      </li>
+      <li class="open"><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html">Creating the Service User</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html" aria-current="page">Liferay PaaS</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-code.html">With Claude Code</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-desktop.html">With the Claude Desktop App</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/stdio.html">Other AI Assistants</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html">For Services and People</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">Upgrading and Removing</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/">Using the Server</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/what-to-ask.html">What to Ask</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/writes.html">Writes and Previews</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/page-inspection.html">Inspecting Pages</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/tools.html">Tools</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">Settings</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">Compatibility</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html">Known Issues</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/reporting-a-bug.html">Reporting a Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Liferay Legacy MCP</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+    </p>
+    <article class="prose" data-pagefind-body>
+      <h1 class="no_toc" id="installing-on-liferay-paas">Installing on Liferay PaaS</h1>
+
+<p>On Liferay PaaS, you add the OAuth 2 client extension to your PaaS project’s repository, and deploy it with the rest of the project. The server then runs outside Liferay Cloud, on each person’s computer or on a server of yours, with the application’s credentials copied from Liferay.</p>
+
+<p class="warning">These steps haven’t been run on a Liferay PaaS environment yet. They were checked with a PaaS project’s Liferay Workspace locally, as described <a href="#how-this-was-checked">below</a>. Running the server as a service inside Liferay Cloud isn’t covered.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#step-1-prepare-the-project" id="markdown-toc-step-1-prepare-the-project">Step 1: Prepare the Project</a></li>
+  <li><a href="#step-2-add-the-client-extension" id="markdown-toc-step-2-add-the-client-extension">Step 2: Add the Client Extension</a></li>
+  <li><a href="#step-3-copy-the-credentials-for-the-server" id="markdown-toc-step-3-copy-the-credentials-for-the-server">Step 3: Copy the Credentials for the Server</a></li>
+  <li><a href="#step-4-run-the-server" id="markdown-toc-step-4-run-the-server">Step 4: Run the Server</a></li>
+  <li><a href="#without-a-client-extension" id="markdown-toc-without-a-client-extension">Without a Client Extension</a></li>
+  <li><a href="#how-this-was-checked" id="markdown-toc-how-this-was-checked">How This Was Checked</a></li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Related Information</a></li>
+</ol>
+
+<h2 id="step-1-prepare-the-project">Step 1: Prepare the Project</h2>
+
+<p>Follow Liferay’s <a href="https://learn.liferay.com/w/dxp/cloud/customizing-liferay-dxp-in-the-cloud/configuring-liferay-paas-for-client-extensions">Configuring Liferay PaaS for Client Extensions</a>. In particular, if your <code>infra</code> environment doesn’t have the client extension build pipeline, ask Liferay Cloud Support to enable it.</p>
+
+<h2 id="step-2-add-the-client-extension">Step 2: Add the Client Extension</h2>
+
+<ol>
+  <li>Download <a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml"><code>client-extension.yaml</code></a>, and check its <code>userAccountScreenName</code> and <code>scopes</code>, as in <a href="liferay-setup.html#changing-the-client-extension">Changing the Client Extension</a>.</li>
+  <li>Save it as <code>liferay/client-extensions/liferay-mcp-oauth/client-extension.yaml</code> in your PaaS project’s repository.</li>
+  <li>
+    <p>Push the project. In the Liferay Cloud console, open <strong>Builds</strong>, and on the new build choose <strong>Deploy Build to…</strong>, then your environment.</p>
+
+    <p>The build packs the folder into <code>liferay-mcp-oauth.zip</code>, and puts it in the Liferay service’s image, in <code>osgi/client-extensions</code>. When the Liferay service starts, it creates the application and its credentials.</p>
+  </li>
+</ol>
+
+<p>When the deploy finishes, <em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em> shows the <strong>Liferay MCP server</strong> application:</p>
+
+<p><img src="../assets/images/oauth2-applications.png" alt="OAuth 2 Administration listing the Liferay MCP server application, created by the client extension." class="screenshot" /></p>
+
+<h2 id="step-3-copy-the-credentials-for-the-server">Step 3: Copy the Credentials for the Server</h2>
+
+<p>The server isn’t in Liferay Cloud, so it can’t read Liferay’s routes. Write them yourself: create a folder named <code>liferay-mcp-oauth</code> with these four files, copying the values from the application’s page in <em>OAuth 2 Administration</em>, where Liferay shows the client extension’s <strong>Client ID</strong> and <strong>Client Secret</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>liferay-mcp-oauth-headless-server.oauth2.headless.server.client.id</code></td>
+      <td>The <strong>Client ID</strong></td>
+    </tr>
+    <tr>
+      <td><code>liferay-mcp-oauth-headless-server.oauth2.headless.server.client.secret</code></td>
+      <td>The <strong>Client Secret</strong></td>
+    </tr>
+    <tr>
+      <td><code>liferay-mcp-oauth-headless-server.oauth2.headless.server.scopes</code></td>
+      <td>The application’s scopes, separated by spaces, as in the client extension file</td>
+    </tr>
+    <tr>
+      <td><code>liferay-mcp-oauth-headless-server.oauth2.token.uri</code></td>
+      <td><code>/o/oauth2/token</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Copy the scopes file too: without it, the server treats the connection as read-only.</p>
+
+<p class="warning">The folder holds the application’s client secret. Keep it readable only by the server, like any password. Liferay issues new credentials if the client extension is deployed again with changes, so copy them again then.</p>
+
+<h2 id="step-4-run-the-server">Step 4: Run the Server</h2>
+
+<p>With <code>LIFERAY_URL</code> set to your environment’s Liferay address, for example <code>https://webserver-myproject-prd.lfr.cloud</code>:</p>
+
+<ul>
+  <li><strong>On each person’s computer:</strong> give each person a copy of the folder, securely, and follow <a href="claude-code.html">With Claude Code</a>, <a href="claude-desktop.html">With the Claude Desktop App</a>, or <a href="stdio.html">Other AI Assistants</a>.</li>
+  <li><strong>Shared, over HTTPS, on a server of yours:</strong> follow <a href="http.html">For Services and People</a>.</li>
+</ul>
+
+<h2 id="without-a-client-extension">Without a Client Extension</h2>
+
+<p>If you can’t deploy client extensions, create the application in the Control Panel instead:</p>
+
+<ol>
+  <li>
+    <p>In <em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em>, click <strong>New</strong>, and fill in:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><code>Liferay MCP server</code></td>
+        </tr>
+        <tr>
+          <td>Client Profile</td>
+          <td><strong>Headless Server</strong></td>
+        </tr>
+        <tr>
+          <td>Allowed Authorization Types</td>
+          <td><strong>Client Credentials</strong> only: clear <strong>JWT_BEARER</strong></td>
+        </tr>
+        <tr>
+          <td>Client Credentials User</td>
+          <td>Click <strong>Select</strong>, and choose the service user</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Leave <strong>Callback URIs</strong> empty: a Headless Server doesn’t need one.</p>
+  </li>
+  <li>
+    <p>Click <strong>Save</strong>. The application’s <strong>Credentials</strong> tab then shows its <strong>Client ID</strong> and <strong>Client Secret</strong>:</p>
+
+    <p><img src="../assets/images/oauth-cp-app.png" alt="The Liferay MCP server application made in the Control Panel: Client ID and Client Secret at the top (blanked here), Client Profile Headless Server, Client Credentials allowed, and mcp-service as the Client Credentials User." class="screenshot" /></p>
+  </li>
+  <li>On its <strong>Scopes</strong> tab, select the scopes listed in the <a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml">client extension file</a>, and click <strong>Save</strong>.</li>
+  <li>Write the routes folder as in <a href="#step-3-copy-the-credentials-for-the-server">Step 3</a>, with its Client ID and Client Secret.</li>
+</ol>
+
+<p class="note">Checked on Liferay DXP 2025.Q1.29: an application made this way, with the four files written by hand and <code>LIFERAY_URL</code> set, connected the server with OAuth 2 and all nine scopes, and its searches returned the site’s content.</p>
+
+<h2 id="how-this-was-checked">How This Was Checked</h2>
+
+<p>With the Liferay Workspace of a Liferay PaaS project (DXP 2025.Q1, Workspace plugin 12.1.10), the client extension added in <code>liferay/client-extensions/liferay-mcp-oauth/</code>:</p>
+
+<ol>
+  <li><code>blade gw build</code> built <code>liferay-mcp-oauth.zip</code>.</li>
+  <li>The Workspace’s <code>dockerDeploy</code> and <code>createDockerfile</code> tasks put it in the Liferay image, in <code>osgi/client-extensions</code>, as the PaaS build does.</li>
+  <li>That image, started on Liferay DXP 2025.Q1.29, created the application and its credentials at startup.</li>
+  <li>The server, with those credentials and <code>LIFERAY_URL</code>, connected with OAuth 2 and all nine scopes, and its searches returned the site’s content.</li>
+</ol>
+
+<p>Not covered: the Liferay Cloud build pipeline and console themselves, and copying the credentials from <em>OAuth 2 Administration</em> on Liferay Cloud.</p>
+
+<h2 id="related-information">Related Information</h2>
+
+<ul>
+  <li><a href="checking.html">Checking the Installation</a></li>
+  <li><a href="upgrading-and-removing.html">Upgrading and Removing</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/docker.html"><span>Previous</span>Liferay Self-Hosted (Docker)</a><a class="next" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-code.html"><span>Next</span>With Claude Code</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Legacy MCP is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc. A Liferay Community APAC app for experimental use, not supported by Liferay, and not meant for production.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (nav && mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', 'Link to this section');
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var t = document.createElement('textarea');
+        t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+        document.body.removeChild(t);
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var box = document.createElement('div');
+      box.className = 'code-block';
+      pre.parentNode.insertBefore(box, pre);
+      box.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = 'Copy';
+      b.setAttribute('aria-label', 'Copy the code to the clipboard');
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        copyText(code.innerText.replace(/\n$/, '')).then(function () {
+          b.textContent = 'Copied'; b.classList.add('copied');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+        }, function () {
+          // No clipboard access: select the code so it can be copied by hand.
+          var range = document.createRange(); range.selectNodeContents(code);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        });
+      });
+      box.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

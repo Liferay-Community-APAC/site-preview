@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Known Issues · Liferay Legacy MCP · Liferay Community APAC</title>
+  <meta name="description" content="Known limitations in Liferay Legacy MCP 1.1.0.">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html">
+  <meta property="og:title" content="Known Issues · Liferay Legacy MCP">
+  <meta property="og:description" content="Known limitations in Liferay Legacy MCP 1.1.0.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    /* Copy buttons on code blocks (added by the script at the end of the page). */
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: 600 12px/1.6 var(--font, inherit); color: var(--muted); background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: var(--text); border-color: var(--muted); }
+    .copy-code.copied { color: var(--blue); border-color: var(--blue); }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Legacy MCP docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Overview</a>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/getting-started.html">Getting Started</a>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html">Creating the Service User</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html">Liferay PaaS</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-code.html">With Claude Code</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-desktop.html">With the Claude Desktop App</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/stdio.html">Other AI Assistants</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html">For Services and People</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">Upgrading and Removing</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/">Using the Server</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/what-to-ask.html">What to Ask</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/writes.html">Writes and Previews</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/page-inspection.html">Inspecting Pages</a></li>
+        </ul>
+      </li>
+      <li class="open"><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/tools.html">Tools</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">Settings</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">Compatibility</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html" aria-current="page">Known Issues</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/reporting-a-bug.html">Reporting a Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Liferay Legacy MCP</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/">Reference</a>
+    </p>
+    <article class="prose" data-pagefind-body>
+      <h1 id="known-issues">Known Issues</h1>
+
+<p>Known limitations in Liferay Legacy MCP 1.1.0.</p>
+
+<h2 id="drafts-are-only-for-new-articles">Drafts Are Only for New Articles</h2>
+
+<p>A change to a published article is published, or submitted for review, directly: Liferay’s draft API ignores the ID of an existing article on these releases. Only new articles can be saved as drafts.</p>
+
+<h2 id="an-article-waiting-for-review-cant-be-changed">An Article Waiting for Review Can’t Be Changed</h2>
+
+<p>While an article has a version waiting for review, Liferay can’t save it again. The article tools refuse first, and point to <code>list_review_tasks</code>.</p>
+
+<h2 id="a-sites-workflow-cant-be-turned-off-by-the-api">A Site’s Workflow Can’t Be Turned Off by the API</h2>
+
+<p>To turn off a site’s review workflow for web content, use <em>Site Settings</em> → <em>Workflow</em>. No API on these releases removes it.</p>
+
+<h2 id="the-administrator-tools-arent-available-over-https">The Administrator Tools Aren’t Available Over HTTPS</h2>
+
+<p><code>create_site</code>, <code>create_object</code>, the design tools, the administration API areas and JSON web services are available only to a person using the server on their own computer.</p>
+
+<h2 id="people-signed-in-over-https-are-read-only">People Signed In Over HTTPS Are Read-Only</h2>
+
+<p>People who sign in with Liferay over HTTPS can read, but not write.</p>
+
+<h2 id="a-restart-drops-sign-ins">A Restart Drops Sign-Ins</h2>
+
+<p>Sign-in sessions are kept in memory. After a restart, people sign in again.</p>
+
+<h2 id="related-information">Related Information</h2>
+
+<ul>
+  <li><a href="reporting-a-bug.html">Reporting a Bug</a></li>
+  <li><a href="compatibility.html">Compatibility</a></li>
+</ul>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html"><span>Previous</span>Compatibility</a><a class="next" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/reporting-a-bug.html"><span>Next</span>Reporting a Bug</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Legacy MCP is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc. A Liferay Community APAC app for experimental use, not supported by Liferay, and not meant for production.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (nav && mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', 'Link to this section');
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var t = document.createElement('textarea');
+        t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+        document.body.removeChild(t);
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var box = document.createElement('div');
+      box.className = 'code-block';
+      pre.parentNode.insertBefore(box, pre);
+      box.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = 'Copy';
+      b.setAttribute('aria-label', 'Copy the code to the clipboard');
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        copyText(code.innerText.replace(/\n$/, '')).then(function () {
+          b.textContent = 'Copied'; b.classList.add('copied');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+        }, function () {
+          // No clipboard access: select the code so it can be copied by hand.
+          var range = document.createRange(); range.selectNodeContents(code);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        });
+      });
+      box.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>

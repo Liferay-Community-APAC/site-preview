@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creating the Service User · Liferay Legacy MCP · Liferay Community APAC</title>
+  <meta name="description" content="The server acts as one Liferay user, with least privilege. Create it once per Liferay, as an administrator, before you follow the page for where your Liferay...">
+  <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html">
+  <meta property="og:title" content="Creating the Service User · Liferay Legacy MCP">
+  <meta property="og:description" content="The server acts as one Liferay user, with least privilege. Create it once per Liferay, as an administrator, before you follow the page for where your Liferay...">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html">
+  <meta property="og:site_name" content="Liferay Community APAC">
+  <link rel="icon" href="/site-preview/assets/liferay-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/site-preview/assets/site.css">
+  <script src="/site-preview/assets/site-chrome.js" defer></script>
+  <style>
+    /* Copy buttons on code blocks (added by the script at the end of the page). */
+    .code-block { position: relative; }
+    .code-block pre { padding-right: 84px; }
+    .copy-code { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font: 600 12px/1.6 var(--font, inherit); color: var(--muted); background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+    .copy-code:hover, .copy-code:focus-visible { color: var(--text); border-color: var(--muted); }
+    .copy-code.copied { color: var(--blue); border-color: var(--blue); }
+  </style>
+</head>
+<body data-section="marketplace-apps">
+
+<header class="site-header" data-site-header>
+  <div class="wrap">
+    <a class="brand" href="/site-preview/"><img class="brand-mark" src="/site-preview/assets/liferay-mark-white.png" alt="" width="30" height="30"><span class="brand-name">Liferay Community APAC</span></a>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <details class="docs-nav" id="docs-nav">
+    <summary>Liferay Legacy MCP docs</summary>
+    <ul class="docs-nav-list">
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Overview</a>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/getting-started.html">Getting Started</a>
+      </li>
+      <li class="open"><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/liferay-setup.html" aria-current="page">Creating the Service User</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/tomcat.html">Liferay Self-Hosted (Tomcat)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/docker.html">Liferay Self-Hosted (Docker)</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/paas.html">Liferay PaaS</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-code.html">With Claude Code</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/claude-desktop.html">With the Claude Desktop App</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/stdio.html">Other AI Assistants</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/http.html">For Services and People</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/checking.html">Checking the Installation</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">Upgrading and Removing</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/">Using the Server</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/what-to-ask.html">What to Ask</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/writes.html">Writes and Previews</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/using/page-inspection.html">Inspecting Pages</a></li>
+        </ul>
+      </li>
+      <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/">Reference</a>
+        <ul>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/tools.html">Tools</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">Settings</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">Compatibility</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/known-issues.html">Known Issues</a></li>
+          <li><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/reporting-a-bug.html">Reporting a Bug</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <main class="docs-main">
+    <p class="docs-crumbs">
+      <a href="/site-preview/">Home</a><span>/</span><a href="/site-preview/marketplace-apps/">Marketplace Apps</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/">Liferay Legacy MCP</a><span>/</span><a href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/">Installing</a>
+    </p>
+    <article class="prose" data-pagefind-body>
+      <h1 class="no_toc" id="creating-the-service-user">Creating the Service User</h1>
+
+<p>The server acts as one Liferay user, with least privilege. Create it once per Liferay, as an administrator, before you follow the page for where your Liferay runs.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#step-1-turn-off-email-verification-for-new-users" id="markdown-toc-step-1-turn-off-email-verification-for-new-users">Step 1: Turn Off Email Verification for New Users</a></li>
+  <li><a href="#step-2-create-the-user" id="markdown-toc-step-2-create-the-user">Step 2: Create the User</a></li>
+  <li><a href="#step-3-create-its-roles" id="markdown-toc-step-3-create-its-roles">Step 3: Create Its Roles</a></li>
+  <li><a href="#step-4-assign-them" id="markdown-toc-step-4-assign-them">Step 4: Assign Them</a></li>
+  <li><a href="#changing-the-client-extension" id="markdown-toc-changing-the-client-extension">Changing the Client Extension</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ol>
+
+<h2 id="step-1-turn-off-email-verification-for-new-users">Step 1: Turn Off Email Verification for New Users</h2>
+
+<p>If it’s on: <em>Control Panel</em> → <em>Instance Settings</em> → <em>User Authentication</em> → clear <strong>Require strangers to verify their email address?</strong>, and click <strong>Save</strong>. Otherwise the new user can wait on the <em>Verify Email Address</em> page, and every API call as it fails with 403.</p>
+
+<h2 id="step-2-create-the-user">Step 2: Create the User</h2>
+
+<p>Create a user with the screen name <strong><code>mcp-service</code></strong>, for example with the email <code>mcp-service@example.com</code>. The <a href="../assets/downloads/liferay-mcp-oauth.zip">OAuth 2 client extension</a> acts as the user with that screen name; to use another one, see <a href="#changing-the-client-extension">Changing the Client Extension</a>.</p>
+
+<p>Give it a password nobody uses, since OAuth doesn’t need one, and make sure it isn’t required to change it at its first sign-in (the password policy’s <strong>Change Required</strong>), or every API call as it fails with 403.</p>
+
+<h2 id="step-3-create-its-roles">Step 3: Create Its Roles</h2>
+
+<ol>
+  <li>
+    <p><strong>A site role,</strong> for example <strong>MCP Content Editor</strong>, in <em>Control Panel</em> → <em>Users</em> → <em>Roles</em>, with these permissions. It lets the user view content, and add and edit what the write tools write, but not delete or change permissions:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Resource</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Web Content</td>
+          <td>Add Article, Add Folder, View</td>
+        </tr>
+        <tr>
+          <td>Web Content Article</td>
+          <td>Update, View</td>
+        </tr>
+        <tr>
+          <td>Web Content Folder</td>
+          <td>Add Article, Add Subfolder, View</td>
+        </tr>
+        <tr>
+          <td>Documents and Media</td>
+          <td>Add Document, View</td>
+        </tr>
+        <tr>
+          <td>Document</td>
+          <td>Update, View</td>
+        </tr>
+        <tr>
+          <td>Documents Folder</td>
+          <td>View</td>
+        </tr>
+        <tr>
+          <td>Page</td>
+          <td>View</td>
+        </tr>
+        <tr>
+          <td>Blogs / Blogs Entry</td>
+          <td>Add Entry / Update, View</td>
+        </tr>
+        <tr>
+          <td>Categories / Category / Vocabulary</td>
+          <td>Add Category, Add Vocabulary / Add Category, Update, View / View</td>
+        </tr>
+        <tr>
+          <td>Navigation Menus / Navigation Menu</td>
+          <td>Add Navigation Menu / Update, View</td>
+        </tr>
+        <tr>
+          <td>Knowledge Base / Article / Folder</td>
+          <td>Add Article, Add Folder / Update, View / Add Article, View</td>
+        </tr>
+        <tr>
+          <td>Wiki / Wiki Node / Wiki Page</td>
+          <td>Add Node / Add Page, View / Update, View</td>
+        </tr>
+        <tr>
+          <td>Message Boards / Category / Message</td>
+          <td>Add Message, Reply to Message / Add Message, View / Update, View</td>
+        </tr>
+        <tr>
+          <td>Form</td>
+          <td>View</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Leave out the areas you don’t want the AI assistant to write.</p>
+  </li>
+  <li>
+    <p><strong>A regular role,</strong> for example <strong>MCP OAuth Client</strong>, with <em>Control Panel</em> → <em>Security</em> → <em>OAuth 2 Administration</em> → <strong>OAuth 2 Application: Create Token</strong>. Liferay only issues a token that acts as a user who has it.</p>
+  </li>
+</ol>
+
+<h2 id="step-4-assign-them">Step 4: Assign Them</h2>
+
+<ol>
+  <li>Assign the regular role to the user.</li>
+  <li>Make the user a member of each site the server should work in, and give it the site role there. If it should review content in a workflow, also give it <strong>Site Content Reviewer</strong> in those sites.</li>
+</ol>
+
+<p>The user’s <em>Roles</em> page then shows the regular role, and the site roles in each site:</p>
+
+<p><img src="../assets/images/service-user-roles.png" alt="The service user's Roles page: the regular role MCP OAuth Client, and the site roles MCP Content Editor and Site Content Reviewer in the MCP Demo site." class="screenshot" /></p>
+
+<p class="tip">For signed-in page inspection, also create a second, view-only user that is only a site member, with no roles. Without it, the page inspection tools view pages as a guest.</p>
+
+<h2 id="changing-the-client-extension">Changing the Client Extension</h2>
+
+<p>The ready-made <a href="../assets/downloads/liferay-mcp-oauth.zip"><code>liferay-mcp-oauth.zip</code></a> acts as <code>mcp-service</code>, and lets the server write. To change either, edit the <a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml"><code>client-extension.yaml</code></a> it’s made from, and build your own zip with a Liferay Workspace:</p>
+
+<ul>
+  <li><code>userAccountScreenName</code>: another screen name.</li>
+  <li><code>scopes</code>: change <code>Liferay.Headless.Delivery.everything</code> to <code>Liferay.Headless.Delivery.everything.read</code>, and the Admin Content, Admin Workflow and Batch Engine scopes to their <code>.read</code> versions, to make the server read-only. Liferay enforces it.</li>
+</ul>
+
+<p>Save it as <code>client-extension.yaml</code> in a folder of your workspace’s <code>client-extensions</code> folder, for example <code>client-extensions/liferay-mcp-oauth/</code>, and build it from that folder:</p>
+
+<pre><code class="language-bash">blade gw build
+</code></pre>
+
+<p>The zip is <code>dist/liferay-mcp-oauth.zip</code> in that folder. Keep the file’s <code>.serviceAddress</code> and <code>.serviceScheme</code> lines: they give the application the home page Liferay requires, and without them Liferay refuses to create it.</p>
+
+<p class="note">Checked on Liferay DXP 2025.Q1.29: the zip built this way created the application and its credentials, and the server connected with them.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>Continue with the page for where your Liferay runs:</p>
+
+<div class="doc-cards">
+  <a class="card doc" href="tomcat.html"><strong>Liferay Self-Hosted (Tomcat)</strong><span>Liferay installed from a Tomcat bundle on a server you manage.</span></a>
+  <a class="card doc" href="docker.html"><strong>Liferay Self-Hosted (Docker)</strong><span>Liferay running in a container.</span></a>
+  <a class="card doc" href="paas.html"><strong>Liferay PaaS</strong><span>Liferay running on Liferay Cloud.</span></a>
+</div>
+
+    </article>
+    <nav class="pager" aria-label="Previous and next"><a class="prev" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/"><span>Previous</span>Installing</a><a class="next" href="/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/tomcat.html"><span>Next</span>Liferay Self-Hosted (Tomcat)</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="site-footer" data-site-footer>
+  <p data-footer-note>Liferay Legacy MCP is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc. A Liferay Community APAC app for experimental use, not supported by Liferay, and not meant for production.</p>
+  <p class="wrap disclaimer">Apps, tutorials, sample code and guides on this site are unofficial and provided as-is. Use them at your own risk.</p>
+</footer>
+
+<script>
+  (function () {
+    // Open the sidebar on wide screens; on phones it starts folded.
+    var nav = document.getElementById('docs-nav');
+    var mq = window.matchMedia('(min-width: 961px)');
+    function sync() { if (nav && mq.matches) nav.open = true; }
+    sync(); mq.addEventListener('change', sync);
+    // A "#" link on each heading, for sharing a section.
+    document.querySelectorAll('.prose h2[id], .prose h3[id], .prose h4[id]').forEach(function (h) {
+      var a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#';
+      a.setAttribute('aria-label', 'Link to this section');
+      h.appendChild(a);
+    });
+    // A "Copy" button on each code block.
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var t = document.createElement('textarea');
+        t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+        document.body.removeChild(t);
+      });
+    }
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var box = document.createElement('div');
+      box.className = 'code-block';
+      pre.parentNode.insertBefore(box, pre);
+      box.appendChild(pre);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'copy-code'; b.textContent = 'Copy';
+      b.setAttribute('aria-label', 'Copy the code to the clipboard');
+      b.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        copyText(code.innerText.replace(/\n$/, '')).then(function () {
+          b.textContent = 'Copied'; b.classList.add('copied');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+        }, function () {
+          // No clipboard access: select the code so it can be copied by hand.
+          var range = document.createRange(); range.selectNodeContents(code);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        });
+      });
+      box.appendChild(b);
+    });
+  })();
+</script>
+</body>
+</html>
