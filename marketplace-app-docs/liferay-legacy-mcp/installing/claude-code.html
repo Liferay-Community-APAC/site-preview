@@ -112,7 +112,7 @@
 
 <p class="tip"><code>liferay-legacy</code> is the server’s name in Claude Code, and its tools are named after it, such as <code>mcp__liferay-legacy__search_content</code>. Keep it distinct from other Liferay connections: a server of the same name in another scope replaces this one. If you connect more than one Liferay, add one server for each, named after it, such as <code>liferay-legacy-prod</code> and <code>liferay-legacy-test</code>, so the assistant can tell which one it’s working on.</p>
 
-<p>By default, the server is added for the current folder only, and only for you. Add <code>-s user</code> after <code>add</code> to use it in every folder, or <code>-s project</code> to share it with your team in the folder’s <code>.mcp.json</code>; to use it in the Claude desktop app’s Code tab, see <a href="claude-desktop.html">With the Claude Desktop App</a>; teammates then approve it the first time they start Claude Code there, and need their own routes folder.</p>
+<p>By default, the server is added for the current folder only, and only for you. Add <code>-s user</code> after <code>add</code> to use it in every folder. Add <code>-s project</code> instead to share it with your team in the folder’s <code>.mcp.json</code>: teammates then approve it the first time they start Claude Code there, and need their own routes folder. To use it in the Claude desktop app’s Code tab, see <a href="claude-desktop.html">With the Claude Desktop App</a>.</p>
 
 <h2 id="step-2-check-that-it-connects">Step 2: Check That It Connects</h2>
 
@@ -139,10 +139,22 @@
 
 <h2 id="step-4-turn-on-writes-optional">Step 4: Turn On Writes (Optional)</h2>
 
-<p>Writes are off until you add <code>-e MCP_WRITE_MODE=confirm</code> before the image name. Remove the server and add it again with that line:</p>
+<p>Writes are off until the server runs with <code>MCP_WRITE_MODE=confirm</code>. Remove the server, and add it again with that setting before the image name:</p>
 
 <pre><code class="language-bash">claude mcp remove liferay-legacy
 </code></pre>
+
+<pre><code class="language-bash">claude mcp add liferay-legacy -- docker run -i --rm \
+  -v ~/liferay-mcp/routes:/run/liferay-routes:ro \
+  -v liferay-mcp-data:/data \
+  -e LIFERAY_URL=https://liferay.example.com \
+  -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
+  -e LIFERAY_DEFAULT_SITE=my-site \
+  -e MCP_WRITE_MODE=confirm \
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim
+</code></pre>
+
+<p>Start a new Claude Code session afterwards.</p>
 
 <p>Each write is then shown as a preview in Claude Code, and runs only once you confirm it. See <a href="../using/writes.html">Writes and Previews</a>.</p>
 

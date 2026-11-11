@@ -179,7 +179,7 @@
     </tr>
     <tr>
       <td><code>list_users</code></td>
-      <td>Users.</td>
+      <td>Users. Needs the administrator connection.</td>
     </tr>
   </tbody>
 </table>
@@ -200,7 +200,7 @@
     </tr>
     <tr>
       <td><code>describe_jsonws</code>, <code>read_jsonws</code>, <code>write_jsonws</code></td>
-      <td>Every JSON web service method, for what the Headless APIs don’t cover.</td>
+      <td>Every JSON web service method, for what the Headless APIs don’t cover. Need the administrator connection.</td>
     </tr>
   </tbody>
 </table>
@@ -253,7 +253,7 @@
   </tbody>
 </table>
 
-<p>These need a second, administrator connection, and are available only to a person using the server on their own computer, never over HTTPS.</p>
+<p>These, <code>list_users</code> and the JSON web service tools need a second, administrator connection (the <code>liferay-mcp-builder</code> client extension, with <code>LIFERAY_ROUTES_BUILDER_EXTENSION</code>), and are available only to a person using the server on their own computer, never over HTTPS. Without it, <code>get_server_info</code> shows them as unavailable.</p>
 
 <h2 id="related-information">Related Information</h2>
 

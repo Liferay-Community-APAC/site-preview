@@ -5,10 +5,10 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Compatibility · Liferay Legacy MCP · Liferay Community APAC</title>
-  <meta name="description" content="Liferay Legacy MCP 1.1.0 was tested on the latest update of each quarterly release, and on 7.4 U92:">
+  <meta name="description" content="Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4. It was tested on the latest update of each quarterly release, and on 7.4 U92:">
   <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">
   <meta property="og:title" content="Compatibility · Liferay Legacy MCP">
-  <meta property="og:description" content="Liferay Legacy MCP 1.1.0 was tested on the latest update of each quarterly release, and on 7.4 U92:">
+  <meta property="og:description" content="Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4. It was tested on the latest update of each quarterly release, and on 7.4 U92:">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/compatibility.html">
   <meta property="og:site_name" content="Liferay Community APAC">
@@ -93,7 +93,7 @@
 
 <h2 id="tested-releases">Tested Releases</h2>
 
-<p>Liferay Legacy MCP 1.1.0 was tested on the latest update of each quarterly release, and on 7.4 U92:</p>
+<p>Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4. It was tested on the latest update of each quarterly release, and on 7.4 U92:</p>
 
 <table>
   <thead>
@@ -145,9 +145,9 @@
       <td>OAuth 2 or password</td>
     </tr>
     <tr>
-      <td>7.4 update releases</td>
+      <td>7.4 U1–U92</td>
       <td>U92</td>
-      <td>OAuth 2 or password</td>
+      <td>OAuth 2 or password; before U92, password only</td>
     </tr>
   </tbody>
 </table>
@@ -156,7 +156,7 @@
 
 <h2 id="74-update-releases-before-u92">7.4 Update Releases Before U92</h2>
 
-<p>The server works on every 7.4 update release, down to U1, with a <strong>password connection</strong> (<code>LIFERAY_USERNAME</code> and <code>LIFERAY_PASSWORD</code>). The OAuth 2 connection through a client extension doesn’t: before U92, Liferay either can’t create the application from the client extension, or doesn’t publish its credentials.</p>
+<p>The server works on every 7.4 update release, down to U1, with a <strong>password connection</strong> (<code>LIFERAY_USERNAME</code> and <code>LIFERAY_PASSWORD</code>). The OAuth 2 connection through a client extension doesn’t: before U92, Liferay either can’t create the application from the client extension, or doesn’t publish its credentials. To keep the password out of command lines and settings, see <a href="settings.html#the-password-connection">The Password Connection</a>.</p>
 
 <p>On the oldest updates, about 27 of the 37 tools are available. The others need Liferay APIs that didn’t exist yet, and show as unavailable in <code>get_server_info</code>.</p>
 

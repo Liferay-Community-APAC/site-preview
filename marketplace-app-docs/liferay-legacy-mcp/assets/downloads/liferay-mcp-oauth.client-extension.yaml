@@ -6,14 +6,17 @@
 # The application acts as the service user named in userAccountScreenName, which needs the
 # "MCP OAuth Client" role to be issued tokens. The scopes limit it to the APIs the tools call.
 #
-# Writes are decided here, and Liferay enforces it:
-#   Liferay.Headless.Delivery.everything        read and write
-#   Liferay.Headless.Delivery.everything.read   read-only: Liferay refuses every write, and the
-#                                               MCP server reports its write tools as unavailable
-#                                               (make the Admin Content, Admin Workflow and
-#                                               Batch Engine scopes .read too)
-# Admin Content: drafts and article status. Admin Workflow: review tasks. Batch Engine: exports.
-# Admin Taxonomy and Form: the tags and categories, and forms areas of the generic API tools.
+# Whether the server can write is decided here, and Liferay enforces it. This file allows writes;
+# liferay-mcp-oauth-read-only.client-extension.yaml is the read-only version. To make this one
+# read-only, change all six write scopes to their .read versions:
+#   Liferay.Headless.Delivery.everything          web content, documents, blogs, knowledge base...
+#   Liferay.Headless.Admin.Content.everything     drafts and article status
+#   Liferay.Headless.Admin.Taxonomy.everything    tags and categories
+#   Liferay.Headless.Admin.Workflow.everything    review tasks
+#   Liferay.Headless.Batch.Engine.everything      exports and batches
+#   Liferay.Headless.Form.everything              forms
+# With Delivery read-only, the MCP server also reports its write tools as unavailable.
+# Even with write scopes, the server writes only once MCP_WRITE_MODE=confirm is set.
 #
 # .serviceAddress and .serviceScheme give the application its home page, the MCP server's own
 # address; Liferay requires one. They don't affect how the server connects.

@@ -104,7 +104,7 @@
 <h2 id="step-2-add-the-client-extension">Step 2: Add the Client Extension</h2>
 
 <ol>
-  <li>Download <a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml"><code>client-extension.yaml</code></a>, and check its <code>userAccountScreenName</code> and <code>scopes</code>, as in <a href="liferay-setup.html#changing-the-client-extension">Changing the Client Extension</a>.</li>
+  <li>Download <a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml"><code>client-extension.yaml</code></a>, or its read-only version, <a href="../assets/downloads/liferay-mcp-oauth-read-only.client-extension.yaml"><code>liferay-mcp-oauth-read-only.client-extension.yaml</code></a>, and check its <code>userAccountScreenName</code> and <code>scopes</code>, as in <a href="liferay-setup.html#changing-the-client-extension">Changing the Client Extension</a>.</li>
   <li>Save it as <code>liferay/client-extensions/liferay-mcp-oauth/client-extension.yaml</code> in your PaaS project’s repository.</li>
   <li>
     <p>Push the project. In the Liferay Cloud console, open <strong>Builds</strong>, and on the new build choose <strong>Deploy Build to…</strong>, then your environment.</p>
@@ -150,7 +150,7 @@
 
 <p>Copy the scopes file too: without it, the server treats the connection as read-only.</p>
 
-<p class="warning">The folder holds the application’s client secret. Keep it readable only by the server, like any password. Liferay issues new credentials if the client extension is deployed again with changes, so copy them again then.</p>
+<p class="warning">The folder holds the application’s client secret. Keep it readable only by the server, like any password. On Liferay Self-Hosted, deploying the client extension again keeps the same credentials. On Liferay PaaS this hasn’t been checked: after a deploy, if the server reports <code>invalid_client</code>, copy the Client ID and Client Secret again.</p>
 
 <h2 id="step-4-run-the-server">Step 4: Run the Server</h2>
 

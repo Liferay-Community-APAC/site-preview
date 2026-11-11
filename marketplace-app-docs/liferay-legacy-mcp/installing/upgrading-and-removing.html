@@ -5,10 +5,10 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Upgrading and Removing · Liferay Legacy MCP · Liferay Community APAC</title>
-  <meta name="description" content="Pull the new tag, and start the container again with the same volumes and settings:">
+  <meta name="description" content="For a shared server over HTTPS:">
   <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">
   <meta property="og:title" content="Upgrading and Removing · Liferay Legacy MCP">
-  <meta property="og:description" content="Pull the new tag, and start the container again with the same volumes and settings:">
+  <meta property="og:description" content="For a shared server over HTTPS:">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/installing/upgrading-and-removing.html">
   <meta property="og:site_name" content="Liferay Community APAC">
@@ -91,10 +91,25 @@
 
 <h2 id="upgrading-the-server">Upgrading the Server</h2>
 
-<p>Pull the new tag, and start the container again with the same volumes and settings:</p>
+<p>For a shared server over HTTPS:</p>
 
-<pre><code class="language-bash">docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:&lt;new tag&gt;
+<ol>
+  <li>
+    <p>Pull the new tag:</p>
+
+    <pre><code class="language-bash"> docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:&lt;new tag&gt;
 </code></pre>
+  </li>
+  <li>
+    <p>Stop and remove the running container. Its <code>/data</code> volume, with the audit log, stays:</p>
+
+    <pre><code class="language-bash"> docker stop liferay-mcp &amp;&amp; docker rm liferay-mcp
+</code></pre>
+  </li>
+  <li>
+    <p>Start it again with the same <code>docker run</code> command as before, with the new tag.</p>
+  </li>
+</ol>
 
 <p>For an AI assistant that starts the server itself, change the tag in its <code>mcpServers</code> setting, and restart the assistant.</p>
 

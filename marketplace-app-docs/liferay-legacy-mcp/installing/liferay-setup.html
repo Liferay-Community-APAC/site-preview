@@ -199,11 +199,35 @@
 
 <h2 id="changing-the-client-extension">Changing the Client Extension</h2>
 
-<p>The ready-made <a href="../assets/downloads/liferay-mcp-oauth.zip"><code>liferay-mcp-oauth.zip</code></a> acts as <code>mcp-service</code>, and lets the server write. To change either, edit the <a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml"><code>client-extension.yaml</code></a> it’s made from, and build your own zip with a Liferay Workspace:</p>
+<p>There are two ready-made zips. Both act as <code>mcp-service</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Download</th>
+      <th>Scopes</th>
+      <th>Made From</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="../assets/downloads/liferay-mcp-oauth.zip"><code>liferay-mcp-oauth.zip</code></a></td>
+      <td>Allow writes. The server still writes nothing until you turn writes on with <code>MCP_WRITE_MODE=confirm</code>, and then only after each change is confirmed.</td>
+      <td><a href="../assets/downloads/liferay-mcp-oauth.client-extension.yaml"><code>liferay-mcp-oauth.client-extension.yaml</code></a></td>
+    </tr>
+    <tr>
+      <td><a href="../assets/downloads/liferay-mcp-oauth-read-only.zip"><code>liferay-mcp-oauth-read-only.zip</code></a></td>
+      <td>Read-only: Liferay refuses every write, whatever the server’s settings, and the server shows its write tools as unavailable.</td>
+      <td><a href="../assets/downloads/liferay-mcp-oauth-read-only.client-extension.yaml"><code>liferay-mcp-oauth-read-only.client-extension.yaml</code></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Deploy one of them, not both: they create the same application. To use another screen name or other scopes, edit the <code>client-extension.yaml</code> the zip is made from, and build your own zip with a Liferay Workspace:</p>
 
 <ul>
   <li><code>userAccountScreenName</code>: another screen name.</li>
-  <li><code>scopes</code>: change <code>Liferay.Headless.Delivery.everything</code> to <code>Liferay.Headless.Delivery.everything.read</code>, and the Admin Content, Admin Workflow and Batch Engine scopes to their <code>.read</code> versions, to make the server read-only. Liferay enforces it.</li>
+  <li><code>scopes</code>: to make the server read-only, change all six write scopes to their <code>.read</code> versions: <code>Liferay.Headless.Delivery.everything</code>, <code>Liferay.Headless.Admin.Content.everything</code>, <code>Liferay.Headless.Admin.Taxonomy.everything</code>, <code>Liferay.Headless.Admin.Workflow.everything</code>, <code>Liferay.Headless.Batch.Engine.everything</code> and <code>Liferay.Headless.Form.everything</code>. Leaving any of them as is leaves its area writable: tags and categories, for example, with Admin Taxonomy.</li>
 </ul>
 
 <p>Save it as <code>client-extension.yaml</code> in a folder of your workspace’s <code>client-extensions</code> folder, for example <code>client-extensions/liferay-mcp-oauth/</code>, and build it from that folder:</p>
@@ -213,7 +237,7 @@
 
 <p>The zip is <code>dist/liferay-mcp-oauth.zip</code> in that folder. Keep the file’s <code>.serviceAddress</code> and <code>.serviceScheme</code> lines: they give the application the home page Liferay requires, and without them Liferay refuses to create it.</p>
 
-<p class="note">Checked on Liferay DXP 2025.Q1.29: the zip built this way created the application and its credentials, and the server connected with them.</p>
+<p class="note">Checked on Liferay DXP 2025.Q1.29: the zip built this way created the application and its credentials, and the server connected with them. With the read-only scopes, Liferay refused a write in each of the six areas (403), reads still worked, and the server showed all 18 of its write tools as unavailable, even with <code>MCP_WRITE_MODE=confirm</code>.</p>
 
 <h2 id="next-steps">Next Steps</h2>
 

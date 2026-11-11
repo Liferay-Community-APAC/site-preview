@@ -5,10 +5,10 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Settings · Liferay Legacy MCP · Liferay Community APAC</title>
-  <meta name="description" content="The server is set up with environment variables. It checks them when it starts, and refuses to start with a clear message when a combination is unsafe. Secre...">
+  <meta name="description" content="The server is set up with environment variables, passed with -e to docker run. It checks them when it starts, and refuses to start with a clear message when ...">
   <link rel="canonical" href="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">
   <meta property="og:title" content="Settings · Liferay Legacy MCP">
-  <meta property="og:description" content="The server is set up with environment variables. It checks them when it starts, and refuses to start with a clear message when a combination is unsafe. Secre...">
+  <meta property="og:description" content="The server is set up with environment variables, passed with -e to docker run. It checks them when it starts, and refuses to start with a clear message when ...">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://liferay-community-apac.github.io/site-preview/marketplace-app-docs/liferay-legacy-mcp/reference/settings.html">
   <meta property="og:site_name" content="Liferay Community APAC">
@@ -83,59 +83,340 @@
     <article class="prose" data-pagefind-body>
       <h1 class="no_toc" id="settings">Settings</h1>
 
-<p>The server is set up with environment variables. It checks them when it starts, and refuses to start with a clear message when a combination is unsafe. Secrets are always files: the routes folders and the <code>*_FILE</code> settings.</p>
+<p>The server is set up with environment variables, passed with <code>-e</code> to <code>docker run</code>. It checks them when it starts, and refuses to start with a clear message when a combination is unsafe. Settings not given take the default below; in the images, files go under <code>/data</code>.</p>
+
+<ol id="markdown-toc">
+  <li><a href="#liferay" id="markdown-toc-liferay">Liferay</a></li>
+  <li><a href="#connection" id="markdown-toc-connection">Connection</a></li>
+  <li><a href="#administrator-connection" id="markdown-toc-administrator-connection">Administrator Connection</a></li>
+  <li><a href="#writes" id="markdown-toc-writes">Writes</a></li>
+  <li><a href="#audit-and-files" id="markdown-toc-audit-and-files">Audit and Files</a></li>
+  <li><a href="#page-inspection" id="markdown-toc-page-inspection">Page Inspection</a></li>
+  <li><a href="#https" id="markdown-toc-https">HTTPS</a></li>
+  <li><a href="#sign-in" id="markdown-toc-sign-in">Sign-In</a></li>
+  <li><a href="#logging" id="markdown-toc-logging">Logging</a></li>
+  <li><a href="#secrets" id="markdown-toc-secrets">Secrets</a>    <ol>
+      <li><a href="#the-password-connection" id="markdown-toc-the-password-connection">The Password Connection</a></li>
+    </ol>
+  </li>
+  <li><a href="#related-information" id="markdown-toc-related-information">Related Information</a></li>
+</ol>
+
+<h2 id="liferay">Liferay</h2>
 
 <table>
   <thead>
     <tr>
-      <th>Area</th>
-      <th>Settings</th>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Liferay</td>
-      <td><code>LIFERAY_URL</code> (required), <code>LIFERAY_DEFAULT_SITE</code>, <code>LIFERAY_TIMEOUT_MS</code>, <code>MCP_REQUIRE_DXP</code></td>
+      <td><code>LIFERAY_URL</code></td>
+      <td>Liferay’s address, as the server reaches it.</td>
+      <td>Required, unless <code>LIFERAY_ROUTES_DXP</code> is set</td>
     </tr>
     <tr>
-      <td>Connection</td>
-      <td><code>LIFERAY_ROUTES_CLIENT_EXTENSION</code> and <code>LIFERAY_ROUTES_DXP</code>, or <code>LIFERAY_USERNAME</code> and <code>LIFERAY_PASSWORD</code></td>
+      <td><code>LIFERAY_DEFAULT_SITE</code></td>
+      <td>The site the tools use when a request doesn’t name one: its friendly URL, name or ID.</td>
+      <td>None</td>
     </tr>
     <tr>
-      <td>Administrator connection</td>
-      <td><code>LIFERAY_ROUTES_BUILDER_EXTENSION</code>, <code>MCP_SITE_TEMPLATES</code>, <code>MCP_SITE_TEMPLATE_CONTRACTS</code>, <code>MCP_CONTENT_EDITOR_ROLE</code></td>
+      <td><code>LIFERAY_TIMEOUT_MS</code></td>
+      <td>How long to wait for each Liferay request, in milliseconds.</td>
+      <td><code>15000</code></td>
     </tr>
     <tr>
-      <td>Writes</td>
-      <td><code>MCP_WRITE_MODE</code> (<code>off</code> or <code>confirm</code>), <code>MCP_ADMIN_WRITES</code>, <code>MCP_DESTRUCTIVE_WRITES</code>, <code>MCP_BATCH_LIMIT</code> (default 50), <code>MCP_DISABLED_OPERATIONS</code></td>
-    </tr>
-    <tr>
-      <td>Audit and files</td>
-      <td><code>AUDIT_LOG_PATH</code>, <code>ARTIFACTS_DIR</code>, both under <code>/data</code> in the images</td>
-    </tr>
-    <tr>
-      <td>Page inspection</td>
-      <td><code>BROWSER_SIGN_IN</code>, <code>LIFERAY_BROWSER_USERNAME</code>, <code>LIFERAY_BROWSER_PASSWORD_FILE</code></td>
-    </tr>
-    <tr>
-      <td>HTTPS</td>
-      <td><code>MCP_HTTP_HOST</code>, <code>MCP_HTTP_PORT</code> (default 3333), <code>MCP_PUBLIC_URL</code>, <code>MCP_TRUST_PROXY</code>, <code>MCP_HTTP_API_KEYS_FILE</code>, <code>MCP_HTTP_WRITES</code></td>
-    </tr>
-    <tr>
-      <td>Sign-in</td>
-      <td><code>LIFERAY_SIGN_IN_CLIENT_ID</code>, <code>LIFERAY_SIGN_IN_CLIENT_SECRET_FILE</code>, <code>MCP_OAUTH_REDIRECT_ALLOWLIST</code>, <code>MCP_OAUTH_CLIENT_METADATA</code></td>
-    </tr>
-    <tr>
-      <td>Logging</td>
-      <td><code>LOG_LEVEL</code>. Logs go to standard error.</td>
+      <td><code>MCP_REQUIRE_DXP</code></td>
+      <td><code>true</code>: refuse to start unless the Liferay is confirmed to be Liferay DXP. <code>false</code>: run anyway, with a notice.</td>
+      <td><code>true</code></td>
     </tr>
   </tbody>
 </table>
+
+<h2 id="connection">Connection</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LIFERAY_ROUTES_CLIENT_EXTENSION</code></td>
+      <td>The routes folder of the OAuth 2 application, such as <code>liferay-mcp-oauth</code>. The server uses OAuth 2 when it’s set.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>LIFERAY_ROUTES_DXP</code></td>
+      <td>Liferay’s own routes folder (<code>dxp</code>), which holds its address. Not needed when <code>LIFERAY_URL</code> is set.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>LIFERAY_USERNAME</code>, <code>LIFERAY_PASSWORD</code></td>
+      <td>The password connection, used only when <code>LIFERAY_ROUTES_CLIENT_EXTENSION</code> isn’t set. See <a href="#the-password-connection">The Password Connection</a>.</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="administrator-connection">Administrator Connection</h2>
+
+<p>For <code>create_site</code>, <code>create_object</code>, the design tools, <code>list_users</code>, the administration API areas and the JSON web service tools, on a person’s own computer only.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LIFERAY_ROUTES_BUILDER_EXTENSION</code></td>
+      <td>The routes folder of the administrator OAuth 2 application (<code>liferay-mcp-builder</code>).</td>
+      <td>None: the administrator tools are unavailable</td>
+    </tr>
+    <tr>
+      <td><code>MCP_SITE_TEMPLATES</code></td>
+      <td>The site templates (site initializer keys) <code>create_site</code> may use, separated by commas.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>MCP_SITE_TEMPLATE_CONTRACTS</code></td>
+      <td>A file listing what each site template expects to be created.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>MCP_CONTENT_EDITOR_ROLE</code></td>
+      <td>The site role <code>create_site</code> gives the service user in each site it creates: its external reference code or name.</td>
+      <td><code>mcp-content-editor</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="writes">Writes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>MCP_WRITE_MODE</code></td>
+      <td><code>off</code>: write tools refuse, and show the request they would have sent. <code>confirm</code>: every write is previewed, and runs only once it’s confirmed.</td>
+      <td><code>off</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_ADMIN_WRITES</code></td>
+      <td><code>true</code> lets the generic tools change the administration areas, such as users and roles, objects and workflow, and lets <code>write_jsonws</code> call methods that change something.</td>
+      <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_DESTRUCTIVE_WRITES</code></td>
+      <td><code>true</code> allows deletes, batch requests and permission changes, each previewed and confirmed.</td>
+      <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_BATCH_LIMIT</code></td>
+      <td>The most items in one batch request.</td>
+      <td><code>50</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_DISABLED_OPERATIONS</code></td>
+      <td>Operations to treat as unsupported, separated by commas, such as <code>createArticle</code>. <code>get_server_info</code> lists their names.</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="audit-and-files">Audit and Files</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>AUDIT_LOG_PATH</code></td>
+      <td>Where every write attempt is logged.</td>
+      <td><code>/data/logs/audit.jsonl</code></td>
+    </tr>
+    <tr>
+      <td><code>ARTIFACTS_DIR</code></td>
+      <td>Where screenshots and exports are saved.</td>
+      <td><code>/data/artifacts</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="page-inspection">Page Inspection</h2>
+
+<p>For <code>inspect_page</code> and <code>take_screenshot</code>, in the <code>1.1.0-full</code> image.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>BROWSER_SIGN_IN</code></td>
+      <td><code>true</code>: view pages signed in, as <code>LIFERAY_BROWSER_USERNAME</code>. <code>false</code>: view them as a guest. Over HTTPS, pages are always viewed as a guest.</td>
+      <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>LIFERAY_BROWSER_USERNAME</code></td>
+      <td>The view-only user to sign in as.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>LIFERAY_BROWSER_PASSWORD_FILE</code></td>
+      <td>A file holding that user’s password.</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="https">HTTPS</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>MCP_HTTP_HOST</code></td>
+      <td>The address the server listens on, with <code>--http</code>. Anything other than loopback needs <code>MCP_PUBLIC_URL</code> and a way to identify callers.</td>
+      <td><code>127.0.0.1</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_HTTP_PORT</code></td>
+      <td>The port it listens on.</td>
+      <td><code>3333</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_PUBLIC_URL</code></td>
+      <td>The <code>https</code> address callers use, through your TLS proxy.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>MCP_TRUST_PROXY</code></td>
+      <td><code>private</code>: the server is behind a TLS proxy on a private network, so rate limits use the client address the proxy forwards. <code>none</code>: they use the connection’s address.</td>
+      <td><code>none</code></td>
+    </tr>
+    <tr>
+      <td><code>MCP_HTTP_API_KEYS_FILE</code></td>
+      <td>The API keys file: one <code>name:read</code> or <code>name:write</code> line with a key’s hash, for each service.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>MCP_HTTP_WRITES</code></td>
+      <td>Over HTTPS, writes stay off unless this is <code>true</code>, whatever <code>MCP_WRITE_MODE</code> says: nobody sees a service’s preview.</td>
+      <td><code>false</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sign-in">Sign-In</h2>
+
+<p>For people who sign in with Liferay over HTTPS.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LIFERAY_SIGN_IN_CLIENT_ID</code></td>
+      <td>The sign-in OAuth 2 application’s client ID.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>LIFERAY_SIGN_IN_CLIENT_SECRET_FILE</code></td>
+      <td>A file holding its client secret.</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><code>MCP_OAUTH_REDIRECT_ALLOWLIST</code></td>
+      <td>Which AI assistants may register, by the start of their redirect addresses, separated by commas. Desktop assistants on loopback are always allowed.</td>
+      <td>Any</td>
+    </tr>
+    <tr>
+      <td><code>MCP_OAUTH_CLIENT_METADATA</code></td>
+      <td><code>true</code>: accept assistants named by the <code>https</code> address of their metadata document.</td>
+      <td><code>true</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="logging">Logging</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Meaning</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LOG_LEVEL</code></td>
+      <td><code>debug</code>, <code>info</code>, <code>warn</code> or <code>error</code>. Logs go to standard error: <code>docker logs</code>, or the AI assistant’s MCP logs.</td>
+      <td><code>info</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="secrets">Secrets</h2>
+
+<p>Secrets are kept in files, readable only by the server: the routes folders, the API keys file, and the <code>*_FILE</code> settings. The server reads them when it starts, and never logs them.</p>
+
+<h3 id="the-password-connection">The Password Connection</h3>
+
+<p>The one exception is the password connection, which the server takes only as <code>LIFERAY_PASSWORD</code>, an environment variable. Prefer the OAuth 2 connection; the password connection is for 7.4 update releases before U92, which can’t create the OAuth 2 application from a client extension.</p>
+
+<p>To keep the password out of command lines and AI assistants’ settings, put both settings in an environment file readable only by you, and pass the file to Docker:</p>
+
+<pre><code class="language-bash">mkdir -p ~/liferay-mcp
+printf 'Password: '; read -rs PASSWORD; echo
+printf 'LIFERAY_USERNAME=mcp-service@example.com\nLIFERAY_PASSWORD=%s\n' "$PASSWORD" &gt; ~/liferay-mcp/connection.env; unset PASSWORD
+chmod 600 ~/liferay-mcp/connection.env
+</code></pre>
+
+<p>Then use <code>--env-file ~/liferay-mcp/connection.env</code> in the <code>docker run</code> command, instead of the <code>LIFERAY_ROUTES_CLIENT_EXTENSION</code> setting and the routes volume. In an AI assistant’s <code>mcpServers</code> setting, give the file’s full path, without <code>~</code>.</p>
 
 <h2 id="related-information">Related Information</h2>
 
 <ul>
   <li><a href="../installing/">Installing</a></li>
+  <li><a href="../using/writes.html">Writes and Previews</a></li>
 </ul>
 
     </article>

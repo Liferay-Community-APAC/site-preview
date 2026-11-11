@@ -1,0 +1,35 @@
+# OAuth 2 connection between Liferay and the Liferay Legacy MCP server: read-only.
+#
+# Liferay creates an OAuth 2 application from this definition and publishes its client ID,
+# client secret and token address as routes (files) for the MCP server to read.
+#
+# The application acts as the service user named in userAccountScreenName, which needs the
+# "MCP OAuth Client" role to be issued tokens. The scopes limit it to the APIs the tools call.
+#
+# Every scope is .read, so Liferay refuses every write, whatever the MCP server's settings, and the
+# server reports its write tools as unavailable. liferay-mcp-oauth.client-extension.yaml is the
+# version that allows writes (Delivery, Admin Content, Admin Taxonomy, Admin Workflow, Batch Engine
+# and Form without .read).
+#
+# .serviceAddress and .serviceScheme give the application its home page, the MCP server's own
+# address; Liferay requires one. They don't affect how the server connects.
+#
+# After changing it, deploy it again and restart the MCP server.
+assemble: []
+liferay-mcp-oauth-headless-server:
+  name: Liferay MCP server (read-only)
+  description: Read-only OAuth 2 connection for the Liferay MCP server
+  scopes:
+    - Liferay.Data.Engine.REST.everything.read
+    - Liferay.Headless.Admin.Content.everything.read
+    - Liferay.Headless.Admin.Taxonomy.everything.read
+    - Liferay.Headless.Admin.User.everything.read
+    - Liferay.Headless.Admin.Workflow.everything.read
+    - Liferay.Headless.Batch.Engine.everything.read
+    - Liferay.Headless.Delivery.everything.read
+    - Liferay.Headless.Form.everything.read
+    - liferay-json-web-services.everything.read
+  .serviceAddress: localhost:3333
+  .serviceScheme: http
+  type: oAuthApplicationHeadlessServer
+  userAccountScreenName: mcp-service

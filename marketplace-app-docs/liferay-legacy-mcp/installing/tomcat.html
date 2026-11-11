@@ -97,7 +97,7 @@
 <h2 id="step-1-deploy-the-oauth-2-client-extension">Step 1: Deploy the OAuth 2 Client Extension</h2>
 
 <ol>
-  <li>Download <a href="../assets/downloads/liferay-mcp-oauth.zip"><code>liferay-mcp-oauth.zip</code></a>.</li>
+  <li>Download <a href="../assets/downloads/liferay-mcp-oauth.zip"><code>liferay-mcp-oauth.zip</code></a>, or, to keep the server read-only, <a href="../assets/downloads/liferay-mcp-oauth-read-only.zip"><code>liferay-mcp-oauth-read-only.zip</code></a>. See <a href="liferay-setup.html#changing-the-client-extension">Changing the Client Extension</a>.</li>
   <li>Copy it into <code>&lt;liferay-home&gt;/osgi/client-extensions</code>.</li>
   <li>Wait until the Liferay log shows <code>STARTED liferay-mcp-oauth</code>.</li>
 </ol>
@@ -119,7 +119,7 @@ sudo cp -r &lt;liferay-home&gt;/routes/default/liferay-mcp-oauth /srv/liferay-mc
 sudo chown -R 1000:1000 /srv/liferay-mcp/routes &amp;&amp; sudo chmod -R go-rwx /srv/liferay-mcp/routes
 </code></pre>
 
-<p class="warning">The folder holds the application’s client secret. Keep it readable only by the server, like any password. Copy it again if you deploy the client extension again, since Liferay then issues new credentials.</p>
+<p class="warning">The folder holds the application’s client secret. Keep it readable only by the server, like any password. Deploying the client extension again, even changed, keeps the same credentials; copy the folder again only if the application was deleted and created anew, when the server reports <code>invalid_client</code>.</p>
 
 <h2 id="step-3-run-the-server">Step 3: Run the Server</h2>
 
